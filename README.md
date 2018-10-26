@@ -13,6 +13,6 @@ Serwer Frontendu oraz NPM do zarządzania pakietami Angulara
 https://nodejs.org/dist/v8.12.0/node-v8.12.0-x64.msi
 
 4. *** Dowolne IDE - Program w którym będziesz nakurwiać kody ***
-◆ WebStorm/PHPStorm https://www.jetbrains.com/webstorm/
-◆ Visual Code https://aka.ms/win32-x64-user-stable
-◆ Inny
+- WebStorm/PHPStorm https://www.jetbrains.com/webstorm/
+- Visual Code https://aka.ms/win32-x64-user-stable
+- Inny
