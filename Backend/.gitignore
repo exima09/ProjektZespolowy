@@ -1,0 +1,30 @@
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/.php_cs.cache
+/composer.lock
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+/.idea/
+/public/build/
+/public/uploads/images/
+### symfony/webpack-encore-pack ###
+npm-debug.log
+yarn-error.log
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
+
+/public/images
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
