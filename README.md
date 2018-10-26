@@ -4,7 +4,7 @@ Wyślij na grupie swój username na Github'ie, aby dodać uprawnienia do repozyt
 ### Potrzebne narzędzia<br />
 <ol style="list-style-type:decimal;">
 <li>
-*** XAMPP ***<br />
+** XAMPP **<br />
 Postawi serwer HTML/PHP/MYSQL<br />
 https://www.apachefriends.org/xampp-files/7.2.11/xampp-win32-7.2.11-0-VC15-installer.exe<br />
 <br />
