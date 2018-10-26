@@ -1,7 +1,7 @@
 # ProjektZespolowy
 Wyślij na grupie swój mail, aby dodać uprawnienia do repozytorium!
 
-###Potrzebne narzędzia<br />
+### Potrzebne narzędzia<br />
 <ol style="list-style-type:decimal;">
 <li>
 *** XAMPP ***<br />
@@ -34,6 +34,6 @@ https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2
 </li>
 </ul>
 
-###INSTALACJA<br />
+### INSTALACJA<br />
 wejdź do projektu z CMD (cd [sciezka na kompie]/ProjektZespolowy/Backend)
 wpisz composer install
