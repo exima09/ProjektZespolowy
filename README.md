@@ -1,5 +1,5 @@
 # ProjektZespolowy
-Wyślij na grupie swój mail, aby dodać uprawnienia do repozytorium!
+Wyślij na grupie swój username na Github'ie, aby dodać uprawnienia do repozytorium!
 
 ### Potrzebne narzędzia<br />
 <ol style="list-style-type:decimal;">
