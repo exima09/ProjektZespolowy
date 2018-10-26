@@ -22,3 +22,8 @@ https://nodejs.org/dist/v8.12.0/node-v8.12.0-x64.msi
 5. *** GIT ***
 W zasadzie każde IDE chyba ma wtyczki, ale jak ktoś jest sadystą jak ja to tutaj link do konsolowego gita :-D
 https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2.19.1-64-bit.exe
+
+
+INSTALACJA
+wejdź do projektu z CMD (cd [sciezka na kompie]/ProjektZespolowy/Backend)
+wpisz composer install
