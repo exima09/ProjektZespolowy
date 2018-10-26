@@ -1,5 +1,5 @@
 # ProjektZespolowy
-Wyślij na grupie swój mail, aby dodać uprawnienia do repozytorium!
+Wyślij na grupie swój username na Github'ie, aby dodać uprawnienia do repozytorium!
 
 ### Potrzebne narzędzia<br />
 <ol style="list-style-type:decimal;">
@@ -43,5 +43,5 @@ Wejdź w główny folder projektu<br />
 Uruchom dwa pliki startowe<br />
 Dwa okna odpowiadają odpowiednio za serwery Back i Front<br />
 W przeglądarce adresy:<br />
-http://localhost:8000 - Serwer Backend<br />
-http://localhost:4200 - Serwer Frontend<br />
+<a href="http://localhost:8000" target="_blank">http://localhost:8000</a> - Serwer Backend<br />
+<a href="http://localhost:4200" target="_blank">http://localhost:4200</a> - Serwer Frontend<br />
