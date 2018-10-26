@@ -2,7 +2,6 @@
 Potrzebne narzędzia
 1. *** XAMPP ***
 Postawi serwer HTML/PHP/MYSQL
-
 https://www.apachefriends.org/xampp-files/7.2.11/xampp-win32-7.2.11-0-VC15-installer.exe
 
 2. *** Composer ***
