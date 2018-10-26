@@ -37,3 +37,11 @@ https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2
 ### INSTALACJA<br />
 wejdź do projektu z CMD (cd <span style="color:orange;">[sciezka na kompie]</span>/ProjektZespolowy/Backend)<br />
 ```composer install```<br />
+
+### URUCHOMIENIE<br />
+Wejdź w główny folder projektu<br />
+Uruchom dwa pliki startowe<br />
+Dwa okna odpowiadają odpowiednio za serwery Back i Front<br />
+W przeglądarce adresy:<br />
+http://localhost:8000 - Serwer Backend<br />
+http://localhost:4200 - Serwer Frontend<br />
