@@ -43,6 +43,6 @@ Wejdź w główny folder projektu<br />
 Uruchom dwa pliki startowe<br />
 Dwa okna odpowiadają odpowiednio za serwery Back i Front<br />
 W przeglądarce adresy:<br />
-[http://localhost:8000](http://localhost:8000 target="_blank")<br />
+[link](http://localhost:8000 target="_blank")<br />
 <a href="http://localhost:8000" target="_blank">http://localhost:8000</a> - Serwer Backend<br />
 <a href="http://localhost:4200" target="_blank">http://localhost:4200</a> - Serwer Frontend<br />
