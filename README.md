@@ -35,5 +35,5 @@ https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2
 </ul>
 
 ### INSTALACJA<br />
-wejdź do projektu z CMD (cd [sciezka na kompie]/ProjektZespolowy/Backend)
-wpisz composer install
+wejdź do projektu z CMD (cd <span style="color:orange;">[sciezka na kompie]</span>/ProjektZespolowy/Backend)<br />
+wpisz composer install<br />
