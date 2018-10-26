@@ -1,7 +1,7 @@
 # ProjektZespolowy
 Wyślij na grupie swój mail, aby dodać uprawnienia do repozytorium!
 
-Potrzebne narzędzia<br />
+###Potrzebne narzędzia<br />
 <ol style="list-style-type:decimal;">
 <li>
 *** XAMPP ***<br />
