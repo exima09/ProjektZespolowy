@@ -32,7 +32,7 @@ Program w którym będziesz nakurwiać kody<br />
 W zasadzie każde IDE chyba ma wtyczki, ale jak ktoś jest sadystą jak ja to tutaj link do konsolowego gita :-D<br />
 https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2.19.1-64-bit.exe
 </li>
-</ul>
+</ol>
 
 ### INSTALACJA<br />
 wejdź do projektu z CMD (cd <span style="color:orange;">[sciezka na kompie]</span>/ProjektZespolowy/Backend)<br />
