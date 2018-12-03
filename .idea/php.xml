@@ -98,6 +98,8 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/security" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/debug-pack" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/var-exporter" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

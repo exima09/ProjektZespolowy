@@ -71,4 +71,5 @@ class SampleEntity
 
         return $this;
     }
+    //
 }
