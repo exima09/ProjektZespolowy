@@ -17,11 +17,6 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $RoleId;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $Email;
@@ -31,21 +26,14 @@ class User
      */
     private $Password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Roles", inversedBy="users")
+     */
+    private $Role;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getRoleId(): ?int
-    {
-        return $this->RoleId;
-    }
-
-    public function setRoleId(int $RoleId): self
-    {
-        $this->RoleId = $RoleId;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -68,6 +56,18 @@ class User
     public function setPassword(string $Password): self
     {
         $this->Password = $Password;
+
+        return $this;
+    }
+
+    public function getRole(): ?Roles
+    {
+        return $this->Role;
+    }
+
+    public function setRole(?Roles $Role): self
+    {
+        $this->Role = $Role;
 
         return $this;
     }
