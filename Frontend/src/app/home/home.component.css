@@ -1,0 +1,48 @@
+h1,h2{
+    margin: 0;
+    padding:1.5%;
+}
+.post{
+    margin:1%;
+    background-color: rgba(29, 29, 29, 0.082);
+    filter: alpha(opacity=50);
+}
+
+.post_title{
+    text-align: center;
+    font-variant: small-caps;
+}
+
+.post_text{
+    text-indent: 2%;
+   width: 80%;
+   padding: 1%;
+   float:right;
+
+}
+.post_text p{
+
+    margin: 0%;
+}
+
+.post_img{
+    min-width: 13%;
+   max-width: 14%;
+   max-height: 14%;
+   min-height: 13%;
+   float: left;
+}
+
+.post_date{
+    text-align: right;
+   clear: both;
+   color: red;
+}
+
+.endfooter{
+    clear: both;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+

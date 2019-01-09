@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { PrisonersListComponent } from './prisoners-list/prisoners-list.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SiteHeaderComponent } from './site-header/site-header.component';
     HeaderComponent,
     MenuComponent,
     PrisonersListComponent,
-    SiteHeaderComponent
+    SiteHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
