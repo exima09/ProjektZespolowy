@@ -6,7 +6,7 @@ Odnośnik do endpointa: POST http://localhost:8000/api/register
 
 Lista pobieranych parametrów: username, password
 
-Lista zwracanych parametrów: token
+Lista zwracanych parametrów: message
 
 =================================
 
