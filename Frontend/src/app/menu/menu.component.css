@@ -1,0 +1,51 @@
+dl.menu {
+    background-color: rgb(40, 56, 71);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+dt.menu {
+    float: left;
+    width: 70%;
+}
+
+dt.menu a {
+    text-align: center;
+    display: block;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+dt.menu a:hover:not(.active) {
+    background-color:rgb(5, 5, 5);
+}
+
+.leftmenu{
+    width: 17.5%;
+    float: left;
+    color: white;
+   
+}
+dl{
+    margin-left: 6%;
+}
+dt{
+    padding:2%;
+}
+dd{
+    padding:2%;
+}
+.arch_header{
+    text-align: center;
+    padding: 2%;
+    background-color: #202F3E;
+    height: 50px;
+}
+h1,h2{
+    margin: 0;
+    padding:1.5%;
+}
+

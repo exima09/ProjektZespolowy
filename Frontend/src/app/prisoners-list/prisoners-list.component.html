@@ -1,0 +1,21 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+
+
+  <div  *ngFor="let prisoner of prisoners">
+    <article class="post">
+      <header>
+        <h2 class="post_title">Imie i nazwisko</h2>
+      </header>
+      <img class="post_img" src="assets/images/nico.jpg">
+      <div class="post_text">
+        <p>Opis:</p>
+        <p>Więzień osadzony jest w sali 201, sprawowanie dobre, srednia ocena...</p>
+
+      </div>
+      <footer class="post_date">
+        <button>Oceń</button>
+        <button>Szczególy</button>
+        <button>Edytuj</button>
+      </footer>
+    </article>
+  </div>
