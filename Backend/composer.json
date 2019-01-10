@@ -18,10 +18,16 @@
         "symfony/security-bundle": "*",
         "symfony/serializer-pack": "*",
         "symfony/swiftmailer-bundle": "^3.1",
+        "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "friendsofsymfony/rest-bundle": "^2.4",
+        "lexik/jwt-authentication-bundle": "^2.5",
+        "nelmio/api-doc-bundle": "^3.3",
+        "sunra/php-simple-html-dom-parser": "^1.5",
+      "ext-json": "*"
     },
     "require-dev": {
         "sensiolabs/security-checker": "^5.0",

@@ -98,6 +98,21 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/security" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/debug-pack" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/Backend/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/sunra/php-simple-html-dom-parser" />
+      <path value="$PROJECT_DIR$/Backend/vendor/exsyst/swagger" />
+      <path value="$PROJECT_DIR$/Backend/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/Backend/vendor/nelmio/api-doc-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/Backend/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/Backend/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/Backend/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
