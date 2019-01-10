@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class JailController extends AbstractController
 {
-
+    // NOWE ZMIANY OD EXIMY!
     /**
      * @EntityManagerInterface $entityManager
      */
