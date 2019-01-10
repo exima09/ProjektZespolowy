@@ -1,9 +1,21 @@
 Nazwa kontrolera: UserController.php
 
-Nazwa metody: "__construct"
+Nazwa metody: add
 
-Odnośnik do endpointa: chuj wie co to jest 
+Odnośnik do endpointa: POST http://localhost:8000/api/register
 
-Lista pobieranych parametrów: UserRepository, EntityManagerInterface, UserPasswordEncoderInterface
+Lista pobieranych parametrów: username, password
 
-Lista zwracanych parametrów: BRAK
+Lista zwracanych parametrów: token
+
+=================================
+
+Nazwa kontrolera: UserController.php
+
+Nazwa metody: logIn
+
+Odnośnik do endpointa: (POST) http://localhost:8000/api/login_check 
+
+Lista pobieranych parametrów: username, password
+
+Lista zwracanych parametrów: token
