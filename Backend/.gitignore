@@ -24,6 +24,7 @@ yarn-error.log
 .web-server-pid
 ###< symfony/web-server-bundle ###
 /public/images
+symfony.lock
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem

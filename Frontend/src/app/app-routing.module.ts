@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PrisonersListComponent } from './components/content/prisoners-list/prisoners-list.component';
