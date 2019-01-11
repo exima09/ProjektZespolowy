@@ -1,14 +1,14 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
-import { PrisonersListComponent } from './prisoners-list/prisoners-list.component';
-import { SiteHeaderComponent } from './site-header/site-header.component';
-import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { PrisonersListComponent } from './components/content/prisoners-list/prisoners-list.component';
+import { SiteHeaderComponent } from './components/content/site-header/site-header.component';
+import { HomeComponent } from './components/content/home/home.component';
+import { RegisterComponent } from './components/content/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     MenuComponent,
     PrisonersListComponent,
     SiteHeaderComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
