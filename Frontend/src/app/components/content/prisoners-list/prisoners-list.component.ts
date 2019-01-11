@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrisonersListComponent implements OnInit {
   headerOfSite = "Więźniowie";
-  prisoners=[1,2,3,4,5,6,7,8];
+  prisoners=[1,2,3,4,5,6,7,"janek"];
   constructor() { }
 
   ngOnInit() {

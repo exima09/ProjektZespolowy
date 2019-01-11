@@ -1,10 +1,8 @@
 <app-site-header [childMessage]="headerOfSite"></app-site-header>
-
-
   <div  *ngFor="let prisoner of prisoners">
     <article class="post">
       <header>
-        <h2 class="post_title">Imie i nazwisko</h2>
+        <h2 class="post_title">{{prisoner}}</h2>
       </header>
       <img class="post_img" src="assets/images/nico.jpg">
       <div class="post_text">
