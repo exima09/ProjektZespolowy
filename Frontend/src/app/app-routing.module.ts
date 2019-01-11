@@ -5,8 +5,6 @@ import { PrisonersListComponent } from './components/content/prisoners-list/pris
 import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
 
-
-
 const routes: Routes = [
 {path:"prisoners", component:PrisonersListComponent},
 {path:"", component:HomeComponent},

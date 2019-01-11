@@ -10,7 +10,6 @@ import { SiteHeaderComponent } from './components/content/site-header/site-heade
 import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
