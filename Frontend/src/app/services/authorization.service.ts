@@ -23,7 +23,6 @@ export class AuthenticationService {
     }
 
     errorHandler(error: HttpErrorResponse) {
-        console.log("weszlo");
         if (error.name) {
             this.snackBar.open(error.name, error.statusText, {
                 duration: 2000,
