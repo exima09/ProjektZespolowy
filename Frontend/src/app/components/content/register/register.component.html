@@ -1,1 +1,12 @@
-<input type=text  #box  (keyup)="writtenLogin(box.value)">
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+
+<div>
+    <label>Login</label>
+    <input type="text" #loginInput (keyup)="writtenLogin(loginInput.value)" required>
+</div>
+<div>
+    <label>Hasło</label>
+    <input type="text" #passwordInput (keyup)="writtenPassword(passwordInput.value)" required>
+</div>
+
+<button (click)="submit()">Zarejestruj</button>
