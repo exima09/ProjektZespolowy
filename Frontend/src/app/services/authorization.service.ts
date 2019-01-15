@@ -16,10 +16,10 @@ export class AuthenticationService {
         let headers = new HttpHeaders({ "username": login, "password": password });
         return this.http.post("/api/register", headers).pipe(catchError(err => this.errorHandler(err)));
     }
-    
+
     login(login: string, password: string) {
         let headers = new HttpHeaders({ "username": login, "password": password });
-        return this.http.post("/api/login", headers).pipe(catchError(err => this.errorHandler(err)));
+        return this.http.post("/api/login_check", headers).pipe(catchError(err => this.errorHandler(err)));
     }
 
     errorHandler(error: HttpErrorResponse) {
