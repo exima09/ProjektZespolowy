@@ -1,1 +1,14 @@
-<input type=text  #box  (keyup)="writtenLogin(box.value)">
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+
+<!-- niech go chuj zajebie z tą siatką || do zmiany style-->
+<div style="margin: 0 auto; width: 300px; padding-left: 200px; margin-top: 5%">
+    <div>
+        <input type="text" #loginInput (keyup)="writtenLogin(loginInput.value)" placeholder="Login" required>
+    </div>
+    <div>
+        <input type="password" #passwordInput (keyup)="writtenPassword(passwordInput.value)" placeholder="Hasło"  required>
+    </div>
+    <button (click)="submit()">Zarejestruj się</button>
+    <div class="error" *ngIf="anyErrors">Wystąpił błąd, przepraszamy za utrudnienia.</div>
+    <div class="success" *ngIf="finished">Rejestracja zakończona powodzeniem, dziękujemy.</div>
+</div>
