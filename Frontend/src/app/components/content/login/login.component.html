@@ -1,0 +1,13 @@
+<app-site-header [childMessage] = "headerOfSite"></app-site-header>
+
+<div style="margin: 0 auto; width: 300px; padding-left: 200px; margin-top: 5%;">
+  <div>
+    <input type = "text" #loginInput (keyup) = "writtenLogin(loginInput.value)" required placeholder="Login">
+  </div>
+
+  <div>
+    <input type = "password" #passwordInput (keyup) = "writtenPassword(passwordInput.value)" required placeholder="Hasło">
+  </div>
+
+  <button (click) = "Submit()">Zaloguj</button>
+</div>
