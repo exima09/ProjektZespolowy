@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthenticationSerivce } from '../../services/authorization.service';
+import { AuthenticationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +10,13 @@ export class RegisterComponent implements OnInit {
   headerOfSite = "Rejestracja";
   login: string;
   password: string;
+  anyErrors: boolean;
+  finished: boolean;
 
-  constructor(private authService: AuthenticationSerivce) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
-  }
+  } 
 
   writtenLogin(value: string) {
     this.login = value;
@@ -28,9 +30,9 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     this.authService.register(this.login, this.password).subscribe(
-      elem => console.log(elem), //powodzenie
-      err => console.log(err),  //again
-      () => console.log("wszystko ok")
+      elem => console.log(elem),
+      err => this.anyErrors = true,
+      () => this.finished = true
     );
   }
 }
