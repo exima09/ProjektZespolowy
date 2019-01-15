@@ -9,6 +9,8 @@ import { PrisonersListComponent } from './components/content/prisoners-list/pris
 import { SiteHeaderComponent } from './components/content/site-header/site-header.component';
 import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {NoopAnimationsModule, BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,15 @@ import { RegisterComponent } from './components/content/register/register.compon
     PrisonersListComponent,
     SiteHeaderComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
