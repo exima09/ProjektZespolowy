@@ -11,7 +11,6 @@ import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {NoopAnimationsModule, BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/content/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { LoginComponent } from './components/content/login/login.component';
     SiteHeaderComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
