@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.service-snackbar {
+    background-color: rgb(40, 56, 71);
+    max-width: 100%;
+    width:100%;
+    height: fit-content;
+    display: flex
+}
+
+@media only screen and (max-width : 480px) {
+    .service-snackbar { width: 100%; }
+  }
