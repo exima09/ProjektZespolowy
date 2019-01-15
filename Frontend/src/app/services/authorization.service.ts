@@ -13,13 +13,21 @@ export class AuthenticationService {
     constructor(private http: HttpClient, public snackBar: MatSnackBar) { }
 
     register(login: string, password: string) {
-        let headers = new HttpHeaders({ "username": login, "password": password });
-        return this.http.post("/api/register", headers).pipe(catchError(err => this.errorHandler(err)));
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let data={
+            "username":login,
+            "password":password
+        }
+        return this.http.post("/api/register",data, {headers}).pipe(catchError(err => this.errorHandler(err)));
     }
 
     login(login: string, password: string) {
-        let headers = new HttpHeaders({ "username": login, "password": password });
-        return this.http.post("/api/login_check", headers).pipe(catchError(err => this.errorHandler(err)));
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let data={
+            "username":login,
+            "password":password
+        }
+        return this.http.post("/api/login_check",data, {headers}).pipe(catchError(err => this.errorHandler(err)));
     }
 
     errorHandler(error: HttpErrorResponse) {
