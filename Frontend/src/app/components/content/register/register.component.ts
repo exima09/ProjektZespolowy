@@ -7,7 +7,7 @@ import { AuthenticationService } from 'src/app/services/authorization.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  headerOfSite = "Rejestracja";
+  headerOfSite = 'Rejestracja';
   login: string;
   password: string;
   anyErrors: boolean;
@@ -16,16 +16,16 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
-  } 
+  }
 
   writtenLogin(value: string) {
     this.login = value;
-    console.log("login = " + this.login);
+    console.log('login = ' + this.login);
   }
 
   writtenPassword(value: string) {
     this.password = value;
-    console.log("password = " + this.password);
+    console.log('password = ' + this.password);
   }
 
   submit() {
