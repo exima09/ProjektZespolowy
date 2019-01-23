@@ -27,12 +27,12 @@ class Prisoner
     private $LastName;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $JoinDate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $DateOfBirdth;
 

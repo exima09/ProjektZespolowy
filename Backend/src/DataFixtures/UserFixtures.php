@@ -15,14 +15,13 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
         $user = new User();
-        $user->setUsername("exima");
+        $user->setUsername("admin");
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'asdf'
+            'admin'
         ));
+        $user->setRoles("ROLE_USER");
         $manager->persist($user);
         $manager->flush();
     }
