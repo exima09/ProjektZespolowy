@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.authService.register(this.login, this.password).subscribe(
+    this.authService.login(this.login, this.password).subscribe(
       elem => console.log(elem),
       error => console.log(error),
       () => console.log('Wszystko ok! :)')
