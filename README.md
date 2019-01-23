@@ -35,14 +35,11 @@ https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2
 </ol>
 
 ### INSTALACJA<br />
-- wejdź do projektu z CMD (cd <span style="color:orange;">[sciezka na kompie]</span>/ProjektZespolowy/Backend)<br />
-```composer install```<br />
-- wejdź do projektu z CMD (cd <span style="color:orange;">[sciezka na kompie]</span>/ProjektZespolowy/Frontend)<br />
-```npm install```<br />
+- Uruchom plik rebuild.sh
 
 ### URUCHOMIENIE<br />
 Wejdź w główny folder projektu<br />
-Uruchom dwa pliki startowe<br />
+Uruchom dwa pliki startowe (start.sh i startFront.sh)<br />
 Dwa okna odpowiadają odpowiednio za serwery Back i Front<br />
 W przeglądarce adresy:<br />
 <a href="http://localhost:8000" target="_blank">http://localhost:8000</a> - Serwer Backend<br />
