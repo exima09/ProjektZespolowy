@@ -1,21 +1,24 @@
 <app-site-header [childMessage]="headerOfSite"></app-site-header>
 
+<button mat-raised-button color="primary">Primary</button>
+<button mat-raised-button color="accent">Accent</button>
+<button mat-raised-button color="warn">Warn</button>
 
-  <div  *ngFor="let info of infos">
-<article class="post">
-    <header>
-        <h2 class="post_title">Tytul</h2>
-    </header>
-    <img class="post_img" src="assets/images/nico.jpg">
-    <p class="post_text">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-        in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
-    <footer class="post_date">
-        <i>Data</i>
-    </footer>
-</article>
+<div *ngFor="let info of infos">
+    <article class="post">
+        <header>
+            <h2 class="post_title">Tytul</h2>
+        </header>
+        <img class="post_img" src="assets/images/nico.jpg">
+        <p class="post_text">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+            in culpa qui officia deserunt mollit anim id est laborum."
+        </p>
+        <footer class="post_date">
+            <i>Data</i>
+        </footer>
+    </article>
 </div>

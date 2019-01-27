@@ -1,13 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    line-height: 1.7;
+    color: white;
+}
+
 .service-snackbar {
     background-color: rgb(40, 56, 71);
     max-width: 100%;
     width:100%;
     height: fit-content;
-    display: flex
+    display: flex;
 }
 
 @media only screen and (max-width : 480px) {
     .service-snackbar { width: 100%; }
-  }
+}
+
+.bg-menu-dark {
+    background-color: #202F3E;
+}
+
+.bg-menu-light {
+    background-color: rgb(40, 56, 71);
+}
+
+.bg-content-light {
+    background-color: #999999;
+}
+
+.bg-content-dark {
+    background-color: rgba(29, 29, 29, 0.5);
+}
+
+/* .bg-gutters {
+    background-color: #999999; 
+} */
+
+.bg-logo {
+    background-color: #3f3f3f;
+}
+
+.text-black {
+    color: black;
+}
