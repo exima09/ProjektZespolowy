@@ -13,6 +13,7 @@ import {RegisterComponent} from './components/content/register/register.componen
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/content/login/login.component';
+<<<<<<< HEAD
 =======
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,9 @@ import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
 
 >>>>>>> 771277e... components moved to correct files
+=======
+import {MatButtonModule} from '@angular/material/button';
+>>>>>>> 91b1aae... rozkaz!
 
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ import { RegisterComponent } from './components/content/register/register.compon
     HttpClientModule,
     MatSnackBarModule,
     NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
