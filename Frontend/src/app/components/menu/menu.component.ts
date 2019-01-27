@@ -12,8 +12,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
   }
+<<<<<<< HEAD:Frontend/src/app/components/menu/menu.component.ts
 
   goToPrisoners() {
     this.router.navigateByUrl('/prisoners');
+=======
+  
+  goToPrisoners() {
+    this.router.navigateByUrl("/prisoners")
+>>>>>>> 771277e... components moved to correct files:Frontend/src/app/components/menu/menu.component.ts
   }
 }
