@@ -1,2 +1,4 @@
 .idea/
 package-lock.json
+./Backend/composer.lock
+./Frontend/package-lock.json*

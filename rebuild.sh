@@ -7,7 +7,7 @@ bin/console doctrine:database:drop --force \
     && bin/console doctrine:database:create \
     && yes | bin/console doctrine:migrations:migrate \
     && bin/console doctrine:migrations:diff \
-    && bin/console doctrine:migrations:migrate \
+    && bin/console doctrine:migrations:migrate:generate \
     && yes | bin/console doctrine:fixtures:load
 cd ../Frontend/
 npm install
