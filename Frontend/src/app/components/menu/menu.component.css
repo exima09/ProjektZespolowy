@@ -1,21 +1,15 @@
-dl.menu {
-    background-color: rgb(40, 56, 71);
-    list-style-type: none;
-    overflow: hidden;
-}
-
-dt.menu a {
-    text-align: center;
-    display: block;
+.menu-item {
     color: white;
-    padding: 10px 16px;
+    font-size: 17px;
+    font-weight: 600;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
     text-decoration: none;
+    cursor: pointer;
+    outline: none;
 }
 
-dt.menu a:hover:not(.active) {
+.menu-item:hover {
     background-color:rgb(5, 5, 5);
-}
-
-dt{
-    padding:2%;
 }

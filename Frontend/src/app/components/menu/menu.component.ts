@@ -13,7 +13,4 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToPrisoners() {
-    this.router.navigateByUrl('/prisoners');
-  }
 }

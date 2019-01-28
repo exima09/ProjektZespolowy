@@ -2,11 +2,23 @@
   <h2 class="mb-1">Menu</h2>
 </header>
 
-<dl class="bg-menu-light">
-  <dt class="menu"><a href="#zaloguj">Zaloguj</a></dt>
-  <dt class="menu"><a href="#main">Strona główna</a></dt>
-  <dt class="menu"><a href="#news">Aktualnosci</a></dt>
-  <dt class="menu"><a href="#about">Odwiedziny</a></dt>
-  <dt class="menu"><a href="#about">Lista zadań</a></dt>
-  <dt class="menu"><a (click)="goToPrisoners()">Więźniowie</a></dt>
-</dl>
+<div class="d-flex flex-column align-items-stretch bg-menu-light">
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/login'">Zaloguj</a>
+  </div>
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
+  </div>
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/'">Aktualności</a>
+  </div>
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/'">Odwiedziny</a>
+  </div>
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
+  </div>
+  <div class="m-1">
+    <a class="menu-item py-2" [routerLink]="'/prisoners'">Więźniowie</a>
+  </div>
+</div>
