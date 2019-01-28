@@ -7,12 +7,13 @@ import {AuthenticationService} from 'src/app/services/authorization.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  headerOfSite = 'Zaloguj się';
+  headerOfSite = 'Logowanie';
   login: string;
   password: string;
+  anyErrors: boolean;
+  finished: boolean;
 
-  constructor(private authService: AuthenticationService) {
-  }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -28,10 +29,13 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
+    this.anyErrors = false;
+    this.finished = false;
+
     this.authService.login(this.login, this.password).subscribe(
       elem => console.log(elem),
-      error => console.log(error),
-      () => console.log('Wszystko ok! :)')
+      err => this.anyErrors = true,
+      () => this.finished = true
     );
   }
 }

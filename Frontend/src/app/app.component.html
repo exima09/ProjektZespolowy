@@ -1,15 +1,29 @@
 <div class="container-fluid bg-logo">
   <div class="row">
     <div class="col-12 px-0 pb-1">
-      <app-header></app-header>
+      <header>
+        <app-header></app-header>
+      </header>
+    </div>
+  </div>
+  <div class="row pb-1 pr-1">
+    <div class="col-md-2 text-white px-1">
+      <nav>
+        <app-menu></app-menu>
+      </nav>
+      <div class="bg-menu-light"></div>
+    </div>
+    <div class="col-md-10 bg-content-light px-0 text-black">
+      <article>
+        <router-outlet></router-outlet>
+      </article>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2 text-white px-1">
-      <app-menu></app-menu>
-    </div>
-    <div class="col-md-10 bg-content-light px-0 text-black">
-      <router-outlet></router-outlet>
+    <div class="col-12 p-1">
+      <footer>
+        <app-footer></app-footer>
+      </footer>
     </div>
   </div>
 </div>
