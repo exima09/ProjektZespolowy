@@ -12,7 +12,8 @@ import { PrisonersListComponent } from './components/content/prisoners-list/pris
 import { SiteHeaderComponent } from './components/content/site-header/site-header.component';
 import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
