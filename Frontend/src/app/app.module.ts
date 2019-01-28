@@ -1,6 +1,6 @@
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {LoginComponent} from './components/content/login/login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/content/login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +14,9 @@ import { HomeComponent } from './components/content/home/home.component';
 import { RegisterComponent } from './components/content/register/register.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { PrisonerComponent } from './components/content/prisoners/prisoner/prisoner.component';
+import { PrisonerService } from './services/prisoner/prisoner.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     RegisterComponent,
     LoginComponent,
     FooterComponent,
+    PrisonerComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +37,11 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     MatSnackBarModule,
     NoopAnimationsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [PrisonerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
