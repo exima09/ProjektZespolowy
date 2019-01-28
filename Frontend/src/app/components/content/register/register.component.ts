@@ -30,6 +30,9 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
+    this.anyErrors = false;
+    this.finished = false;
+
     this.authService.register(this.login, this.password).subscribe(
       elem => console.log(elem),
       err => this.anyErrors = true,
