@@ -7,7 +7,7 @@ import {AuthenticationService} from 'src/app/services/authorization.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  headerOfSite = 'Zaloguj się';
+  headerOfSite = 'Logowanie';
   login: string;
   password: string;
 
