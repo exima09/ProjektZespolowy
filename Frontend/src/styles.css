@@ -48,7 +48,16 @@ button.submit {
     letter-spacing: 2px;
 }
 
-button.submit:hover {
+button.submit-sm {
+    background-color: #202F3E;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+button.submit:hover,
+button.submit-sm:hover {
     background-color: rgb(40, 56, 71);
 }
 
@@ -92,3 +101,17 @@ button.submit:hover {
 }
 
 /* ///// */
+input.ng-touched.ng-invalid {
+    border-color: #dc3545;
+}
+
+div.validation-error {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
