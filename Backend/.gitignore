@@ -2,7 +2,7 @@
 .env
 /public/bundles/
 /.php_cs.cache
-/composer.lock
+composer.lock
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -15,6 +15,7 @@ composer.lock
 ###> symfony/webpack-encore-pack ###
 /node_modules/
 /.idea/
+.idea/
 /public/build/
 /public/uploads/images/
 ### symfony/webpack-encore-pack ###

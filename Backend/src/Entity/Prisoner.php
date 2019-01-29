@@ -41,6 +41,31 @@ class Prisoner
      */
     private $CellId;
 
+    /**
+     * Prisoner constructor.
+     * @param $FirstName
+     * @param $LastName
+     * @param $JoinDate
+     * @param $DateOfBirdth
+     * @param $CellId
+     */
+    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirdth, $CellId)
+    {
+        $this->FirstName = $FirstName;
+        $this->LastName = $LastName;
+        $this->JoinDate = $JoinDate;
+        $this->DateOfBirdth = $DateOfBirdth;
+        $this->CellId = $CellId;
+    }
+
+    /**
+     * Prisoner constructor.
+     */
+    public function __construct1()
+    {
+
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -17,24 +17,17 @@ class Cell
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * Cell constructor.
      */
-    private $PrisonerId;
+    public function __construct()
+    {
+    }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPrisonerId(): ?int
-    {
-        return $this->PrisonerId;
-    }
-
-    public function setPrisonerId(int $PrisonerId): self
-    {
-        $this->PrisonerId = $PrisonerId;
-
-        return $this;
     }
 }
