@@ -2,13 +2,16 @@
 RED=`tput setaf 1`
 NC=`tput sgr0` # No Color
 cd ./Backend/
+bin/console cache:clear
 composer install
-bin/console doctrine:database:drop --force \
-    && bin/console doctrine:database:create \
-    && yes | bin/console doctrine:migrations:migrate \
-    && bin/console doctrine:migrations:diff \
-    && bin/console doctrine:migrations:migrate:generate \
-    && yes | bin/console doctrine:fixtures:load
+composer update
+bin/console doctrine:database:drop --force
+bin/console doctrine:database:create
+rm src/Migrations/*
+bin/console doctrine:migrations:diff &&
+    bin/console -n doctrine:migrations:migrate &&
+    bin/console -n doctrine:fixtures:load
+
 cd ../Frontend/
 npm install
 echo "${RED}Wybuchnie za..."

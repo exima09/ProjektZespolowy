@@ -89,13 +89,11 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/panther" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/Backend/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/orm-pack" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/debug-pack" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/contracts" />
@@ -111,6 +109,11 @@
       <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
       <path value="$PROJECT_DIR$/Backend/vendor/willdurand/negotiation" />
       <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/Backend/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
