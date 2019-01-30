@@ -3,8 +3,14 @@
 </header>
 
 <div class="d-flex flex-column align-items-stretch bg-menu-light">
-  <div class="m-1">
+  <div class="m-1" *ngIf="!login">
     <a class="menu-item py-2" [routerLink]="'/login'">Zaloguj</a>
+  </div>
+  <div class="m-1" *ngIf="!login">
+    <a class="menu-item py-2" [routerLink]="'/register'">Zarejestruj</a>
+  </div>
+  <div class="m-1" *ngIf="login">
+    <a class="menu-item py-2" (click)="logout()">Wyloguj</a>
   </div>
   <div class="m-1">
     <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
@@ -22,6 +28,6 @@
     <a class="menu-item py-2" [routerLink]="'/prisoners'">Więźniowie</a>
   </div>
   <div class="m-1">
-    <a class="menu-item py-2" [routerLink]="'/prisoners/register'">(dropdown)pris-register</a>
+    <a class="menu-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
   </div>
 </div>

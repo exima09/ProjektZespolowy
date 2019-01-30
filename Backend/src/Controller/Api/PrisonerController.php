@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Prisoner;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,8 +46,8 @@ class PrisonerController extends AbstractController
                     "prisonerId" => $prisoner->getId(),
                     "firstName" => $prisoner->getFirstName(),
                     "lastName" => $prisoner->getLastName(),
-                    "dateOfBirthday" => $prisoner->getDateOfBirdth(),
-                    "joinDate" => $prisoner->getJoinDate(),
+                    "dateOfBirth" => $prisoner->getDateOfBirdth()->format("d-m-Y"),
+                    "joinDate" => $prisoner->getJoinDate()->format("d-m-Y"),
                     "cellId" => $prisoner->getCellId()
                 ];
             }
@@ -54,9 +55,9 @@ class PrisonerController extends AbstractController
                 "message" => "Lista została poprawnie pobrana",
                 "prisoners" => $table
             ]);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Lista nie została pobrana, błąd: ".$e->getMessage()
+                "message" => "Lista nie została pobrana, błąd: " . $e->getMessage()
             ]);
         }
     }
@@ -72,17 +73,17 @@ class PrisonerController extends AbstractController
     {
         try {
             $data = json_decode($request->getContent(), true);
-            $cell = $cellRepository->findOneBy(["id"=>$data["cellid"]]);
-            $prisoner = new Prisoner($data["firstname"], $data["lastname"], $data["joindate"], $data["dateofbirth"], $cell);
+//            $cell = $cellRepository->findOneBy(["id"=>$data["cellId"]]);
+            $prisoner = new Prisoner($data["firstName"], $data["lastName"], new \DateTime('now'), new \DateTime($data["dateOfBirth"]), $data["cellId"]);
 
             $entityManager->persist($prisoner);
             $entityManager->flush();
             return JsonResponse::create([
                 "message" => "Więzień został zarejestrowany"
             ]);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Więzień nie został zarejestrowany, błąd: ".$e->getMessage()
+                "message" => "Więzień nie został zarejestrowany, błąd: " . $e->getMessage()
             ]);
         }
     }
@@ -96,8 +97,7 @@ class PrisonerController extends AbstractController
      */
     public function delete(int $id, PrisonerRepository $prisonerRepository, EntityManagerInterface $entityManager)
     {
-        try
-        {
+        try {
             $prisoner = $prisonerRepository->find($id);
             $entityManager->remove($prisoner);
             $entityManager->flush();
@@ -106,7 +106,7 @@ class PrisonerController extends AbstractController
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Więzień nie został usunięty, błąd: ".$e->getMessage()
+                "message" => "Więzień nie został usunięty, błąd: " . $e->getMessage()
             ]);
         }
     }

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PrisonerService} from "../../../../services/prisoner/prisoner.service";
+import {Prisoner} from "../../../../models/prisoner/prisoner.model";
+import {AuthenticationService} from "../../../../services/authorization.service";
 
 @Component({
   selector: 'app-prisoners-list',
@@ -7,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrisonersListComponent implements OnInit {
   headerOfSite = 'Więźniowie';
-  prisoners = [1, 2, 3, 4, 5, 6, 7, 'janek'];
-  constructor() { }
-
-  ngOnInit() {
+  prisoners: Prisoner[] = [];
+  constructor(private service: PrisonerService, private auth: AuthenticationService) {
   }
 
+  ngOnInit() {
+    this.auth.checkLogin();
+    this.service.getPrisoners().subscribe((res: any) => {
+      this.prisoners = res.prisoners;
+    });
+  }
 }
