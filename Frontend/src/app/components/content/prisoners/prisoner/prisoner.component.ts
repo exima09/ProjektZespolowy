@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { PrisonerService } from 'src/app/services/prisoner/prisoner.service';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {PrisonerService} from 'src/app/services/prisoner/prisoner.service';
+import {NgForm} from '@angular/forms';
+import {AuthenticationService} from "../../../../services/authorization.service";
 
 @Component({
   selector: 'app-prisoner',
@@ -10,34 +11,39 @@ import { NgForm } from '@angular/forms';
 export class PrisonerComponent implements OnInit {
   headerOfSite = 'Rejestracja więźnia';
 
-  constructor(private service: PrisonerService) { }
+  constructor(private service: PrisonerService, private auth: AuthenticationService) {
+    this.auth.checkLogin();
+  }
 
   ngOnInit() {
     this.resetForm();
   }
 
   resetForm(form?: NgForm) {
-    if(form != null)
+    if (form != null) {
       form.resetForm();
-      
+    }
     this.service.formData = {
-      id: null,
-      first_name: '',
-      last_name: '',
-      join_date: '',
-      date_of_birdth: '',
-      cell_id: null
+      prisonerId: null,
+      firstName: '',
+      lastName: '',
+      joinDate: '',
+      dateOfBirth: '',
+      cellId: null
     };
   }
 
   onSubmit(form: NgForm) {
-    if(form.value.id == null)
-      this.insertRecord(form);
+    if (form.value.id == null) {
+      if (localStorage.getItem('token')) {
+        this.insertRecord(form);
+      }
+    }
   }
 
   insertRecord(form: NgForm) {
     this.service.postPrisoner(form.value).subscribe(res => {
-      console.log("Prisoner inserted successfully")
+      console.log('Prisoner inserted successfully');
       this.resetForm(form);
     });
   }

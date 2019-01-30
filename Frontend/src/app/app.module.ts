@@ -1,22 +1,25 @@
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/content/login/login.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { PrisonersListComponent } from './components/content/prisoners-list/prisoners-list.component';
-import { SiteHeaderComponent } from './components/content/site-header/site-header.component';
-import { HomeComponent } from './components/content/home/home.component';
-import { RegisterComponent } from './components/content/register/register.component';
-import { MatButtonModule } from '@angular/material/button';
-import { FooterComponent } from './components/footer/footer.component';
-import { PrisonerComponent } from './components/content/prisoners/prisoner/prisoner.component';
-import { PrisonerService } from './services/prisoner/prisoner.service';
-import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatPaginatorModule} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {LoginComponent} from './components/content/login/login.component';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './components/header/header.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {PrisonersListComponent} from './components/content/prisoners/prisoners-list/prisoners-list.component';
+import {SiteHeaderComponent} from './components/content/site-header/site-header.component';
+import {HomeComponent} from './components/content/home/home.component';
+import {RegisterComponent} from './components/content/register/register.component';
+import {MatButtonModule} from '@angular/material/button';
+import {FooterComponent} from './components/footer/footer.component';
+import {PrisonerComponent} from './components/content/prisoners/prisoner/prisoner.component';
+import {PrisonerService} from './services/prisoner/prisoner.service';
+import {FormsModule} from '@angular/forms';
+import {AuthenticationService} from "./services/authorization.service";
 
 @NgModule({
   declarations: [
@@ -39,9 +42,11 @@ import { FormsModule } from '@angular/forms';
     NoopAnimationsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
-  providers: [PrisonerService],
+  providers: [PrisonerService, MenuComponent, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

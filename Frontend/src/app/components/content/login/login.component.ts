@@ -13,19 +13,17 @@ export class LoginComponent implements OnInit {
   anyErrors: boolean;
   finished: boolean;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
 
   writtenLogin(value: string) {
     this.login = value;
-    console.log('login: ' + this.login);
   }
 
   writtenPassword(value: string) {
     this.password = value;
-    console.log('password: ' + this.password);
   }
 
   submit() {
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.finished = false;
 
     this.authService.login(this.login, this.password).subscribe(
-      elem => console.log(elem),
+      elem => console.log('elem', elem),
       err => this.anyErrors = true,
       () => this.finished = true
     );
