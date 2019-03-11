@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class PrisonerController
@@ -24,11 +25,25 @@ class PrisonerController extends AbstractController
     private $entityManager;
 
     /**
-     * @param EntityManagerInterface $entityManager
+     * @PrisonerRepository $prisonerRepository
      */
-    public function __construct(EntityManagerInterface $entityManager) //to jest wstrzykiwanie zaleznosci
+    private $prisonerRepository;
+
+    /**
+     * @SerializerInterface $serializer
+     */
+    private $serializer;
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param PrisonerRepository     $prisonerRepository
+     * @param SerializerInterface    $serializer
+     */
+    public function __construct(EntityManagerInterface $entityManager, PrisonerRepository $prisonerRepository, SerializerInterface $serializer) //to jest wstrzykiwanie zaleznosci
     {
         $this->entityManager = $entityManager;
+        $this->prisonerRepository = $prisonerRepository;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -107,6 +122,25 @@ class PrisonerController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Więzień nie został usunięty, błąd: " . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/{id}", name="prisoner_getById")
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getPrisonerById(int $id)
+    {
+        try {
+            $prisoner = $this->prisonerRepository->findOneBy(["id"=>$id]);
+            return JsonResponse::create($prisoner ? [
+                "prisoner" => $this->serializer->serialize($prisoner, 'json')
+            ]: ["message" => "Brak więźnia o id: {$id}"]);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                "message" => "Brak więźnia o id: ".$id.", błąd: " . $e->getMessage()
             ]);
         }
     }
