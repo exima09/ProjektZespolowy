@@ -33,7 +33,7 @@ export class AuthenticationService {
     };
     const loginOperation = this.http.post('/api/login_check', data, {headers});
     return loginOperation.pipe(
-      map(item => {localStorage.setItem('token', item['token']); this.menu.logging("true"); }),
+      map(item => {localStorage.setItem('token', item['token']); this.menu.logging("true"); location.reload(); }),
       catchError(err => this.errorHandler(err))
     );
   }
