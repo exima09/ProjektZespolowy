@@ -48,7 +48,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("", name="prisoner_list", methods={"GET"})
+     * @Route(name="prisoner_list", methods={"GET"})
      * @param PrisonerRepository $prisonerRepository
      * @return JsonResponse
      */
@@ -79,7 +79,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("", name="prisoner_register", methods={"POST"})
+     * @Route(name="prisoner_register", methods={"POST"})
      * @param Request $request
      * @param CellRepository $cellRepository
      * @param EntityManagerInterface $entityManager
