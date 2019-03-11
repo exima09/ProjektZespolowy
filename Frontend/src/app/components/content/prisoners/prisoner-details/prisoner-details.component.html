@@ -1,36 +1,24 @@
 <app-site-header [childMessage]="headerOfSite"></app-site-header>
-<article class="post">
-  <header>
-    <h2 class="post_title">{{prisoner.firstName}} {{prisoner.lastName}}</h2>
-  </header>
-  <img class="post_img" src="assets/images/nico.jpg">
-  <div class="post_text">
-    <p>Data urodzenia: {{prisoner.dateOfBirth}}</p>
-    <p>Data rejestracji: {{prisoner.joinDate}}{{prisoner.id}}</p>
-    <p>Opis:</p>
-    <p>Więzień osadzony jest w sali {{prisoner.cellId}}, sprawowanie dobre, srednia ocena...</p>
-
-  </div>
-  <footer class="post_date">
-    <button mat-button>Oceń</button>
-    <button mat-button [routerLink]="['/prisoners/', prisoner.prisonerId]">Szczególy</button>
-  </footer>
-</article>
-
 <div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col-md-4 offset-md-4 mt-5 form-background">
-            <div class="form-group">
-                <input class="form-control form-control-lg" type="text" #loginInput (keyup)="writtenLogin(loginInput.value)" placeholder="Login" required>
-            </div>
-            <div class="form-group">
-              <input class="form-control form-control-lg" type="password" #passwordInput (keyup)="writtenPassword(passwordInput.value)" placeholder="Hasło" required>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-block btn-lg text-white submit" (click)="submit()">Zaloguj się</button>
-                <div class="error mt-3" *ngIf="anyErrors">Wystąpił błąd, przepraszamy za utrudnienia.</div>
-                <div class="success mt-3" *ngIf="finished">Logowanie zakończone powodzeniem.</div>
-            </div>
-        </div>
+  <div class="row my-4">
+    <div class="col-md-4 offset-md-4 py-2 bg-content-mid text-center">
+      <h2>{{prisoner.FirstName}} {{prisoner.LastName}}</h2>
     </div>
+    <div class="col-md-4 offset-md-4 bg-content-mid text-center">
+      <img class="size" src="assets/images/nico.jpg" />
+    </div>
+    <div class="col-md-4 offset-md-4 bg-content-mid text-center pb-3">
+      <h5>Data urodzenia: {{prisoner.DateOfBirdth}}</h5>
+      <h5>Data rejestracji: {{prisoner.JoinDate}}</h5>
+      <h6 class="my-3">Więzień osadzony jest w sali {{prisoner.CellId}}, sprawowanie dobre, srednia ocena...</h6>
+      <div class="row py-1 no-gutters ">
+        <div class="col-md-6 pr-1">
+          <button mat-button class="btn btn-block text-white submit py-1">Edytuj</button>
+        </div>
+        <div class="col-md-6 pl-1">
+          <button mat-button [routerLink]="'/prisoners'" class="btn btn-block text-white submit py-1">Wróć</button>
+        </div>       
+      </div>
+    </div>
+  </div>
 </div>
