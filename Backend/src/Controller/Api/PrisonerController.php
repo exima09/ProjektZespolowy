@@ -6,6 +6,7 @@ use App\Entity\Prisoner;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +48,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="prisoner_list")
+     * @Route("", name="prisoner_list", methods={"GET"})
      * @param PrisonerRepository $prisonerRepository
      * @return JsonResponse
      */
@@ -78,7 +79,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="prisoner_register")
+     * @Route("", name="prisoner_register", methods={"POST"})
      * @param Request $request
      * @param CellRepository $cellRepository
      * @param EntityManagerInterface $entityManager
@@ -104,7 +105,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="prisoner_delete")
+     * @Route("/{id}", name="prisoner_delete", methods={"DELETE"})
      * @param int $id
      * @param PrisonerRepository $prisonerRepository
      * @param EntityManagerInterface $entityManager
@@ -127,7 +128,7 @@ class PrisonerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="prisoner_getById")
+     * @Route("/{id}", name="prisoner_getById", methods={"GET"})
      * @param int $id
      * @return JsonResponse
      */
