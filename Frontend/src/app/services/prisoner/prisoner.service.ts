@@ -19,6 +19,9 @@ export class PrisonerService {
   }
 
   getPrisoners() {
-    return this.http.post('/api/prisoner/list', null, getHeaders());
+    return this.http.get('/api/prisoner', getHeaders());
   }
+
+  // Możecie stosować skrócony zapis
+  getPrisonerById = (id: number) => this.http.get(`/api/prisoner/${id}`, getHeaders());
 }
