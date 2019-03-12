@@ -55,21 +55,10 @@ class PrisonerController extends AbstractController
     public function list(PrisonerRepository $prisonerRepository): JsonResponse
     {
         try {
-            $tableFromDatabase = $prisonerRepository->findAll();
-            $table = [];
-            foreach ($tableFromDatabase as $prisoner) {
-                $table[] = [
-                    "prisonerId" => $prisoner->getId(),
-                    "firstName" => $prisoner->getFirstName(),
-                    "lastName" => $prisoner->getLastName(),
-                    "dateOfBirth" => $prisoner->getDateOfBirdth()->format("d-m-Y"),
-                    "joinDate" => $prisoner->getJoinDate()->format("d-m-Y"),
-                    "cellId" => $prisoner->getCellId()
-                ];
-            }
+            $prisoners = $prisonerRepository->findAll();
             return JsonResponse::create([
                 "message" => "Lista została poprawnie pobrana",
-                "prisoners" => $table
+                "prisoners" => $this->serializer->serialize($prisoners, 'json')
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
@@ -162,7 +151,7 @@ class PrisonerController extends AbstractController
             if (array_key_exists("FirstName", $data)) $prisoner->setFirstName($data["FirstName"]);
             if (array_key_exists("LastName", $data)) $prisoner->setLastName($data["LastName"]);
             if (array_key_exists("CellId", $data)) $prisoner->setCellId($data["CellId"]);
-            if (array_key_exists("DateOfBirdth", $data)) $prisoner->setDateOfBirdth(new \DateTime($data["DateOfBirdth"]));
+            if (array_key_exists("DateOfBirth", $data)) $prisoner->setDateOfBirth(new \DateTime($data["DateOfBirth"]));
             $this->entityManager->flush();
             return JsonResponse::create([
                 "message" => "Więzień o id {$id} został zaaktualizowany.",

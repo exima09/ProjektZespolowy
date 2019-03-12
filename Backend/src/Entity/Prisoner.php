@@ -34,7 +34,7 @@ class Prisoner
     /**
      * @ORM\Column(type="datetime")
      */
-    private $DateOfBirdth;
+    private $DateOfBirth;
 
     /**
      * @ORM\Column(type="integer")
@@ -46,15 +46,15 @@ class Prisoner
      * @param $FirstName
      * @param $LastName
      * @param $JoinDate
-     * @param $DateOfBirdth
+     * @param $DateOfBirth
      * @param $CellId
      */
-    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirdth, $CellId)
+    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirth, $CellId)
     {
         $this->FirstName = $FirstName;
         $this->LastName = $LastName;
         $this->JoinDate = $JoinDate;
-        $this->DateOfBirdth = $DateOfBirdth;
+        $this->DateOfBirth = $DateOfBirth;
         $this->CellId = $CellId;
     }
 
@@ -107,14 +107,14 @@ class Prisoner
         return $this;
     }
 
-    public function getDateOfBirdth(): ?\DateTimeInterface
+    public function getDateOfBirth(): ?\DateTimeInterface
     {
-        return $this->DateOfBirdth;
+        return $this->DateOfBirth;
     }
 
-    public function setDateOfBirdth(\DateTimeInterface $DateOfBirdth): self
+    public function setDateOfBirth(\DateTimeInterface $DateOfBirth): self
     {
-        $this->DateOfBirdth = $DateOfBirdth;
+        $this->DateOfBirth = $DateOfBirth;
 
         return $this;
     }
