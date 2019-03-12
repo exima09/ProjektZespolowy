@@ -17,7 +17,7 @@ export class PrisonersListComponent implements OnInit {
   ngOnInit() {
     this.auth.checkLogin();
     this.service.getPrisoners().subscribe((res: any) => {
-      this.prisoners = res.prisoners;
+      this.prisoners = JSON.parse(res.prisoners);
     });
   }
 }
