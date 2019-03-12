@@ -145,4 +145,33 @@ class PrisonerController extends AbstractController
             ]);
         }
     }
+
+    /**
+     * @Route("/{id}", name="prisoner_update", methods={"PATCH"})
+     * @param int     $id
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function updatePrisonerById(int $id, Request $request)
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+            $prisoner = $this->prisonerRepository->findOneBy(["id" => $id]);
+            if(!$prisoner) return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"]);
+            if (array_key_exists("FirstName", $data)) $prisoner->setFirstName($data["FirstName"]);
+            if (array_key_exists("LastName", $data)) $prisoner->setLastName($data["LastName"]);
+            if (array_key_exists("CellId", $data)) $prisoner->setCellId($data["CellId"]);
+            if (array_key_exists("DateOfBirdth", $data)) $prisoner->setDateOfBirdth(new \DateTime($data["DateOfBirdth"]));
+            $this->entityManager->flush();
+            return JsonResponse::create([
+                "message" => "Więzień o id {$id} został zaaktualizowany.",
+                "data" => $data
+            ]);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                "message" => "Brak więźnia lub wystąpił błąd: ". $e->getMessage()
+            ]);
+        }
+    }
 }

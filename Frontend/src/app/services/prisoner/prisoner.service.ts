@@ -24,4 +24,16 @@ export class PrisonerService {
 
   // Możecie stosować skrócony zapis
   getPrisonerById = (id: number) => this.http.get(`/api/prisoner/${id}`, getHeaders());
+
+  // wywolanie: this.updatePrisoner({id: 2, FirstName: "update"}) <- obsluguje kazdy parametr do zmiany i kilka na raz
+  updatePrisoner = (prisoner: UpdatePrisoner) => this.http.patch(`/api/prisoner/${prisoner.id}`, prisoner, getHeaders());
+}
+
+export interface UpdatePrisoner {
+  id: number;
+  FirstName?: string;
+  LastName?: string;
+  JoinDate?: string;
+  DateOfBirth?: string;
+  CellId?: number;
 }
