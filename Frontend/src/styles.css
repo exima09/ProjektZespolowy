@@ -46,6 +46,7 @@ button.submit {
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 2px;
+    outline: none;
 }
 
 button.submit-sm {
@@ -54,6 +55,7 @@ button.submit-sm {
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 2px;
+    outline: none;
 }
 
 button.submit:hover,
@@ -85,7 +87,12 @@ button.submit-sm:hover {
 }
 
 .bg-content-light {
-    background-color: #999999;
+    background-color: #999999;  
+}
+
+.bg-content-mid{
+    background-color: rgba(29, 29, 29, 0.082);
+    filter: alpha(opacity=50);
 }
 
 .bg-content-dark {

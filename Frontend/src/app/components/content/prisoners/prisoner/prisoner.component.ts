@@ -24,12 +24,12 @@ export class PrisonerComponent implements OnInit {
       form.resetForm();
     }
     this.service.formData = {
-      prisonerId: null,
-      firstName: '',
-      lastName: '',
-      joinDate: '',
-      dateOfBirth: '',
-      cellId: null
+      id: null,
+      FirstName: '',
+      LastName: '',
+      JoinDate: '',
+      DateOfBirth: '',
+      CellId: null
     };
   }
 

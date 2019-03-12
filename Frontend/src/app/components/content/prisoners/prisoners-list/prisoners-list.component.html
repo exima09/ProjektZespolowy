@@ -2,20 +2,19 @@
 <div *ngFor="let prisoner of prisoners">
   <article class="post">
     <header>
-      <h2 class="post_title">{{prisoner.firstName}} {{prisoner.lastName}}</h2>
+      <h2 class="post_title">{{prisoner.FirstName}} {{prisoner.LastName}}</h2>
     </header>
     <img class="post_img" src="assets/images/nico.jpg">
     <div class="post_text">
-      <p>Data urodzenia: {{prisoner.dateOfBirth}}</p>
-      <p>Data rejestracji: {{prisoner.joinDate}}</p>
+      <p>Data urodzenia: {{prisoner.DateOfBirth}}</p>
+      <p>Data rejestracji: {{prisoner.JoinDate}}{{prisoner.id}}</p>
       <p>Opis:</p>
-      <p>Więzień osadzony jest w sali {{prisoner.cellId}}, sprawowanie dobre, srednia ocena...</p>
+      <p>Więzień osadzony jest w sali {{prisoner.CellId}}, sprawowanie dobre, srednia ocena...</p>
 
     </div>
     <footer class="post_date">
       <button mat-button>Oceń</button>
-      <button mat-button>Szczególy</button>
-      <button mat-button>Edytuj</button>
+      <button mat-button [routerLink]="['/prisoners/', prisoner.prisonerId]">Szczególy</button>
     </footer>
   </article>
 </div>
