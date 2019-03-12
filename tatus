@@ -1,0 +1,629 @@
+[33mcommit bb9bad8304c26cd3ecd041fd8da2c20d22cc3c06[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Wed Jan 30 03:21:11 2019 +0100
+
+    add service prisoner, connect with list and form add (#24)
+
+[33mcommit 55d8b0b4e1e22967736c20a41a4b6c967d7d21d1[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Tue Jan 29 19:58:24 2019 +0100
+
+    Dev (#23)
+    
+    * fix script rebuild and add controllers
+    
+    * migrate
+
+[33mcommit b922c1bd021022951c7a4cee8ed206710664122a[m
+Author: Kamil Dołęgiewicz <44404346+Pridecry@users.noreply.github.com>
+Date:   Tue Jan 29 19:45:42 2019 +0100
+
+    Added prisoner model, service and register component (#22)
+
+[33mcommit 71f71dfc3fc7ad07d8225cd25293fd4c61f79ef2[m
+Author: Kamil Dołęgiewicz <44404346+Pridecry@users.noreply.github.com>
+Date:   Mon Jan 28 17:33:24 2019 +0100
+
+    Feature/redesign layout (#21)
+    
+    * Layout redesign
+    
+    * Menu made with flex
+    
+    * Added footer
+    
+    * small fixes
+    
+    * fixed login & register error message
+
+[33mcommit 07f80be5532d0efe555e9f0cf484c07444f68731[m
+Author: Kamil Dołęgiewicz <44404346+Pridecry@users.noreply.github.com>
+Date:   Sun Jan 27 18:04:36 2019 +0100
+
+    Better application look (#20)
+    
+    * a
+    
+    * fix conflict
+    
+    * fix conflict
+    
+    rozkaz!
+    
+    Layout remade
+    
+    * fixxxx
+
+[33mcommit 53ca00c77ca209e69ddaa6db06e305675d500a0f[m
+Merge: 2eee73c 5296311
+Author: eXiMa <eximastudio@gmail.com>
+Date:   Wed Jan 23 22:23:37 2019 +0100
+
+    Merge branch 'develop' of https://github.com/exima09/ProjektZespolowy into develop
+
+[33mcommit 2eee73c6bf8f9e88de37c9a9346432705b39b3af[m
+Author: eXiMa <eximastudio@gmail.com>
+Date:   Wed Jan 23 22:23:10 2019 +0100
+
+    fix
+
+[33mcommit 0b52d4ae227b4c8c37daedc44ee000a0d41a241f[m
+Author: eXiMa <eximastudio@gmail.com>
+Date:   Wed Jan 23 22:21:02 2019 +0100
+
+    add fixture load to rebuild script
+
+[33mcommit 52963114bf5a48069ad0bf259e72eaf9a464aae1[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Wed Jan 23 21:04:03 2019 +0100
+
+    Update README.md
+
+[33mcommit f6898bbb64b24fa90fbb3fd4541d97ffa133b81a[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Wed Jan 23 21:02:43 2019 +0100
+
+    Add files via upload
+
+[33mcommit de78ac2fc5b4389998d12f54061bae83b6ce5db4[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Wed Jan 23 20:59:16 2019 +0100
+
+    Add files via upload
+
+[33mcommit ec0e47730dba520d80e0a006a798312b4320b010[m
+Author: eXiMa <eximastudio@gmail.com>
+Date:   Wed Jan 16 00:11:21 2019 +0100
+
+    add rebuild.sh
+
+[33mcommit 551f70ad808263eae8ee68110cda5d970da20191[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Tue Jan 15 23:50:54 2019 +0100
+
+    Fixbug/add library to frontend (#19)
+    
+    * fix startFront, refactoring project
+    
+    * fix startFront, refactoring project#2
+
+[33mcommit 8132d0dde065e0d46352318b1cb5a74500135a68[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Tue Jan 15 23:03:53 2019 +0100
+
+    Authorization service (#18)
+    
+    * components moved to correct files
+    
+    * empty lines deleted
+    
+    * authorizationService with login and register method, and snack-bars
+    
+    * login method updated
+    
+    * <weszlo> deleted
+    
+    * working register!!
+
+[33mcommit 6b88e5a2f807592fe5f4cb0fffbe73ccf735672d[m
+Author: Jan Gierasmiuk <jan.gierasimiuk97@gmail.com>
+Date:   Tue Jan 15 22:54:09 2019 +0100
+
+    Dodanie komponentu logowania oraz jego stylizacja (#17)
+
+[33mcommit fbabba51453d19936d1de31d4d8eb0ab4c69abcb[m
+Author: Kamil Dołęgiewicz <44404346+Pridecry@users.noreply.github.com>
+Date:   Tue Jan 15 22:36:00 2019 +0100
+
+    Feature/component register (#16)
+    
+    * Added register logic
+    
+    * Authorization service (#15)
+    
+    * components moved to correct files
+    
+    * empty lines deleted
+    
+    * authorizationService with login and register method, and snack-bars
+    
+    * login method updated
+    
+    * <weszlo> deleted
+    
+    * Added register html & css
+
+[33mcommit 8c0ddbb766d58333caa30469439b984b35c825e1[m
+Author: sandrapol <44498259+sandrapol@users.noreply.github.com>
+Date:   Tue Jan 15 19:17:20 2019 +0100
+
+    Authorization service (#15)
+    
+    * components moved to correct files
+    
+    * empty lines deleted
+    
+    * authorizationService with login and register method, and snack-bars
+    
+    * login method updated
+    
+    * <weszlo> deleted
+
+[33mcommit aae135441008476dc2c9634a61df6e24329b319c[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Jan 11 11:53:02 2019 +0100
+
+    components moved to correct files (#14)
+    
+    * components moved to correct files
+    
+    * empty lines deleted
+
+[33mcommit 8f1f24f353d566e152314e1ca79b625ecd239f14[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Thu Jan 10 21:03:06 2019 +0100
+
+    ZMIANY TESTOWE
+
+[33mcommit e16498747c38de02dbd334d047c184721903f78a[m
+Author: jeloneklibera <35460034+jeloneklibera@users.noreply.github.com>
+Date:   Thu Jan 10 20:57:53 2019 +0100
+
+    Feature/jail 80 implementation module jail (#13)
+    
+    * JAIL-80 / Implementation module jail / create controller
+    
+    * JAIL-80 / Implementation module jail / create controller
+    
+    Table to JSON from Users Repo
+
+[33mcommit 71f332363eaed64170868c4a4fe021d77676484c[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Thu Jan 10 18:37:41 2019 +0100
+
+    Feature/siatka (#11)
+    
+    * added multiply components
+    
+    components:
+    menu
+    header
+    siteHeader
+    prisonersList with full css
+    
+    * added home component
+    
+    * test to connection between frontend and backend
+    
+    * conflict
+    
+    * proxy added
+    
+    * files added to gitignor
+
+[33mcommit 9ced11ad4a038b48730c7d168497643d7e6e0902[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Thu Jan 10 18:36:59 2019 +0100
+
+    Delete package-lock.json
+
+[33mcommit 5d851159ead6307d0c1ef734d75dd825e5f8be07[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Thu Jan 10 18:33:45 2019 +0100
+
+    Pawel010 patch 4 (#12)
+    
+    * Create Api.md
+    
+    * Update Api.md
+    
+    * Update Api.md
+    
+    * Update Api.md
+    
+    * Update Api.md
+    
+    * Update Api.md
+    
+    * Rename Api.md to doc/Api.md
+
+[33mcommit 23bbad7bbe89d6984886007b54d395bf439839e0[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Thu Jan 10 18:23:33 2019 +0100
+
+    Update README.md
+    
+    fix readme -  install frontend server
+
+[33mcommit b496720cb03fd23138b0906f8c38fa2e253d3025[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Thu Jan 10 17:54:23 2019 +0100
+
+    fix datebase
+
+[33mcommit 02c78c42752167c2226edd0d9e46bd966da345ee[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Dec 21 17:39:55 2018 +0100
+
+    Jail / fix / fix register endpoint
+
+[33mcommit 06c951114c071265e2eb25fdc003d9b934c8788a[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Dec 21 17:20:09 2018 +0100
+
+    refactor
+
+[33mcommit f43d97ca0cd3026e8a10c5b9952f4ac1c884b0c5[m
+Merge: 2c2a41e e4b5952
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Dec 21 17:19:36 2018 +0100
+
+    Merge branch 'develop' of https://github.com/exima09/ProjektZespolowy into develop
+
+[33mcommit e4b59527b337748ccb265694a681e18db51cba58[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Dec 21 17:19:15 2018 +0100
+
+    Feature/jail controller auth (#4)
+    
+    * add auth users
+    
+    * JAIL / nazwa taska / add controller auth
+
+[33mcommit 2c2a41e845812f3d95c6592b3aa6503ba0ecb074[m
+Merge: 6e15c3e e07a104
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Dec 21 17:14:02 2018 +0100
+
+    a
+
+[33mcommit 6e15c3e052e5364b093321b001583247004aea5e[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Wed Dec 19 02:11:26 2018 +0100
+
+    add auth users
+
+[33mcommit e07a104a4bccc98e8326e411229ad949192d7a23[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Wed Dec 19 02:11:26 2018 +0100
+
+    add auth users
+
+[33mcommit e2f399570ac8787d9a6e6f972478c46144358d8f[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Tue Dec 18 15:33:52 2018 +0100
+
+    add config to create token authentication and config to database
+
+[33mcommit 32bcb8b61cd570ba15b3f6e4128231efd70ddc1f[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Mon Dec 3 22:08:32 2018 +0100
+
+    update servers
+
+[33mcommit eafa698450aee0ad1d6130c267e25df6a46f7bc3[m
+Merge: c3dd9d3 1fdae40
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Mon Dec 3 21:49:45 2018 +0100
+
+    Merge pull request #3 from exima09/feature/new-entity
+    
+    Feature/new entity
+
+[33mcommit 1fdae40237c7ef37f0cbeee26d75db4304f6b55c[m[33m ([m[1;31morigin/feature/new-entity[m[33m)[m
+Author: Pawel010 <kaczy05156@wp.pl>
+Date:   Mon Dec 3 20:39:47 2018 +0100
+
+    First Class
+
+[33mcommit 5bbf166e8d0dd89f0c8cfe2bd4d1ba997234dd32[m
+Author: Pawel010 <kaczy05156@wp.pl>
+Date:   Mon Dec 3 19:10:16 2018 +0100
+
+    First Class
+
+[33mcommit d5ad35bb056add6d3ce05ef8a6b80a7e405c8613[m
+Merge: d033667 eaa0ccb
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Sat Dec 1 22:48:30 2018 +0100
+
+    Merge pull request #2 from exima09/feature/sample-entity
+    
+    adding an example entity
+
+[33mcommit c3dd9d3aa5ef5d8c1940cd04ca34c06700829bf8[m
+Merge: d033667 eaa0ccb
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Sat Dec 1 22:48:30 2018 +0100
+
+    Merge pull request #2 from exima09/feature/sample-entity
+    
+    adding an example entity
+
+[33mcommit eaa0ccb3f0ee44e8687bb9f92ebde85b124c3472[m[33m ([m[1;31morigin/feature/sample-entity[m[33m)[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Sat Dec 1 22:46:38 2018 +0100
+
+    adding an example entity
+
+[33mcommit d033667521267786357bb34ae814f180be99b5b3[m
+Merge: 3419bac 2907f83
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 22:13:04 2018 +0200
+
+    Merge pull request #1 from exima09/develop
+    
+    change readme develop
+
+[33mcommit 2907f831d0da5072885a918766d73ee7da73e45b[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 22:09:57 2018 +0200
+
+    change readme develop
+
+[33mcommit 3419bac33d44caec0cfa2a91054f6e17cc230d98[m
+Merge: 43a4668 02d8f54
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 22:06:47 2018 +0200
+
+    Merge branch 'master' of https://github.com/exima09/ProjektZespolowy
+
+[33mcommit 43a4668562bd8db77cd9decc28bed768160001de[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 21:55:14 2018 +0200
+
+    Delete testFromLocal.txt
+
+[33mcommit 02d8f54e0b9d6716ebe98288f71e5a59ebd54f60[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 21:55:14 2018 +0200
+
+    Delete testFromLocal.txt
+
+[33mcommit af64f179e8a2dffa850b26310cf411eaec9ba8d1[m
+Author: sandra <sandrapolowianiuk@gmail.com>
+Date:   Fri Oct 26 21:23:48 2018 +0200
+
+    last test
+    
+    last test
+
+[33mcommit 34db4fe5b3e91d858dd0a3ddc43eafaee178aa13[m
+Merge: 4e03e61 7971d8f
+Author: sandra <sandrapolowianiuk@gmail.com>
+Date:   Fri Oct 26 21:17:38 2018 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 4e03e61d5de8c4078bf11bc343e85504f008be07[m
+Author: sandra <sandrapolowianiuk@gmail.com>
+Date:   Fri Oct 26 21:17:21 2018 +0200
+
+    local test
+
+[33mcommit 7971d8f31635ee333a19bb70f6f873ed5e5103ef[m
+Author: sandrapol <44498259+sandrapol@users.noreply.github.com>
+Date:   Fri Oct 26 21:11:57 2018 +0200
+
+    test file
+
+[33mcommit d19f51b6d54a40135b4596b79e6409904b229882[m
+Merge: 1786bb6 47ac3c0
+Author: Sandra Polowianiuk <myszmilo2@gmail.com>
+Date:   Fri Oct 26 21:08:20 2018 +0200
+
+    Merge branch 'master' of https://github.com/exima09/ProjektZespolowy
+
+[33mcommit 1786bb62826c2c717445b40e5bfcea87a7a2110c[m
+Author: Sandra Polowianiuk <myszmilo2@gmail.com>
+Date:   Fri Oct 26 21:00:51 2018 +0200
+
+    test commit
+
+[33mcommit 47ac3c0da5355feeb861bac696f80d92b019d4f0[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:31:52 2018 +0200
+
+    Update README.md
+
+[33mcommit c9edfce115040017164533c34ce7c905660d1315[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:31:03 2018 +0200
+
+    Update README.md
+
+[33mcommit 32550a3e97a9529624a84a2efeed3efaf4180a4c[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:29:23 2018 +0200
+
+    Update README.md
+
+[33mcommit effbb9124797f07f3312eb3072a2848e5a20e364[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:29:03 2018 +0200
+
+    Update README.md
+
+[33mcommit 837e9504d3ce379be162075a315439dec53e251e[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:27:51 2018 +0200
+
+    Update README.md
+
+[33mcommit 00ef395252155618f4014763a145c17c2139453e[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:27:23 2018 +0200
+
+    Update README.md
+
+[33mcommit f0ae812c828e99b16428b31dc556ff32f383fea5[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:25:23 2018 +0200
+
+    Update README.md
+
+[33mcommit 01b131ca83d1cb76776e039a477984362c695022[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:19:30 2018 +0200
+
+    Update README.md
+
+[33mcommit 44a9cb585a133fbebd745d4d4f67bd6f40d67ec0[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 15:15:30 2018 +0200
+
+    add files start
+
+[33mcommit ac454bf2c8309ff669c3aaf2f3fe7204ada5f91c[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:05:30 2018 +0200
+
+    Update README.md
+
+[33mcommit 1d83ccc812944abb1c0ec32ce465e8f51f6c26db[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:04:09 2018 +0200
+
+    Update README.md
+
+[33mcommit b8271da25e23a2a254c8abbec9fd5e6ed090886f[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:03:07 2018 +0200
+
+    Update README.md
+
+[33mcommit 2832cedcf07d2692ce32796409bfc8787a04bf3c[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:02:33 2018 +0200
+
+    Update README.md
+
+[33mcommit 4b4491061e42777d002ce819a872f71e1118fc21[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:01:27 2018 +0200
+
+    Update README.md
+
+[33mcommit d598187fb27c42b237c6faccbd7987f4523890c4[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:00:50 2018 +0200
+
+    Update README.md
+
+[33mcommit d42b9672a1b3b38ed2e4915d103a7480c613a4dd[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 14:00:36 2018 +0200
+
+    Update README.md
+
+[33mcommit 58fb02e1d0bc15eaefc896eda47282db04d01234[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:59:11 2018 +0200
+
+    Update README.md
+
+[33mcommit c8e7aeb4ebaa697a2dc536f1c4c90e235f01ade8[m
+Merge: d36e7f4 aeedaf2
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:54:22 2018 +0200
+
+    Merge branch 'master' of https://github.com/exima09/ProjektZespolowy
+
+[33mcommit d36e7f46f8710c4dd0c5913d0453d052333e8a8a[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:49:53 2018 +0200
+
+    update readme
+
+[33mcommit aeedaf28120e07a554acb16515310a9a9b0dec8a[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:47:49 2018 +0200
+
+    Update README.md
+
+[33mcommit abe2916649e3413e442a2548452a92b4080d5332[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:46:59 2018 +0200
+
+    Update README.md
+
+[33mcommit 3eefe5f22f8d13ffd73073bb1d378bd6a9ac6b1c[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:46:03 2018 +0200
+
+    Update README.md
+
+[33mcommit 3bb110937d04a00df7892b194a9acfb752f81e52[m
+Merge: bef5b98 bee7785
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:43:28 2018 +0200
+
+    Merge branch 'master' of https://github.com/exima09/ProjektZespolowy
+
+[33mcommit bef5b98cfe09cb0733240af299000fa638cab408[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:42:55 2018 +0200
+
+    'change'
+
+[33mcommit bee77853775943820b4c4a75dd6679c57c11c2a4[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:33:04 2018 +0200
+
+    Set theme jekyll-theme-cayman
+
+[33mcommit c03f9ff6506598e0b5590a33c5fd61db605ac864[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:31:42 2018 +0200
+
+    Update README.md
+
+[33mcommit bade1065bf50432c85ff10ccd44aae8330ce482a[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:28:36 2018 +0200
+
+    Update README.md
+
+[33mcommit ced81cca401de9641185ba3477ce3604f1c49c8b[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:28:09 2018 +0200
+
+    Update README.md
+
+[33mcommit 72f525a19d4f64fc2ce81ef992666c1bc454b65c[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:27:36 2018 +0200
+
+    Update README.md
+
+[33mcommit 0e3a2034753528136c3e9b24e31b48210e69cf1b[m
+Author: exima09 <33221430+exima09@users.noreply.github.com>
+Date:   Fri Oct 26 13:27:18 2018 +0200
+
+    Create README.md
+
+[33mcommit ba0c4d61c744cd940c2dc526469d5f2ddf453dd1[m
+Author: exima09 <dawidjuszczak01@gmail.com>
+Date:   Fri Oct 26 13:07:46 2018 +0200
+
+    'init'

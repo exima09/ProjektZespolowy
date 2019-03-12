@@ -20,6 +20,7 @@ import {PrisonerComponent} from './components/content/prisoners/prisoner/prisone
 import {PrisonerService} from './services/prisoner/prisoner.service';
 import {FormsModule} from '@angular/forms';
 import {AuthenticationService} from "./services/authorization.service";
+import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {AuthenticationService} from "./services/authorization.service";
     RegisterComponent,
     LoginComponent,
     FooterComponent,
-    PrisonerComponent
+    PrisonerComponent,
+    PrisonerDetailsComponent
   ],
   imports: [
     BrowserModule,
