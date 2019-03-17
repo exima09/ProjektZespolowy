@@ -63,7 +63,7 @@ class PrisonerController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Lista nie została pobrana, błąd: " . $e->getMessage()
-            ]);
+            ], 400);
         }
     }
 
@@ -89,7 +89,7 @@ class PrisonerController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Więzień nie został zarejestrowany, błąd: " . $e->getMessage()
-            ]);
+            ], 400);
         }
     }
 
@@ -112,7 +112,7 @@ class PrisonerController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Więzień nie został usunięty, błąd: " . $e->getMessage()
-            ]);
+            ], 400);
         }
     }
 
@@ -127,11 +127,11 @@ class PrisonerController extends AbstractController
             $prisoner = $this->prisonerRepository->findOneBy(["id"=>$id]);
             return JsonResponse::create($prisoner ? [
                 "prisoner" => $this->serializer->serialize($prisoner, 'json')
-            ]: ["message" => "Brak więźnia o id: {$id}"]);
+            ]: ["message" => "Brak więźnia o id: {$id}"], 400);
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Brak więźnia o id: ".$id.", błąd: " . $e->getMessage()
-            ]);
+            ], 400);
         }
     }
 
@@ -147,7 +147,7 @@ class PrisonerController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
             $prisoner = $this->prisonerRepository->findOneBy(["id" => $id]);
-            if(!$prisoner) return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"]);
+            if(!$prisoner) return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"], 400);
             if (array_key_exists("FirstName", $data)) $prisoner->setFirstName($data["FirstName"]);
             if (array_key_exists("LastName", $data)) $prisoner->setLastName($data["LastName"]);
             if (array_key_exists("CellId", $data)) $prisoner->setCellId($data["CellId"]);
@@ -160,7 +160,7 @@ class PrisonerController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Brak więźnia lub wystąpił błąd: ". $e->getMessage()
-            ]);
+            ], 400);
         }
     }
 }
