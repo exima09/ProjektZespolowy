@@ -33,7 +33,8 @@ export class AuthenticationService {
     };
     const loginOperation = this.http.post('/api/login_check', data, {headers});
     return loginOperation.pipe(
-      map(item => {localStorage.setItem('token', item['token']); this.menu.logging("true"); location.reload(); }),
+      map(item => {localStorage.setItem('token', item['token']); this.menu.logging("true");
+      this.snackBar.open("Logowanie pomyślne.", "OK", { duration: 5000 }); }),
       catchError(err => this.errorHandler(err))
     );
   }

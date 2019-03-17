@@ -12,8 +12,8 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-block btn-lg text-white submit" (click)="submit()">Zaloguj się</button>
-                <div class="error mt-3" *ngIf="anyErrors">Wystąpił błąd, przepraszamy za utrudnienia.</div>
-                <div class="success mt-3" *ngIf="finished">Logowanie zakończone powodzeniem.</div>
+                <div class="error mt-3" *ngIf="anyErrors">Nieprawidłowy login lub hasło.</div>
+                <div class="success mt-3" *ngIf="finished" [routerLink]="['/home/']"></div>
             </div>
         </div>
     </div>
