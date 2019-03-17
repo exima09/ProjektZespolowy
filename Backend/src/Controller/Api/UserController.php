@@ -87,7 +87,7 @@ class UserController extends AbstractController
         if ($this->userRepository->findBy(
             ['username' => $data['username']]
         )) {
-            return JsonResponse::create(['error' => 'Username is exists']);
+            return JsonResponse::create(['message' => 'Username is exists'], 400);
         } else {
             $user = new User();
             $user->setUsername($data['username']);

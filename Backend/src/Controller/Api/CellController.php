@@ -30,7 +30,7 @@ class CellController extends AbstractController
         }
         return JsonResponse::create([
             "cells" => $table
-        ]);
+        ], 400);
     }
 
     /**
@@ -50,7 +50,7 @@ class CellController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Cela nie została dodana, błąd: ".$e->getMessage()
-            ]);
+            ], 400);
         }
     }
 
@@ -74,7 +74,7 @@ class CellController extends AbstractController
         } catch (\Exception $e) {
             return JsonResponse::create([
                 "message" => "Cela nie została usunięta, błąd: ".$e->getMessage()
-            ]);
+            ], 400);
         }
     }
 }
