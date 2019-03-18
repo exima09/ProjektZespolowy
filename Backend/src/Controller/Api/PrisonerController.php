@@ -6,7 +6,6 @@ use App\Entity\Prisoner;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,15 +61,16 @@ class PrisonerController extends AbstractController
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Lista nie została pobrana, błąd: " . $e->getMessage()
+                "message" => "Lista nie została pobrana",
+                "error" => $e->getMessage()
             ], 400);
         }
     }
 
     /**
      * @Route(name="prisoner_register", methods={"POST"})
-     * @param Request $request
-     * @param CellRepository $cellRepository
+     * @param Request                $request
+     * @param CellRepository         $cellRepository
      * @param EntityManagerInterface $entityManager
      * @return JsonResponse
      */
@@ -79,7 +79,7 @@ class PrisonerController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
 //            $cell = $cellRepository->findOneBy(["id"=>$data["cellId"]]);
-            $prisoner = new Prisoner($data["firstName"], $data["lastName"], new \DateTime('now'), new \DateTime($data["dateOfBirth"]), $data["cellId"]);
+            $prisoner = new Prisoner($data["FirstName"], $data["LastName"], new \DateTime('now'), new \DateTime($data["DateOfBirth"]), $data["CellId"]);
 
             $entityManager->persist($prisoner);
             $entityManager->flush();
@@ -88,15 +88,16 @@ class PrisonerController extends AbstractController
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Więzień nie został zarejestrowany, błąd: " . $e->getMessage()
+                "message" => "Więzień nie został zarejestrowany",
+                "error" => $e->getMessage()
             ], 400);
         }
     }
 
     /**
      * @Route("/{id}", name="prisoner_delete", methods={"DELETE"})
-     * @param int $id
-     * @param PrisonerRepository $prisonerRepository
+     * @param int                    $id
+     * @param PrisonerRepository     $prisonerRepository
      * @param EntityManagerInterface $entityManager
      * @return JsonResponse
      */
@@ -111,7 +112,8 @@ class PrisonerController extends AbstractController
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Więzień nie został usunięty, błąd: " . $e->getMessage()
+                "message" => "Więzień nie został usunięty",
+                "error" => $e->getMessage()
             ], 400);
         }
     }
@@ -124,13 +126,17 @@ class PrisonerController extends AbstractController
     public function getPrisonerById(int $id)
     {
         try {
-            $prisoner = $this->prisonerRepository->findOneBy(["id"=>$id]);
-            return JsonResponse::create($prisoner ? [
-                "prisoner" => $this->serializer->serialize($prisoner, 'json')
-            ]: ["message" => "Brak więźnia o id: {$id}"], 400);
+            $prisoner = $this->prisonerRepository->findOneBy(["id" => $id]);
+            if($prisoner) {
+                return JsonResponse::create([
+                    "prisoner" => $this->serializer->serialize($prisoner, 'json')
+                ]);
+            }
+            return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"], 400);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Brak więźnia o id: ".$id.", błąd: " . $e->getMessage()
+                "message" => "Brak więźnia o id: {$id}",
+                "error" => $e->getMessage()
             ], 400);
         }
     }
@@ -147,7 +153,7 @@ class PrisonerController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
             $prisoner = $this->prisonerRepository->findOneBy(["id" => $id]);
-            if(!$prisoner) return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"], 400);
+            if (!$prisoner) return JsonResponse::create(["message" => "Brak więźnia o id: {$id}"], 400);
             if (array_key_exists("FirstName", $data)) $prisoner->setFirstName($data["FirstName"]);
             if (array_key_exists("LastName", $data)) $prisoner->setLastName($data["LastName"]);
             if (array_key_exists("CellId", $data)) $prisoner->setCellId($data["CellId"]);
@@ -159,7 +165,8 @@ class PrisonerController extends AbstractController
             ]);
         } catch (\Exception $e) {
             return JsonResponse::create([
-                "message" => "Brak więźnia lub wystąpił błąd: ". $e->getMessage()
+                "message" => "Brak więźnia lub wystąpił błąd",
+                "error" => $e->getMessage()
             ], 400);
         }
     }
