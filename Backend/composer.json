@@ -6,9 +6,10 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "api-platform/api-pack": "^1.2",
         "friendsofsymfony/rest-bundle": "^2.5.0",
         "lexik/jwt-authentication-bundle": "^2.6.1",
-        "nelmio/api-doc-bundle": "^3.3.1",
+        "nelmio/api-doc-bundle": "^3.4",
         "sensio/framework-extra-bundle": "^5.2.4",
         "sunra/php-simple-html-dom-parser": "^1.5.2",
         "symfony/asset": "^4.2.2",
@@ -42,7 +43,7 @@
         "symfony/maker-bundle": "^1.9.0",
         "symfony/profiler-pack": "^1.0.4",
         "symfony/test-pack": "^1.0.5",
-        "symfony/web-server-bundle": "^4.2.2"
+        "symfony/web-server-bundle": "4.2.*"
     },
     "config": {
         "preferred-install": {
