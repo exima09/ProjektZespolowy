@@ -11,7 +11,7 @@ rm src/Migrations/*
 bin/console doctrine:migrations:diff &&
     bin/console -n doctrine:migrations:migrate &&
     bin/console -n doctrine:fixtures:load
-
+rm src/Migrations/*
 cd ../Frontend/
 npm install
 echo "${RED}Wybuchnie za..."
