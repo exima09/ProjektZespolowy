@@ -2,9 +2,31 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ * attributes={"access_control"="is_granted('ROLE_USER')"},
+ * routePrefix="/execution",
+ * collectionOperations={
+ *      "get"={
+ *          "method"="GET",
+ *          "path"=""
+ *      },
+ *     "gett"={
+ *          "method"="GET",
+ *          "path"="/get-date"
+ *      },
+ *     "post"={
+ *          "method"="POST",
+ *          "path"=""
+ *     },
+ * },
+ * itemOperations={
+ *
+ *  }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ExecutionRepository")
  */
 class Execution
@@ -17,7 +39,7 @@ class Execution
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $ExecutionDate;
 
