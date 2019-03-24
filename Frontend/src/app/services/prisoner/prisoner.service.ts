@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Prisoner} from 'src/app/models/prisoner/prisoner.model';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {getHeaders} from "../headers";
-import { MatSnackBar } from '@angular/material';
 import { throwError } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -19,12 +19,12 @@ export class PrisonerService {
 
   postPrisoner(formData: Prisoner) {
     return this.http.post('/api/prisoner/register', formData, getHeaders())
-    .pipe(catchError(err => this.errorHandler(err)));
+      .pipe(catchError(err => this.errorHandler(err)));
   }
 
   getPrisoners() {
     return this.http.get('/api/prisoner', getHeaders())
-    .pipe(catchError(err => this.errorHandler(err)));
+      .pipe(catchError(err => this.errorHandler(err)));
   }
 
   // Możecie stosować skrócony zapis
@@ -37,15 +37,14 @@ export class PrisonerService {
 
   errorHandler(error: HttpErrorResponse) {
     if (error.name) {
-      let x = error.error.message;
-      let message = x.split(", błąd: ");
-
-      this.snackBar.open("Błąd", message[0], {
+      this.snackBar.open("Błąd", error.error.message, {
         duration: 2000,
         panelClass: ['service-snackbar']
       });
 
-      return throwError(error.name + ": " + message[1]);
+      console.log(error)
+
+      return throwError(error.name + ": " + error.message);
     } else {
       this.snackBar.open("Błąd", "Żądanie nie może zostać przetworzone", {
         duration: 5000,

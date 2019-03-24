@@ -57,15 +57,12 @@ export class AuthenticationService {
 
   errorHandler(error: HttpErrorResponse) {
     if (error.name) {
-      let x = error.error.message;
-      let message = x.split(", błąd: ");
-
-      this.snackBar.open("Błąd", message[0], {
+      this.snackBar.open("Błąd", error.error.message, {
         duration: 2000,
         panelClass: ['service-snackbar']
       });
 
-      return throwError(error.name + ": " + message[1]);
+      return throwError(error.name + ": " + error.message);
     } else {
       this.snackBar.open("Błąd", "Żądanie nie może zostać przetworzone", {
         duration: 5000,
