@@ -57,17 +57,18 @@ export class AuthenticationService {
 
   errorHandler(error: HttpErrorResponse) {
     if (error.name) {
-      this.snackBar.open(error.name, error.statusText, {
+      this.snackBar.open("Błąd", error.error.message, {
         duration: 2000,
         panelClass: ['service-snackbar']
       });
 
-      return throwError(error.name + '\n details: ' + error.statusText);
+      return throwError(error.name + ": " + error.message);
     } else {
-      this.snackBar.open('error', 'The request can not be executed', {
+      this.snackBar.open("Błąd", "Żądanie nie może zostać przetworzone", {
         duration: 5000,
         panelClass: ['service-snackbar']
       });
+
       return throwError(error);
     }
   }
