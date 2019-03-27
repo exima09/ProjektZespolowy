@@ -34,6 +34,7 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
             1
         );
         $manager->persist($prisoner);
+        $this->addReference('prisoner1', $prisoner);
 
         $prisoner2 = new Prisoner(
             "Tester",
@@ -43,6 +44,7 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
             2
         );
         $manager->persist($prisoner2);
+        $this->addReference('prisoner2', $prisoner2);
 
         $manager->flush();
     }
