@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,10 +22,13 @@ use Doctrine\ORM\Mapping as ORM;
  *     "post"={
  *          "method"="POST",
  *          "path"=""
- *     },
+ *     }
  * },
  * itemOperations={
- *
+ *"     get"={
+ *          "method"="GET",
+ *          "path"="/{id}"
+ *      },
  *  }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ExecutionRepository")
@@ -46,11 +50,6 @@ class Execution
     /**
      * @ORM\Column(type="integer")
      */
-    private $PrisonerId;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $WorkerId;
 
     /**
@@ -62,6 +61,29 @@ class Execution
      * @ORM\Column(type="integer")
      */
     private $LastWishOrderId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Prisoner", inversedBy="executions")
+     */
+    private $prisoner;
+
+    /**
+     * Execution constructor.
+     * @param $ExecutionDate
+     * @param $WorkerId
+     * @param $HasDone
+     * @param $LastWishOrderId
+     * @param $prisoner
+     */
+    public function __construct($ExecutionDate, $WorkerId, $HasDone, $LastWishOrderId, $prisoner)
+    {
+        $this->ExecutionDate = $ExecutionDate;
+        $this->WorkerId = $WorkerId;
+        $this->HasDone = $HasDone;
+        $this->LastWishOrderId = $LastWishOrderId;
+        $this->prisoner = $prisoner;
+    }
+
 
     public function getId(): ?int
     {
@@ -76,18 +98,6 @@ class Execution
     public function setExecutionDate(\DateTimeInterface $ExecutionDate): self
     {
         $this->ExecutionDate = $ExecutionDate;
-
-        return $this;
-    }
-
-    public function getPrisonerId(): ?int
-    {
-        return $this->PrisonerId;
-    }
-
-    public function setPrisonerId(int $PrisonerId): self
-    {
-        $this->PrisonerId = $PrisonerId;
 
         return $this;
     }
@@ -124,6 +134,18 @@ class Execution
     public function setLastWishOrderId(int $LastWishOrderId): self
     {
         $this->LastWishOrderId = $LastWishOrderId;
+
+        return $this;
+    }
+
+    public function getPrisoner(): ?Prisoner
+    {
+        return $this->prisoner;
+    }
+
+    public function setPrisoner(?Prisoner $prisoner): self
+    {
+        $this->prisoner = $prisoner;
 
         return $this;
     }
