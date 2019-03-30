@@ -21,6 +21,7 @@ import {PrisonerService} from './services/prisoner/prisoner.service';
 import {FormsModule} from '@angular/forms';
 import {AuthenticationService} from "./services/authorization.service";
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
+import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
     LoginComponent,
     FooterComponent,
     PrisonerComponent,
-    PrisonerDetailsComponent
+    PrisonerDetailsComponent,
+    PrisonerEditComponent
   ],
   imports: [
     BrowserModule,
