@@ -3,6 +3,7 @@ import { Prisoner } from 'src/app/models/prisoner/prisoner.model';
 import { PrisonerService } from 'src/app/services/prisoner/prisoner.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-prisoner-edit',
@@ -10,12 +11,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./prisoner-edit.component.css']
 })
 export class PrisonerEditComponent implements OnInit {
+  /** @ignore */
   headerOfSite = 'Edycja więźnia';
+  /** @ignore */
   prisoner: Prisoner;
+  /** @ignore */
   id: number;
 
-  constructor(private service: PrisonerService, private route: Router) { }
+  /** @ignore */
+  constructor(private service: PrisonerService, private route: Router, public snackBar: MatSnackBar) { }
 
+  /** @ignore */
   ngOnInit() {
     let urlArr = this.route.url.split("/");
     this.id = Number(urlArr[3]);
@@ -25,14 +31,18 @@ export class PrisonerEditComponent implements OnInit {
     });
   }
 
+  /**
+   * Zatwierdza formularz edycyji więźnia i wysyła dane do serwisu więźnia.
+   * 
+   * @param {NgForm} form formularz edycji więźnia
+   */
   onSubmit(form: NgForm) {
-    this.service.updatePrisoner(form.value).subscribe(
-      elem => console.log('elem', elem),
-      err => console.log('err', err),
-      () => console.log("finished successfully")
-    );
-    
-    console.log(form.value);
+    this.service.updatePrisoner(form.value).subscribe(() => {
+       console.log('Prisoner edited successfully');
+       this.snackBar.open('Edycja więźnia udana', 'OK', {
+        duration: 2000,
+        panelClass: ['service-snackbar']
+      });
+    });
   }
-
 }

@@ -4,61 +4,36 @@
   <div class="row">
     <div class="col-md-4 offset-md-4 form-background">
       <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="prisoner.id"> 
         <div class="form-group mb-2 mt-3">
           <label>IMIĘ</label>
-          <input name="FirstName" #FirstName="ngModel" [(ngModel)]="prisoner.FirstName" class="form-control">
+          <input name="FirstName" #FirstName="ngModel" [(ngModel)]="prisoner.FirstName" class="form-control" required>
+          <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">To pole jest wymagane.</div>
         </div>
         <div class="form-group mb-2">
           <label>NAZWISKO</label>
-          <input name="LastName" #LastName="ngModel" [(ngModel)]="prisoner.LastName" class="form-control">
+          <input name="LastName" #LastName="ngModel" [(ngModel)]="prisoner.LastName" class="form-control" required>
+          <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">To pole jest wymagane.</div>
         </div>
         <div class="form-group mb-2">
           <label>DATA URODZENIA</label>
-          <input name="DateOfBirth" #DateOfBirth="ngModel" [(ngModel)]="prisoner.DateOfBirth" class="form-control" type="date">
+          <input name="DateOfBirth" #DateOfBirth="ngModel" [(ngModel)]="prisoner.DateOfBirth" class="form-control" type="date" required>
+          <div class="validation-error" *ngIf="DateOfBirth.invalid && DateOfBirth.touched">To pole jest wymagane.</div>
         </div>
         <div class="form-group mb-4">
           <label>NR CELI</label>
-          <input name="CellId" #CellId="ngModel" [(ngModel)]="prisoner.CellId" class="form-control" type="number" pattern="[0-9]{1}" min=0>
+          <input name="CellId" #CellId="ngModel" [(ngModel)]="prisoner.CellId" class="form-control" type="number" pattern="[0-9]{1}" min=0 required>
+          <div class="validation-error" *ngIf="CellId.invalid && CellId.touched">To pole jest wymagane.</div>
         </div>
-        <div class="form-group">
-          <button type="submit" [disabled]="form.invalid" class="btn btn-block text-white submit-sm">Edytuj więźnia</button>
-        </div>
-
-        <div class="row py-1 no-gutters ">
+        <div class="row py-1 no-gutters">
           <div class="col-md-6 pr-1">
-            <button mat-button type="submit" (click)="submit()" class="btn btn-block text-white submit py-1">Zatwierdź</button>
+            <button mat-button type="submit" [disabled]="form.invalid" class="btn btn-block text-white submit py-1">Zatwierdź</button>
           </div>
           <div class="col-md-6 pl-1">
-            <button mat-button [routerLink]="['/prisoners/', prisoner.id]" class="btn btn-block text-white submit py-1">Anuluj</button>
+            <button mat-button [routerLink]="['/prisoners/', prisoner.id]" class="btn btn-block text-white submit py-1">Wróć</button>
           </div>       
         </div>
       </form>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container-fluid">
-  <div class="row my-4">
-    <div class="col-md-4 offset-md-4 py-2 bg-content-mid text-center">
-      <h2>{{prisoner.FirstName}} {{prisoner.LastName}}</h2>
-    </div>
-
-    <div class="col-md-4 offset-md-4 bg-content-mid text-center pb-3">
-      <h5>Data urodzenia: {{prisoner.DateOfBirth}}</h5>
-      <h5>Data rejestracji: {{prisoner.JoinDate}}</h5>
-      <h6 class="my-3">Więzień osadzony jest w sali {{prisoner.CellId}}</h6>
-
-
-      <div class="row py-1 no-gutters ">
-        <div class="col-md-6 pr-1">
-          <button mat-button (click)="submit()" class="btn btn-block text-white submit py-1">Zatwierdź</button>
-        </div>
-        <div class="col-md-6 pl-1">
-          <button mat-button [routerLink]="['/prisoners/', prisoner.id]" class="btn btn-block text-white submit py-1">Anuluj</button>
-        </div>       
-      </div>
     </div>
   </div>
 </div>
