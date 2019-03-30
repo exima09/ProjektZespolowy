@@ -55,12 +55,12 @@ class PrisonerController extends AbstractController
     {
         try {
             $prisoners = $prisonerRepository->findAll();
-            return JsonResponse::create([
+            return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
                 "prisoners" => $this->serializer->serialize($prisoners, 'json')
             ]);
         } catch (\Exception $e) {
-            return JsonResponse::create([
+            return new JsonResponse([
                 "message" => "Lista nie została pobrana",
                 "error" => $e->getMessage()
             ], 400);
