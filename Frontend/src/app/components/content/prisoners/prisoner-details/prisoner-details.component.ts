@@ -23,11 +23,3 @@ export class PrisonerDetailsComponent implements OnInit {
     });
   }
 }
-
-const example: Prisoner = {
-  FirstName: "Jan",
-  LastName: "Gierasimiuk",
-  JoinDate: "06.09.2015",
-  DateOfBirth: "03.07.1997",
-  CellId: 2
-}

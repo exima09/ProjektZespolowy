@@ -32,7 +32,7 @@ export class PrisonerService {
     .pipe(catchError(err => this.errorHandler(err)));
 
   // wywolanie: this.updatePrisoner({id: 2, FirstName: "update"}) <- obsluguje kazdy parametr do zmiany i kilka na raz
-  updatePrisoner = (prisoner: UpdatePrisoner) => this.http.patch(`/api/prisoner/${prisoner.id}`, prisoner, getHeaders())
+  updatePrisoner = (prisoner: Prisoner) => this.http.patch(`/api/prisoner/${prisoner.id}`, prisoner, getHeaders())
     .pipe(catchError(err => this.errorHandler(err)));
 
   errorHandler(error: HttpErrorResponse) {
@@ -41,8 +41,6 @@ export class PrisonerService {
         duration: 2000,
         panelClass: ['service-snackbar']
       });
-
-      console.log(error)
 
       return throwError(error.name + ": " + error.message);
     } else {
@@ -54,13 +52,4 @@ export class PrisonerService {
       return throwError(error);
     }
   }
-}
-
-export interface UpdatePrisoner {
-  id: number;
-  FirstName?: string;
-  LastName?: string;
-  JoinDate?: string;
-  DateOfBirth?: string;
-  CellId?: number;
 }
