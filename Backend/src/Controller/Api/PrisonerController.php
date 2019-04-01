@@ -6,11 +6,11 @@ use App\Entity\Prisoner;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class PrisonerController
@@ -54,6 +54,7 @@ class PrisonerController extends AbstractController
     public function list(PrisonerRepository $prisonerRepository): JsonResponse
     {
         try {
+
             $prisoners = $prisonerRepository->findAll();
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",

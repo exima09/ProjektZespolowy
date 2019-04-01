@@ -1,0 +1,37 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest:
+  routing_loader:
+    default_format: json
+#
+#    exception:
+#        enabled: true
+#
+#        codes:
+#            'App\Exception\DuplicateUserException': 404
+#        messages:
+#            'App\Exception\DuplicateUserException': true
+#        exception_controller: 'fos_rest.exception.controller:showAction'
+
+
+#    param_fetcher_listener:  true
+#    allowed_methods_listener:  true
+#    routing_loader: true
+#    view:
+#        view_response_listener:  true
+#    exception:
+#        codes:
+#            App\Exception\MyException: 403
+#        messages:
+#            App\Exception\MyException: Forbidden area.
+#    format_listener:
+#        rules:
+#            - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
+#    view:
+#        formats:
+#            xml: false
+#        templating_formats:
+#            html: true
+#        force_redirects:
+#            html: true
+#        failed_validation: HTTP_BAD_REQUEST
+#        default_engine: twig

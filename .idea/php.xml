@@ -98,17 +98,11 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/var-exporter" />
-      <path value="$PROJECT_DIR$/Backend/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/Backend/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/sunra/php-simple-html-dom-parser" />
-      <path value="$PROJECT_DIR$/Backend/vendor/exsyst/swagger" />
       <path value="$PROJECT_DIR$/Backend/vendor/namshi/jose" />
-      <path value="$PROJECT_DIR$/Backend/vendor/nelmio/api-doc-bundle" />
-      <path value="$PROJECT_DIR$/Backend/vendor/zircote/swagger-php" />
       <path value="$PROJECT_DIR$/Backend/vendor/lcobucci/jwt" />
-      <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
       <path value="$PROJECT_DIR$/Backend/vendor/willdurand/negotiation" />
-      <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/security-csrf" />
@@ -120,6 +114,25 @@
       <path value="$PROJECT_DIR$/Backend/vendor/nelmio/cors-bundle" />
       <path value="$PROJECT_DIR$/Backend/vendor/api-platform/core" />
       <path value="$PROJECT_DIR$/Backend/vendor/api-platform/api-pack" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/visitor" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/event" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/compiler" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/math" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/stream" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/file" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/regex" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/protocol" />
+      <path value="$PROJECT_DIR$/Backend/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/Backend/vendor/jms/serializer-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/iterator" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/consistency" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/zformat" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/ustring" />
+      <path value="$PROJECT_DIR$/Backend/vendor/hoa/exception" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
