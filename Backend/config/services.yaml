@@ -8,6 +8,10 @@ parameters:
 
 services:
     # default configuration for services in *this* file
+    jms_serializer.serialized_name_annotation_strategy:
+        class: JMS\Serializer\Naming\SerializedNameAnnotationStrategy
+        arguments:
+            - '@jms_serializer.identical_property_naming_strategy'
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
