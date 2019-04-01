@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,6 +65,17 @@ class Prisoner
     private $CellId;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Visits", mappedBy="prisoner")
+     */
+    private $visits;
+
+    /**
+     * @ApiSubresource
+     * @ORM\OneToMany(targetEntity="App\Entity\Execution", mappedBy="prisoner")
+     */
+    private $executions;
+
+    /**
      * Prisoner constructor.
      * @param $FirstName
      * @param $LastName
@@ -76,6 +90,8 @@ class Prisoner
         $this->JoinDate = $JoinDate;
         $this->DateOfBirth = $DateOfBirth;
         $this->CellId = $CellId;
+        $this->visits = new ArrayCollection();
+        $this->executions = new ArrayCollection();
     }
 
     /**
@@ -147,6 +163,68 @@ class Prisoner
     public function setCellId(int $CellId): self
     {
         $this->CellId = $CellId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Visits[]
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visits $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setPrisoner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visits $visit): self
+    {
+        if ($this->visits->contains($visit)) {
+            $this->visits->removeElement($visit);
+            // set the owning side to null (unless already changed)
+            if ($visit->getPrisoner() === $this) {
+                $visit->setPrisoner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Execution[]
+     */
+    public function getExecutions(): Collection
+    {
+        return $this->executions;
+    }
+
+    public function addExecution(Execution $execution): self
+    {
+        if (!$this->executions->contains($execution)) {
+            $this->executions[] = $execution;
+            $execution->setPrisoner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExecution(Execution $execution): self
+    {
+        if ($this->executions->contains($execution)) {
+            $this->executions->removeElement($execution);
+            // set the owning side to null (unless already changed)
+            if ($execution->getPrisoner() === $this) {
+                $execution->setPrisoner(null);
+            }
+        }
 
         return $this;
     }

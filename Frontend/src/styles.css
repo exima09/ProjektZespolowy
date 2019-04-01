@@ -4,11 +4,14 @@
     padding: 0;
     margin: 0;
 }
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');
 
 body {
     box-sizing: border-box;
     line-height: 1.7;
     color: white;
+    background: url("assets/images/bg10.png");
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .service-snackbar {
@@ -100,7 +103,8 @@ button.submit-sm:hover {
 }
 
 .bg-logo {
-    background-color: #3f3f3f;
+    /*background-color: #3f3f3f;*/
+  position: relative;
 }
 
 .text-black {

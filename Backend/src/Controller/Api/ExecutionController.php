@@ -66,6 +66,29 @@ class ExecutionController extends AbstractController
     }
 
     /**
+     * @Route("/{id}",name="executions_get_by_id", methods={"GET"})
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getById(int $id)
+    {
+        try {
+            $execution = $this->executionRepository->find($id);
+            if($execution) {
+                return new JsonResponse([
+                    "visit" => $this->serializer->serialize($execution, 'json')
+                ]);
+            }
+            return new JsonResponse(["message" => "Brak egzekucji o numerze: {$id}"], 400);
+        } catch (Exception $e) {
+            return new JsonResponse([
+                "message" => "Wystąpił błąd podczas pobierania",
+                "error" => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    /**
      * @Route("/get-date", name="execution_get_date_free", methods={"GET"})
      * @return JsonResponse
      * @throws \Exception

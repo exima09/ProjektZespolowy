@@ -23,6 +23,7 @@ import {AuthenticationService} from "./services/authorization.service";
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { ExecutionService } from './services/execution/execution.service';
+import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ExecutionService } from './services/execution/execution.service';
     PrisonerComponent,
     PrisonerDetailsComponent,
     ExecutionReservationComponent
+    PrisonerEditComponent
   ],
   imports: [
     BrowserModule,

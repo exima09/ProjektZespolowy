@@ -1,4 +1,11 @@
 .headerImg{
-    width: 600px;
-    height: 100px;
+  width: 500px;
+  height: 300px;
+  margin: 15px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,.1) 0%,rgba(229,229,229,0) 60%);
+  transition: background 1s;
+}
+
+.headerImg:hover {
+  background: radial-gradient(ellipse at center, rgba(255,255,255,.2) 0%,rgba(229,229,229,0) 70%);
 }
