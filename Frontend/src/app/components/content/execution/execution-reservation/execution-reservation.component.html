@@ -1,0 +1,39 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid m-5">
+<div class="row">
+  <div class="col-md-4 offset-md-4 form-background">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+      <div class="form-group mb-2 mt-3">
+        <label>DATA EGZEKUCJI</label>
+        <input name="ExecutionDate" #ExecutionDate="ngModel" [(ngModel)]="service.formData.ExecutionDate" class="form-control" type="date" required>
+        <div class="validation-error" *ngIf="ExecutionDate.invalid && ExecutionDate.touched">To pole jest wymagane.</div>
+      </div>
+      <div class="form-group mb-2">
+        <label>ID Więźnia</label>
+        <input name="PrisonerId" #PrisonerId="ngModel" [(ngModel)]="service.formData.PrisonerId" class="form-control" required>
+        <div class="validation-error" *ngIf="PrisonerId.invalid && PrisonerId.touched">To pole jest wymagane.</div>
+      </div>
+      <div class="form-group mb-2">
+        <label>ID Pracownika</label>
+        <input name="WorkerId" #WorkerId="ngModel" [(ngModel)]="service.formData.WorkerId" class="form-control" required>
+        <div class="validation-error" *ngIf="WorkerId.invalid && WorkerId.touched">To pole jest wymagane.</div>
+      </div>
+      <div class="form-group mb-4">
+        <label>ID Ostatniego życzenia</label>
+        <input name="LastWishOrderId" #LastWishOrderId="ngModel" [(ngModel)]="service.formData.LastWishOrderId" class="form-control" required type="number" pattern="[0-9]{1}" min=0>
+        <div class="validation-error" *ngIf="LastWishOrderId.invalid && LastWishOrderId.touched">To pole jest wymagane.</div>
+      </div>
+      <div class="form-group mb-4" style="display: none">
+        <label>HasDone</label>
+        <input name="HasDone" #HasDone="ngModel" [(ngModel)]="service.formData.HasDone" class="form-control" required value="false">
+        <div class="validation-error" *ngIf="HasDone.invalid && HasDone.touched">To pole jest wymagane.</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-block text-white submit-sm">Zarezerwuj!</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

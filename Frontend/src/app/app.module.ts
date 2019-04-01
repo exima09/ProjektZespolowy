@@ -21,6 +21,8 @@ import {PrisonerService} from './services/prisoner/prisoner.service';
 import {FormsModule} from '@angular/forms';
 import {AuthenticationService} from "./services/authorization.service";
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
+import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
+import { ExecutionService } from './services/execution/execution.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
     LoginComponent,
     FooterComponent,
     PrisonerComponent,
-    PrisonerDetailsComponent
+    PrisonerDetailsComponent,
+    ExecutionReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
     MatPaginatorModule,
     MatTableModule
   ],
-  providers: [PrisonerService, MenuComponent, AuthenticationService],
+  providers: [PrisonerService, MenuComponent, AuthenticationService, ExecutionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

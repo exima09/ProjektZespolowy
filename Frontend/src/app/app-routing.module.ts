@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/content/register/register.compon
 import { LoginComponent } from './components/content/login/login.component';
 import { PrisonerComponent } from './components/content/prisoners/prisoner/prisoner.component';
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
+import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'prisoners', component: PrisonersListComponent},
   { path: 'prisoners/register', component: PrisonerComponent},
-  { path: 'prisoners/:id', component: PrisonerDetailsComponent}
+  { path: 'prisoners/:id', component: PrisonerDetailsComponent},
+  { path: 'execution/reservation', component: ExecutionReservationComponent}
 ];
 
 @NgModule({
