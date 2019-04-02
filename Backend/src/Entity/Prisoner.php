@@ -76,6 +76,11 @@ class Prisoner
     private $executions;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SickLeave", mappedBy="prisoner")
+     */
+    private $sickLeaves;
+
+    /**
      * Prisoner constructor.
      * @param $FirstName
      * @param $LastName
@@ -92,6 +97,7 @@ class Prisoner
         $this->CellId = $CellId;
         $this->visits = new ArrayCollection();
         $this->executions = new ArrayCollection();
+        $this->sickLeaves = new ArrayCollection();
     }
 
     /**
@@ -223,6 +229,37 @@ class Prisoner
             // set the owning side to null (unless already changed)
             if ($execution->getPrisoner() === $this) {
                 $execution->setPrisoner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SickLeave[]
+     */
+    public function getSickLeaves(): Collection
+    {
+        return $this->sickLeaves;
+    }
+
+    public function addSickLeaf(SickLeave $sickLeaf): self
+    {
+        if (!$this->sickLeaves->contains($sickLeaf)) {
+            $this->sickLeaves[] = $sickLeaf;
+            $sickLeaf->setPrisoner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSickLeaf(SickLeave $sickLeaf): self
+    {
+        if ($this->sickLeaves->contains($sickLeaf)) {
+            $this->sickLeaves->removeElement($sickLeaf);
+            // set the owning side to null (unless already changed)
+            if ($sickLeaf->getPrisoner() === $this) {
+                $sickLeaf->setPrisoner(null);
             }
         }
 

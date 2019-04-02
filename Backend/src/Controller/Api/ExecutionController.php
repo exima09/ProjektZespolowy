@@ -4,13 +4,14 @@ namespace App\Controller\Api;
 
 use App\Entity\Execution;
 use App\Repository\ExecutionRepository;
+use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use JMS\Serializer\SerializerInterface;
 
 
 /**
@@ -36,15 +37,22 @@ class ExecutionController extends AbstractController
     private $serializer;
 
     /**
+     * @PrisonerRepository $prisonerRepository
+     */
+    private $prisonerRepository;
+
+    /**
      * @param EntityManagerInterface $entityManager
      * @param ExecutionRepository    $executionRepository
      * @param SerializerInterface    $serializer
+     * @param PrisonerRepository     $prisonerRepository
      */
-    public function __construct(EntityManagerInterface $entityManager, ExecutionRepository $executionRepository, SerializerInterface $serializer) //to jest wstrzykiwanie zaleznosci
+    public function __construct(EntityManagerInterface $entityManager, ExecutionRepository $executionRepository, SerializerInterface $serializer, PrisonerRepository $prisonerRepository)
     {
         $this->entityManager = $entityManager;
         $this->executionRepository = $executionRepository;
         $this->serializer = $serializer;
+        $this->prisonerRepository = $prisonerRepository;
     }
 
     /**
@@ -149,16 +157,16 @@ class ExecutionController extends AbstractController
             if (empty($execution)) {
                 if (
                     array_key_exists("ExecutionDate", $data) &&
-                    array_key_exists("HasDone", $data) &&
                     array_key_exists("LastWishOrderId", $data) &&
                     array_key_exists("PrisonerId", $data) &&
                     array_key_exists("WorkerId", $data)) {
-                    $newExecution = new Execution();
-                    $newExecution->setExecutionDate(new \DateTime($data["ExecutionDate"]))
-                        ->setHasDone($data["HasDone"])
-                        ->setLastWishOrderId($data["LastWishOrderId"])
-                        ->setPrisonerId($data["PrisonerId"])
-                        ->setWorkerId($data["WorkerId"]);
+                    $prisoner = $this->prisonerRepository->find($data["PrisonerId"]);
+                    if (!$prisoner) {
+                        return new JsonResponse([
+                            "message" => "Brak więźnia o numerze {$data["PrisonerId"]}"
+                        ], 400);
+                    }
+                    $newExecution = new Execution(new \DateTime($data["ExecutionDate"]), $data["WorkerId"], false, $data["LastWishOrderId"], $prisoner);
                     $this->entityManager->persist($newExecution);
                     $this->entityManager->flush();
                     return new JsonResponse([
