@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +52,16 @@ class Worker
      * @ORM\Column(type="date")
      */
     private $DateTo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SickLeave", mappedBy="worker")
+     */
+    private $sickLeaves;
+
+    public function __construct()
+    {
+        $this->sickLeaves = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,6 +148,37 @@ class Worker
     public function setDateTo(\DateTimeInterface $DateTo): self
     {
         $this->DateTo = $DateTo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SickLeave[]
+     */
+    public function getSickLeaves(): Collection
+    {
+        return $this->sickLeaves;
+    }
+
+    public function addSickLeaf(SickLeave $sickLeaf): self
+    {
+        if (!$this->sickLeaves->contains($sickLeaf)) {
+            $this->sickLeaves[] = $sickLeaf;
+            $sickLeaf->setWorker($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSickLeaf(SickLeave $sickLeaf): self
+    {
+        if ($this->sickLeaves->contains($sickLeaf)) {
+            $this->sickLeaves->removeElement($sickLeaf);
+            // set the owning side to null (unless already changed)
+            if ($sickLeaf->getWorker() === $this) {
+                $sickLeaf->setWorker(null);
+            }
+        }
 
         return $this;
     }
