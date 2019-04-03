@@ -1,19 +1,24 @@
 import {Injectable} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, take} from 'rxjs/operators';
 
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {throwError} from 'rxjs';
-import {MenuComponent} from "../components/menu/menu.component";
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
-import set = Reflect.set;
+import * as jwt_decode from 'jwt-decode';
+
+const TOKEN = 'token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, public snackBar: MatSnackBar, private menu: MenuComponent, private router: Router) {
+  constructor(private http: HttpClient, public snackBar: MatSnackBar, private router: Router) {
+    if (this.checkLogin()) {
+      this.loggedIn.next(true);
+    }
   }
 
   register(login: string, password: string) {
@@ -33,29 +38,77 @@ export class AuthenticationService {
     };
     const loginOperation = this.http.post('/api/login_check', data, {headers});
     return loginOperation.pipe(
-      map(item => {localStorage.setItem('token', item['token']); this.menu.logging("true");
-      this.snackBar.open("Logowanie pomyślne.", "OK", { duration: 5000 }); }),
+      map(item => {
+        this.setToken(item[TOKEN]);
+        this.loggedIn.next(true);
+        this.router.navigate(['/']);
+        this.snackBar.open("Logowanie pomyślne.", "OK", {duration: 5000});
+      }),
       catchError(err => this.errorHandler(err))
     );
   }
 
   checkLogin() {
-    if(localStorage.getItem('token') === null) {
+    if (this.getToken() === null || this.isTokenExpired(this.getToken())) {
       this.snackBar.open('error', 'Brak dostępu, musisz się zalogować', {
         duration: 5000,
         panelClass: ['service-snackbar']
       });
-      new Promise(resolve => setTimeout(resolve, 2000));
+      this.loggedIn.next(false);
       this.router.navigateByUrl("/login");
+      return false;
     }
-    return localStorage.getItem('token') !== null;
+    this.loggedIn.next(true);
+    return this.getToken() !== null;
+  }
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  getToken() {
+    return localStorage.getItem(TOKEN);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem(TOKEN, token);
+  }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token);
+
+    if (decoded.exp === undefined) {
+      return null;
+    }
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if (!token) {
+      token = this.getToken();
+    }
+    if (!token) {
+      return true;
+    }
+
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) {
+      return false;
+    }
+    return !(date.valueOf() > new Date().valueOf());
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN);
+    this.loggedIn.next(false);
+    this.router.navigateByUrl("/login");
   }
 
   errorHandler(error: HttpErrorResponse) {
+    this.loggedIn.next(false);
     if (error.name) {
       this.snackBar.open("Błąd", error.error.message, {
         duration: 2000,

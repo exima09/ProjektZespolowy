@@ -22,6 +22,8 @@ import {FormsModule} from '@angular/forms';
 import {AuthenticationService} from "./services/authorization.service";
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
+import {AuthorizationGuard} from "./services/authorization.guard";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,10 @@ import { PrisonerEditComponent } from './components/content/prisoners/prisoner-e
     BrowserAnimationsModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule
   ],
-  providers: [PrisonerService, MenuComponent, AuthenticationService],
+  providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

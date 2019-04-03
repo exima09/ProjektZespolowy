@@ -15,6 +15,7 @@
                 <div class="error mt-3" *ngIf="anyErrors">Nieprawidłowy login lub hasło.</div>
                 <div class="success mt-3" *ngIf="finished" [routerLink]="['/home/']"></div>
             </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="!finished"></mat-progress-bar>
         </div>
     </div>
 </div>
