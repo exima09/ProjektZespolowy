@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PrisonerService} from "../../../../services/prisoner/prisoner.service";
 import {Prisoner} from "../../../../models/prisoner/prisoner.model";
-import {AuthenticationService} from "../../../../services/authorization.service";
 
 @Component({
   selector: 'app-prisoners-list',
@@ -11,11 +10,9 @@ import {AuthenticationService} from "../../../../services/authorization.service"
 export class PrisonersListComponent implements OnInit {
   headerOfSite = 'Więźniowie';
   prisoners: Prisoner[] = [];
-  constructor(private service: PrisonerService, private auth: AuthenticationService) {
-  }
+  constructor(private service: PrisonerService) {}
 
   ngOnInit() {
-    this.auth.checkLogin();
     this.service.getPrisoners().subscribe((res: any) => {
       this.prisoners = JSON.parse(res.prisoners);
     });

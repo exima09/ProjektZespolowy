@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   login: string;
   password: string;
   anyErrors: boolean;
-  finished: boolean;
+  finished = true;
 
   constructor(private authService: AuthenticationService) {}
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.finished = false;
 
     this.authService.login(this.login, this.password).subscribe(
-      elem => console.log('elem', elem),
+      elem => null,
       err => this.anyErrors = true,
       () => this.finished = true
     );

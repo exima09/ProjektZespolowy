@@ -1,5 +1,6 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../../services/authorization.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-menu',
@@ -7,21 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  login = localStorage.getItem('token');
-  constructor(private router: Router) { }
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.login = localStorage.getItem('token');
-    this.router.navigateByUrl("/");
-  }
-
-  logging(token: string) {
-    this.login = token;
-    console.log("login", this.login);
-    this.router.navigateByUrl("/");
+  onLogout() {
+    this.authService.logout();
   }
 }

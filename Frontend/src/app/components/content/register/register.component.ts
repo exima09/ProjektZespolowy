@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.finished = false;
 
     this.authService.register(this.login, this.password).subscribe(
-      elem => console.log(elem),
+      elem => null,
       err => this.anyErrors = true,
       () => this.finished = true
     );

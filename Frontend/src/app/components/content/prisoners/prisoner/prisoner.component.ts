@@ -12,7 +12,6 @@ export class PrisonerComponent implements OnInit {
   headerOfSite = 'Rejestracja więźnia';
 
   constructor(private service: PrisonerService, private auth: AuthenticationService) {
-    this.auth.checkLogin();
   }
 
   ngOnInit() {
@@ -35,7 +34,7 @@ export class PrisonerComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.value.id == null) {
-      if (localStorage.getItem('token')) {
+      if (this.auth.checkLogin()) {
         this.insertRecord(form);
       }
     }

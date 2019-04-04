@@ -1,15 +1,14 @@
 <header class="bg-menu-dark text-center py-2">
   <h2 class="mb-1">Menu</h2>
 </header>
-
 <div class="d-flex flex-column align-items-stretch bg-menu-light">
-    <a class="menu-item py-2" *ngIf="!login" [routerLink]="'/login'">Zaloguj</a>
-    <a class="menu-item py-2" *ngIf="!login" [routerLink]="'/register'">Zarejestruj</a>
-    <a class="menu-item py-2" *ngIf="login" (click)="logout()">Wyloguj</a>
-    <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
-    <a class="menu-item py-2" [routerLink]="'/'">Aktualności</a>
-    <a class="menu-item py-2" [routerLink]="'/'">Odwiedziny</a>
-    <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
-    <a class="menu-item py-2" [routerLink]="'/prisoners'">Więźniowie</a>
-    <a class="menu-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
+  <a class="menu-item py-2" (click)="onLogout()" *ngIf="isLoggedIn$ | async">Wyloguj</a>
+  <a class="menu-item py-2" [routerLink]="'/login'" *ngIf="!(isLoggedIn$ | async)">Zaloguj</a>
+  <a class="menu-item py-2" [routerLink]="'/register'" *ngIf="!(isLoggedIn$ | async)">Zarejestruj</a>
+  <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
+  <a class="menu-item py-2" [routerLink]="'/'">Aktualności</a>
+  <a class="menu-item py-2" [routerLink]="'/'">Odwiedziny</a>
+  <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
+  <a class="menu-item py-2" [routerLink]="'/prisoners'">Więźniowie</a>
+  <a class="menu-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
 </div>

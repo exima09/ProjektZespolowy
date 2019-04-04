@@ -18,7 +18,7 @@ export class PrisonerService {
   }
 
   postPrisoner(formData: Prisoner) {
-    return this.http.post('/api/prisoner/register', formData, getHeaders())
+    return this.http.post('/api/prisoner', formData, getHeaders())
       .pipe(catchError(err => this.errorHandler(err)));
   }
 
@@ -32,7 +32,7 @@ export class PrisonerService {
     .pipe(catchError(err => this.errorHandler(err)));
 
   // wywolanie: this.updatePrisoner({id: 2, FirstName: "update"}) <- obsluguje kazdy parametr do zmiany i kilka na raz
-  updatePrisoner = (prisoner: Prisoner) => this.http.patch(`/api/prisoner/${prisoner.id}`, prisoner, getHeaders())
+  updatePrisoner = (prisoner: Prisoner, id: number) => this.http.patch(`/api/prisoner/${id}`, prisoner, getHeaders())
     .pipe(catchError(err => this.errorHandler(err)));
 
   errorHandler(error: HttpErrorResponse) {
