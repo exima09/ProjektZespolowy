@@ -1,0 +1,37 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-8 offset-md-4 mt-5 form-background">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <label >Wybierz więźnia</label>
+          <select  name="prisonerId" #prisonerId="ngModel" [(ngModel)]="selectedPrisonerId" class="form-control" required>
+            <option *ngFor="let prisoner of prisoners" [value]="prisoner.id">
+               {{prisoner.FirstName}} {{prisoner.LastName}} z celi {{prisoner.CellId}}
+              </option>
+          </select>
+          <div class="validation-error" *ngIf="prisonerId.invalid && prisonerId.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <label>Powód zwolnienia</label>
+          <textarea name="reason" #reason="ngModel" [(ngModel)]="note" class="form-control" rows="3"
+            required></textarea>
+            <div class="validation-error" *ngIf="reason.invalid && reason.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <label>Zwolnienie ważne do:</label>
+          <input name="dateStop" #dateStop="ngModel" [(ngModel)]="expirationDate" class="form-control"
+            type="date" min={{currentDate}} required>
+          <div class="validation-error" *ngIf="dateStop.invalid && dateStop.touched">To pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-block btn-lg text-white submit" type="submit" [disabled]="form.invalid">Wystaw
+            zwolnienie</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
