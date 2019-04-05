@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\SickLeave;
+use App\Entity\User;
 use App\Repository\PrisonerRepository;
 use App\Repository\SickLeaveRepository;
 use App\Repository\WorkerRepository;
@@ -99,7 +100,6 @@ class SickLeaveController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
             if (
-                array_key_exists("workerId", $data) &&
                 array_key_exists("prisonerId", $data) &&
                 array_key_exists("dateStart", $data) &&
                 array_key_exists("dateStop", $data)
@@ -110,11 +110,17 @@ class SickLeaveController extends AbstractController
                         "message" => "Brak więźnia o numerze {$data["prisonerId"]}"
                     ], 400);
                 }
-
-                $worker = $this->workerRepository->find($data["workerId"]);
+                /** @var User $user */
+                $user = $this->get('security.token_storage')->getToken()->getUser();
+                if (!$user) {
+                    return new JsonResponse([
+                        "message" => "Brak zalogowanego użytkownika"
+                    ], 400);
+                }
+                $worker = $this->workerRepository->find($user->getId());
                 if (!$worker) {
                     return new JsonResponse([
-                        "message" => "Brak pracownika o numerze {$data["workerId"]}"
+                        "message" => "Brak pracownika o numerze {$user->getId()}"
                     ], 400);
                 }
 
