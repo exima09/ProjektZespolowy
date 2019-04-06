@@ -31,11 +31,6 @@ class Worker
     /**
      * @ORM\Column(type="integer")
      */
-    private $DepartamentId;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $Salary;
 
     /**
@@ -57,6 +52,16 @@ class Worker
      * @ORM\OneToMany(targetEntity="App\Entity\SickLeave", mappedBy="worker")
      */
     private $sickLeaves;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="workers")
+     */
+    private $Department;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="worker", cascade={"persist", "remove"})
+     */
+    private $user;
 
     public function __construct()
     {
@@ -88,18 +93,6 @@ class Worker
     public function setLastName(string $LastName): self
     {
         $this->LastName = $LastName;
-
-        return $this;
-    }
-
-    public function getDepartamentId(): ?int
-    {
-        return $this->DepartamentId;
-    }
-
-    public function setDepartamentId(int $DepartamentId): self
-    {
-        $this->DepartamentId = $DepartamentId;
 
         return $this;
     }
@@ -179,6 +172,30 @@ class Worker
                 $sickLeaf->setWorker(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDepartment(): ?Department
+    {
+        return $this->Department;
+    }
+
+    public function setDepartment(?Department $Department): self
+    {
+        $this->Department = $Department;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

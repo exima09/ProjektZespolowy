@@ -24,16 +24,23 @@ class User implements UserInterface
      */
     private $username;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $roles;
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Worker", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $worker;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
+
 
     public function getId(): ?int
     {
@@ -53,21 +60,6 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    public function setRoles(string $roles): self
-    {
-        $this->roles = $roles;
 
         return $this;
     }
@@ -102,5 +94,42 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getWorker(): ?Worker
+    {
+        return $this->worker;
+    }
+
+    public function setWorker(?Worker $worker): self
+    {
+        $this->worker = $worker;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $worker === null ? null : $this;
+        if ($newUser !== $worker->getUser()) {
+            $worker->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }
