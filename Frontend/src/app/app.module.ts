@@ -1,5 +1,5 @@
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatPaginatorModule} from '@angular/material';
+import {MatPaginatorModule, MatSelectModule, MatFormField, MatFormFieldModule} from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/content/login/login.component';
@@ -18,12 +18,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {FooterComponent} from './components/footer/footer.component';
 import {PrisonerComponent} from './components/content/prisoners/prisoner/prisoner.component';
 import {PrisonerService} from './services/prisoner/prisoner.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthenticationService} from "./services/authorization.service";
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 import {AuthorizationGuard} from "./services/authorization.guard";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +39,13 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FooterComponent,
     PrisonerComponent,
     PrisonerDetailsComponent,
-    PrisonerEditComponent
+    PrisonerEditComponent,
+    PrisonerSickNoteComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
@@ -51,7 +55,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatButtonModule,
     MatPaginatorModule,
     MatTableModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard],
   bootstrap: [AppComponent]
