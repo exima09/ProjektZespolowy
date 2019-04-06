@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Departament;
+use App\Entity\Department;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Departament|null find($id, $lockMode = null, $lockVersion = null)
- * @method Departament|null findOneBy(array $criteria, array $orderBy = null)
- * @method Departament[]    findAll()
- * @method Departament[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Department|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Department|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Department[]    findAll()
+ * @method Department[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DepartamentRepository extends ServiceEntityRepository
+class DepartmentRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Departament::class);
+        parent::__construct($registry, Department::class);
     }
 
     // /**
-    //  * @return Departament[] Returns an array of Departament objects
+    //  * @return Department[] Returns an array of Department objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class DepartamentRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Departament
+    public function findOneBySomeField($value): ?Department
     {
         return $this->createQueryBuilder('d')
             ->andWhere('d.exampleField = :val')
