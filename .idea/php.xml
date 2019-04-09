@@ -133,6 +133,7 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
       <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
