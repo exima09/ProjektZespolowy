@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Roles;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class RolesTest extends TestCase
 {

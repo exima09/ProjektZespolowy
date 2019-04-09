@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\JailJobs;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class JailJobsTest extends TestCase
 {

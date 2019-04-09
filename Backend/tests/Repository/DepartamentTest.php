@@ -9,22 +9,22 @@
 namespace App\Tests\Repository;
 
 
-use App\Entity\Departament;
-use Monolog\TestCase;
+use App\Entity\Department;
+use PHPUnit\Framework\TestCase;
 
-class DepartamentTest extends TestCase
+class DepartmentTest extends TestCase
 {
     public function getIdTest() {
-        $Departament = new Departament();
-        $result = $Departament->getId();
+        $Department = new Department();
+        $result = $Department->getId();
 
         $this->assertNotNull($result);
     }
 
     public function setAndGetFirstNameTest() {
-        $Departament = new Departament();
-        $Departament->setDepartamentName("testName");
-        $result = $Departament->getDepartamentName();
+        $Department = new Department();
+        $Department->setDepartmentName("testName");
+        $result = $Department->getDepartmentName();
 
         $this->assertNotNull($result);
         $this->assertEquals("testName", $result);

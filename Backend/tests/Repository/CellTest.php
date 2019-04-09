@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Cell;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CellTest extends TestCase
 {

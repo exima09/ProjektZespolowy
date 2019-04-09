@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\SocialOrder;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class SocialOrderTest extends TestCase
 {

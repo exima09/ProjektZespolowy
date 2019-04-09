@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Supplies;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class SuppliesTest extends TestCase
 {

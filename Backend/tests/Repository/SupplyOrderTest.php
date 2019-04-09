@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\SupplyOrder;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class SupplyOrderTest extends TestCase
 {

@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Visits;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class VisitsTest extends TestCase
 {

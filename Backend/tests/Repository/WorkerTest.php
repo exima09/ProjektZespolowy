@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Worker;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class WorkerTest extends TestCase
 {

@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\SocialProducts;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class SocialProductsTest extends TestCase
 {

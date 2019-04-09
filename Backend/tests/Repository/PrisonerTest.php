@@ -3,7 +3,7 @@
 namespace App\Tests\Repository;
 
 use App\Entity\Prisoner;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class PrisonerTest extends TestCase
 {

@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\MedicalOrder;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class MedicalOrderTest extends TestCase
 {

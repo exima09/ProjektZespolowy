@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\User;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {

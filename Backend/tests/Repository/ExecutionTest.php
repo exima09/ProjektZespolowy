@@ -10,7 +10,7 @@ namespace App\Tests\Repository;
 
 
 use App\Entity\Execution;
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ExecutionTest extends TestCase
 {

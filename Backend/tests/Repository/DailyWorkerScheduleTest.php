@@ -9,7 +9,7 @@
 namespace App\Tests\Repository;
 
 
-use Monolog\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class DailyWorkerScheduleTest extends TestCase
 {
