@@ -25,6 +25,8 @@ import { PrisonerEditComponent } from './components/content/prisoners/prisoner-e
 import {AuthorizationGuard} from "./services/authorization.guard";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
+import { BlockComponent } from './components/content/block/block.component';
+import {CellComponent} from './components/content/cell/cell.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { PrisonerSickNoteComponent } from './components/content/prisoners/prison
     PrisonerDetailsComponent,
     PrisonerEditComponent,
     PrisonerSickNoteComponent,
+    BlockComponent,
+    CellComponent,
   ],
   imports: [
     BrowserModule,

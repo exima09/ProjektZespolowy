@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Cell;
 use App\Entity\Prisoner;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -23,16 +24,18 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $cell1 = $this->getReference('cell1');
+        /** @var Cell $cell1 */
+        $cell1 = $this->getReference('cell6');
+        /** @var Cell $cell2 */
         $cell2 = $this->getReference('cell2');
 
         $prisoner = new Prisoner(
             "Jan",
             "Piotrowski",
             new \DateTime("01-01-2019"),
-            new \DateTime("01-01-2001"),
-            1
+            new \DateTime("01-01-2001")
         );
+        $cell1->setPrisoner($prisoner);
         $manager->persist($prisoner);
         $this->addReference('prisoner1', $prisoner);
 
@@ -40,9 +43,9 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
             "Tester",
             "Testowy",
             new \DateTime('now'),
-            new \DateTime("01-01-1990"),
-            2
+            new \DateTime("02-01-1990")
         );
+        $cell2->setPrisoner($prisoner2);
         $manager->persist($prisoner2);
         $this->addReference('prisoner2', $prisoner2);
 

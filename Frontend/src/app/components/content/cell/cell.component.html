@@ -1,0 +1,26 @@
+<div class="cell-number">{{cell.id}}</div>
+<div>cela</div>
+<div class="details-cell" *ngIf="cell.prisoner">
+  <div>Numer więźnia: <span class="bold">{{cell.prisoner.id}}</span></div>
+  <div>Imię i nazwisko:</div>
+  <div class="bold">{{cell.prisoner.FirstName}} {{cell.prisoner.LastName}}</div>
+</div>
+<div id="plus-wrapper" class="details-cell" *ngIf="!cell.prisoner"  (click)="actionModal($event)">
+  <div id="plus" class="plus">+</div>
+</div>
+<div id="toggle-modal" class="modal-mask" *ngIf="visibleModal" (click)="actionModal($event)">
+ <div class="modal-custom">
+   <div class="modal-title">Wybierz więźnia do celi nr {{cell.id}}</div>
+   <div class="modal-body">
+     <select class="form-control" [(ngModel)]="selectedOption">
+       <option *ngFor="let prisoner of prisoners" [value]="prisoner.id">
+         {{prisoner.FirstName}} {{prisoner.LastName}}
+       </option>
+     </select>
+   </div>
+   <div class="modal-footer">
+     <button id="modal-cancel" class="btn btn-cancel" (click)="actionModal($event)">Anuluj</button>
+     <button id="modal-confirm" class="btn btn-confirm" (click)="actionModal($event)">Zatwierdź</button>
+   </div>
+ </div>
+</div>
