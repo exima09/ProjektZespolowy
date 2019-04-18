@@ -6,3 +6,14 @@
  p {
     margin: 5px;
  }
+
+ .table-header{
+    font-weight: bold;
+    margin:1%;
+    margin-top: 10% !important;
+ }
+ 
+ .table-header:hover {
+   cursor: pointer;
+   background: radial-gradient(ellipse at center, rgba(255,255,255,.2) 0%,rgba(229,229,229,0) 70%);
+ }
