@@ -28,7 +28,7 @@ export class PrisonerComponent implements OnInit {
       LastName: '',
       JoinDate: '',
       DateOfBirth: '',
-      CellId: null
+      cell: undefined
     };
   }
 
