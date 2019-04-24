@@ -26,7 +26,7 @@ class Department
     private $departmentName;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Worker", mappedBy="Department")
+     * @ORM\OneToMany(targetEntity="App\Entity\Worker", mappedBy="department")
      */
     private $workers;
 

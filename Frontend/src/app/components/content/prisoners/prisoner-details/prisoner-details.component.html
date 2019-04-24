@@ -2,15 +2,15 @@
 <div class="container-fluid">
   <div class="row my-4">
     <div class="col-md-4 offset-md-4 py-2 bg-content-mid text-center">
-      <h2>{{prisoner.FirstName}} {{prisoner.LastName}}</h2>
+      <h2>{{prisoner.firstName}} {{prisoner.lastName}}</h2>
     </div>
     <div class="col-md-4 offset-md-4 bg-content-mid text-center">
       <img class="size" src="assets/images/nico.jpg" />
     </div>
     <div class="col-md-4 offset-md-4 bg-content-mid text-center pb-3">
-      <h5>Data urodzenia: {{prisoner.DateOfBirth}}</h5>
-      <h5>Data rejestracji: {{prisoner.JoinDate}}</h5>
-      <h6 class="my-3">Więzień osadzony jest w sali {{prisoner.CellId}}, sprawowanie dobre, srednia ocena...</h6>
+      <h5>Data urodzenia: {{prisoner.dateOfBirth}}</h5>
+      <h5>Data rejestracji: {{prisoner.joinDate}}</h5>
+      <h6 class="my-3">Więzień osadzony jest w celi {{prisoner.cell.id}}, sprawowanie dobre, srednia ocena...</h6>
       <div class="row py-1 no-gutters ">
         <div class="col-md-6 pr-1">
           <button mat-button [routerLink]="['/prisoners/edit/', prisoner.id]" class="btn btn-block text-white submit py-1">Edytuj</button>

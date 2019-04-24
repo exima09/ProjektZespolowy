@@ -17,91 +17,108 @@ class JailJobSchedule
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Prisoner", inversedBy="jailJobSchedules")
      */
-    private $PrisonerId;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $JobId;
+    private $prisoner;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $Rate;
+    private $rate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $DateFrom;
+    private $dateFrom;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $DateTo;
+    private $dateTo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Worker", inversedBy="jailJobSchedules")
+     */
+    private $worker;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\JailJob", inversedBy="jailJobSchedule")
+     */
+    private $jailJob;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrisonerId(): ?int
+    public function getPrisoner(): ?Prisoner
     {
-        return $this->PrisonerId;
+        return $this->prisoner;
     }
 
-    public function setPrisonerId(int $PrisonerId): self
+    public function setPrisoner(?Prisoner $prisoner): self
     {
-        $this->PrisonerId = $PrisonerId;
-
-        return $this;
-    }
-
-    public function getJobId(): ?int
-    {
-        return $this->JobId;
-    }
-
-    public function setJobId(int $JobId): self
-    {
-        $this->JobId = $JobId;
+        $this->prisoner = $prisoner;
 
         return $this;
     }
 
     public function getRate(): ?float
     {
-        return $this->Rate;
+        return $this->rate;
     }
 
-    public function setRate(float $Rate): self
+    public function setRate(float $rate): self
     {
-        $this->Rate = $Rate;
+        $this->rate = $rate;
 
         return $this;
     }
 
     public function getDateFrom(): ?\DateTimeInterface
     {
-        return $this->DateFrom;
+        return $this->dateFrom;
     }
 
-    public function setDateFrom(\DateTimeInterface $DateFrom): self
+    public function setDateFrom(\DateTimeInterface $dateFrom): self
     {
-        $this->DateFrom = $DateFrom;
+        $this->dateFrom = $dateFrom;
 
         return $this;
     }
 
     public function getDateTo(): ?\DateTimeInterface
     {
-        return $this->DateTo;
+        return $this->dateTo;
     }
 
-    public function setDateTo(\DateTimeInterface $DateTo): self
+    public function setDateTo(\DateTimeInterface $dateTo): self
     {
-        $this->DateTo = $DateTo;
+        $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    public function getWorker(): ?Worker
+    {
+        return $this->worker;
+    }
+
+    public function setWorker(?Worker $worker): self
+    {
+        $this->worker = $worker;
+
+        return $this;
+    }
+
+    public function getJailJob(): ?JailJob
+    {
+        return $this->jailJob;
+    }
+
+    public function setJailJob(?JailJob $jailJob): self
+    {
+        $this->jailJob = $jailJob;
 
         return $this;
     }

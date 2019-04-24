@@ -48,16 +48,17 @@ class SickLeave
      */
     private $dateStop;
 
+
     /**
      * SickLeave constructor.
-     * @param $worker
-     * @param $prisoner
-     * @param $reason
-     * @param $dateStart
-     * @param $dateStop
+     * @param Worker      $worker
+     * @param Prisoner    $prisoner
+     * @param \DateTime   $dateStart
+     * @param \DateTime   $dateStop
+     * @param string|null $reason
      * @throws \Exception
      */
-    public function __construct($worker, $prisoner, $dateStart, $dateStop, $reason = null)
+    public function __construct(Worker $worker, Prisoner $prisoner, \DateTime $dateStart, \DateTime $dateStop, string $reason = null)
     {
         $this->worker = $worker;
         $this->prisoner = $prisoner;

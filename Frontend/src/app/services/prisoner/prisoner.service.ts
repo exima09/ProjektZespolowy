@@ -31,7 +31,7 @@ export class PrisonerService {
   getPrisonerById = (id: number) => this.http.get(`/api/prisoner/${id}`, getHeaders())
     .pipe(catchError(err => this.errorHandler(err)));
 
-  // wywolanie: this.updatePrisoner({id: 2, FirstName: "update"}) <- obsluguje kazdy parametr do zmiany i kilka na raz
+  // wywolanie: this.updatePrisoner({id: 2, firstName: "update"}) <- obsluguje kazdy parametr do zmiany i kilka na raz
   updatePrisoner = (prisoner: Prisoner, id: number) => this.http.patch(`/api/prisoner/${id}`, prisoner, getHeaders())
     .pipe(catchError(err => this.errorHandler(err)));
 

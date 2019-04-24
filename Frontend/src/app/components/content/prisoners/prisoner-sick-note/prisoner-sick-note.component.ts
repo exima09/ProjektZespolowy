@@ -14,8 +14,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class PrisonerSickNoteComponent implements OnInit {
   private headerOfSite = 'Zwolnienie lekarskie';
-  private prisoners;
+  private prisoners: Prisoner[] = [];
   private currentDate;
+  selectedPrisonerId = "";
 
   constructor(private prisonerService: PrisonerService, private datePipe: DatePipe,
     private sickNoteService: SicknoteService, public snackBar: MatSnackBar) { }

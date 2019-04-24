@@ -1,19 +1,32 @@
 import {Injectable} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {catchError, map, take} from 'rxjs/operators';
-
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
 import * as jwt_decode from 'jwt-decode';
+import {getHeaders} from "./headers";
 
 const TOKEN = 'token';
+
+interface RegisterProps {
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface LoginProps {
+  username: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  formData: RegisterProps;
 
   constructor(private http: HttpClient, public snackBar: MatSnackBar, private router: Router) {
     if (this.checkLogin()) {
@@ -21,22 +34,13 @@ export class AuthenticationService {
     }
   }
 
-  register(login: string, password: string) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const data = {
-      'username': login,
-      'password': password
-    };
-    return this.http.post('/api/register', data, {headers}).pipe(catchError(err => this.errorHandler(err)));
+  register(formData: RegisterProps) {
+    return this.http.post('/api/register', formData, getHeaders())
+      .pipe(catchError(err => this.errorHandler(err)));
   }
 
-  login(login: string, password: string) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const data = {
-      'username': login,
-      'password': password
-    };
-    const loginOperation = this.http.post('/api/login_check', data, {headers});
+  login(formData: LoginProps) {
+    const loginOperation = this.http.post('/api/login_check', formData, getHeaders());
     return loginOperation.pipe(
       map(item => {
         this.setToken(item[TOKEN]);

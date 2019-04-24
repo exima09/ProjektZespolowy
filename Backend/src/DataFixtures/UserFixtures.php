@@ -17,6 +17,8 @@ class UserFixtures extends Fixture
     {
         $user = new User();
         $user->setUsername("admin");
+        $user->setFirstName("admin");
+        $user->setLastName("admin");
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
             'admin'
@@ -27,6 +29,8 @@ class UserFixtures extends Fixture
 
         $user1 = new User();
         $user1->setUsername("test");
+        $user1->setFirstName("test");
+        $user1->setLastName("test");
         $user1->setPassword($this->passwordEncoder->encodePassword(
             $user1,
             'test'
@@ -37,6 +41,8 @@ class UserFixtures extends Fixture
 
         $user2 = new User();
         $user2->setUsername("guard");
+        $user2->setFirstName("guard");
+        $user2->setLastName("guard");
         $user2->setPassword($this->passwordEncoder->encodePassword(
             $user2,
             'guard'

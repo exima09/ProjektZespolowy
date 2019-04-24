@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Cell} from "../../../models/cell/cell.model";
-import {Block} from "../../../models/block/block";
+import {Block} from "../../../models/block/block.model";
 import {BlockService} from "../../../services/block/block.service";
 import {PrisonerService} from "../../../services/prisoner/prisoner.service";
 import {Prisoner} from "../../../models/prisoner/prisoner.model";

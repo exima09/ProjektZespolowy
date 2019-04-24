@@ -91,12 +91,25 @@ class UserController extends AbstractController
         )) {
             return JsonResponse::create(['message' => 'Username is exists'], 400);
         } else {
+            if (
+                array_key_exists("username", $data) &&
+                array_key_exists("password", $data) &&
+                array_key_exists("firstName", $data) &&
+                array_key_exists("lastName", $data)
+            ) {
             $user = new User();
             $user->setUsername($data['username']);
-            $user->setRoles("ROLE_USER");
+            $user->setFirstName($data['firstName']);
+            $user->setLastName($data['lastName']);
             $user->setPassword($this->encoder->encodePassword($user, $data['password']));
             $this->entityManager->persist($user);
             $this->entityManager->flush();
+            } else {
+                return new JsonResponse([
+                    'message' => "Użytkownik nie został zarejestrowany, wypełnij brakujące pola",
+                    'error' => "Sprawdź pola username, firstName, lastName, password"
+                ],400);
+            }
 
             return JsonResponse::create([
                 'message' => "dodano"
