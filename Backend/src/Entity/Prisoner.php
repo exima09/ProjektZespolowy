@@ -60,11 +60,6 @@ class Prisoner
     private $DateOfBirth;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $CellId;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Visits", mappedBy="prisoner")
      */
     private $visits;
@@ -81,20 +76,23 @@ class Prisoner
     private $sickLeaves;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Cell", mappedBy="prisoner", cascade={"persist", "remove"})
+     */
+    private $cell;
+
+    /**
      * Prisoner constructor.
      * @param $FirstName
      * @param $LastName
      * @param $JoinDate
      * @param $DateOfBirth
-     * @param $CellId
      */
-    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirth, $CellId)
+    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirth)
     {
         $this->FirstName = $FirstName;
         $this->LastName = $LastName;
         $this->JoinDate = $JoinDate;
         $this->DateOfBirth = $DateOfBirth;
-        $this->CellId = $CellId;
         $this->visits = new ArrayCollection();
         $this->executions = new ArrayCollection();
         $this->sickLeaves = new ArrayCollection();
@@ -157,18 +155,6 @@ class Prisoner
     public function setDateOfBirth(\DateTimeInterface $DateOfBirth): self
     {
         $this->DateOfBirth = $DateOfBirth;
-
-        return $this;
-    }
-
-    public function getCellId(): ?int
-    {
-        return $this->CellId;
-    }
-
-    public function setCellId(int $CellId): self
-    {
-        $this->CellId = $CellId;
 
         return $this;
     }
@@ -261,6 +247,24 @@ class Prisoner
             if ($sickLeaf->getPrisoner() === $this) {
                 $sickLeaf->setPrisoner(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getCell(): ?Cell
+    {
+        return $this->cell;
+    }
+
+    public function setCell(?Cell $cell): self
+    {
+        $this->cell = $cell;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newPrisoner = $cell === null ? null : $this;
+        if ($newPrisoner !== $cell->getPrisoner()) {
+            $cell->setPrisoner($newPrisoner);
         }
 
         return $this;

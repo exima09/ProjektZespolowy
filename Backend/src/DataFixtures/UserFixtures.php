@@ -22,6 +22,7 @@ class UserFixtures extends Fixture
             'admin'
         ));
         $user->setRoles(["ROLE_ADMIN","ROLE_PRISON_GUARD", "ROLE_USER"]);
+        $this->addReference("user1",$user);
         $manager->persist($user);
 
         $user1 = new User();
@@ -31,6 +32,7 @@ class UserFixtures extends Fixture
             'test'
         ));
         $user1->setRoles(["ROLE_USER"]);
+        $this->addReference("user2",$user1);
         $manager->persist($user1);
 
         $user2 = new User();
@@ -40,6 +42,7 @@ class UserFixtures extends Fixture
             'guard'
         ));
         $user2->setRoles(["ROLE_PRISON_GUARD", "ROLE_USER"]);
+        $this->addReference("user3",$user2);
         $manager->persist($user2);
         $manager->flush();
     }
