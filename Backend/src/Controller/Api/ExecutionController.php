@@ -3,10 +3,13 @@
 namespace App\Controller\Api;
 
 use App\Entity\Execution;
+use App\Entity\Prisoner;
+use App\Entity\User;
 use App\Repository\ExecutionRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ExecutionController
+ * @IsGranted(User::EXECUTIONER)
  * @Route("/api/execution")
  * @package App\Controller\Api
  */
@@ -158,15 +162,18 @@ class ExecutionController extends AbstractController
                 if (
                     array_key_exists("executionDate", $data) &&
                     array_key_exists("lastWish", $data) &&
-                    array_key_exists("prisonerId", $data) &&
-                    array_key_exists("workerId", $data)) {
+                    array_key_exists("prisonerId", $data)) {
+                    /** @var Prisoner $prisoner */
                     $prisoner = $this->prisonerRepository->find($data["prisonerId"]);
                     if (!$prisoner) {
                         return new JsonResponse([
                             "message" => "Brak więźnia o numerze {$data["prisonerId"]}"
                         ], 400);
                     }
-                    $newExecution = new Execution(new \DateTime($data["executionDate"]), $data["workerId"], false, $data["lastWish"], $prisoner);
+                    /** @var User $user */
+                    $user = $this->getUser();
+
+                    $newExecution = new Execution(new \DateTime($data["executionDate"]), $user->getWorker(), false, $data["lastWish"], $prisoner);
                     $this->entityManager->persist($newExecution);
                     $this->entityManager->flush();
                     return new JsonResponse([

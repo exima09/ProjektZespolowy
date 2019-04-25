@@ -3,15 +3,17 @@
 namespace App\Controller\Api;
 
 use App\Entity\Cell;
+use App\Entity\User;
 use App\Repository\CellRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use JMS\Serializer\SerializerInterface;
 
 /**
  * Class CellController
+ * @IsGranted(User::GUARD)
  * @Route("/api/cell")
  * @package App\Controller\Api
  */

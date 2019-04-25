@@ -2,19 +2,22 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\User;
 use App\Repository\BlockRepository;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use JMS\Serializer\SerializerInterface;
-use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Class BlockController
+ * @IsGranted(User::GUARD)
  * @Route("/api/block")
  * @package App\Controller\Api
  */
