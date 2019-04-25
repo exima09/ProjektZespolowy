@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authorization.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from 'src/app/services/authorization.service';
+import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,34 +11,42 @@ import { AuthenticationService } from 'src/app/services/authorization.service';
 })
 export class RegisterComponent implements OnInit {
   headerOfSite = 'Rejestracja';
-  login: string;
-  password: string;
   anyErrors: boolean;
   finished: boolean;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) {
+  }
 
   ngOnInit() {
-  }
-
-  writtenLogin(value: string) {
-    this.login = value;
-    console.log('login = ' + this.login);
-  }
-
-  writtenPassword(value: string) {
-    this.password = value;
-    console.log('password = ' + this.password);
-  }
-
-  submit() {
-    this.anyErrors = false;
+    this.resetForm();
     this.finished = false;
+    this.anyErrors = false;
+  }
 
-    this.authService.register(this.login, this.password).subscribe(
-      elem => null,
-      err => this.anyErrors = true,
-      () => this.finished = true
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
+    this.authService.formData = {
+      firstName: '',
+      lastName: '',
+      username: '',
+      password: '',
+    };
+  }
+
+  onSubmit(form: NgForm) {
+    this.authService.register(form.value).subscribe(
+      async res => {
+        await this.resetForm(form);
+        this.finished = true;
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.router.navigate(['/login']);
+      },
+      error => {
+        this.anyErrors = true;
+        console.log("BŁĄD PODCZAS REJESTRACJI: ", error);
+      }
     );
   }
 }

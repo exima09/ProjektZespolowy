@@ -111,7 +111,7 @@ class ExecutionController extends AbstractController
                 /** @var string $tempExecution */
                 $tempExecution = (new \DateTime())->setTimestamp($datePerWeek)->setTime(10, 0)->format("Y-m-d H:i:s");
                 /** @var Execution[] $execution */
-                $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.ExecutionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
+                $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.executionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
                 if (empty($execution)) {
                     $dateIsFree = true;
                     return new JsonResponse([
@@ -122,7 +122,7 @@ class ExecutionController extends AbstractController
                 /** @var string $tempExecution */
                 $tempExecution = (new \DateTime())->setTimestamp($datePerWeek)->setTime(14, 0)->format("Y-m-d H:i:s");
                 /** @var Execution[] $execution */
-                $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.ExecutionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
+                $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.executionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
                 if (empty($execution)) {
                     $dateIsFree = true;
                     return new JsonResponse([
@@ -151,22 +151,22 @@ class ExecutionController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
             /** @var string $tempExecution */
-            $tempExecution = (new \DateTime($data["ExecutionDate"]))->format("Y-m-d H:i:s");
+            $tempExecution = (new \DateTime($data["executionDate"]))->format("Y-m-d H:i:s");
             /** @var Execution[] $execution */
-            $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.ExecutionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
+            $execution = $this->entityManager->createQuery('SELECT e FROM \App\Entity\Execution e WHERE e.executionDate = :tempdate')->setParameter('tempdate', $tempExecution)->getResult();
             if (empty($execution)) {
                 if (
-                    array_key_exists("ExecutionDate", $data) &&
-                    array_key_exists("LastWishOrderId", $data) &&
-                    array_key_exists("PrisonerId", $data) &&
-                    array_key_exists("WorkerId", $data)) {
-                    $prisoner = $this->prisonerRepository->find($data["PrisonerId"]);
+                    array_key_exists("executionDate", $data) &&
+                    array_key_exists("lastWish", $data) &&
+                    array_key_exists("prisonerId", $data) &&
+                    array_key_exists("workerId", $data)) {
+                    $prisoner = $this->prisonerRepository->find($data["prisonerId"]);
                     if (!$prisoner) {
                         return new JsonResponse([
-                            "message" => "Brak więźnia o numerze {$data["PrisonerId"]}"
+                            "message" => "Brak więźnia o numerze {$data["prisonerId"]}"
                         ], 400);
                     }
-                    $newExecution = new Execution(new \DateTime($data["ExecutionDate"]), $data["WorkerId"], false, $data["LastWishOrderId"], $prisoner);
+                    $newExecution = new Execution(new \DateTime($data["executionDate"]), $data["workerId"], false, $data["lastWish"], $prisoner);
                     $this->entityManager->persist($newExecution);
                     $this->entityManager->flush();
                     return new JsonResponse([

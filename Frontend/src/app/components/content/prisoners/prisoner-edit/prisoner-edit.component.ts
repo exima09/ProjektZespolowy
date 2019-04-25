@@ -4,6 +4,9 @@ import {PrisonerService} from 'src/app/services/prisoner/prisoner.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
+import {Cell} from "../../../../models/cell/cell.model";
+import {BlockService} from "../../../../services/block/block.service";
+import {Block} from "../../../../models/block/block.model";
 
 @Component({
   selector: 'app-prisoner-edit',
@@ -14,8 +17,10 @@ export class PrisonerEditComponent implements OnInit {
   headerOfSite = 'Edycja więźnia';
   prisoner: Prisoner;
   id: number;
+  cells: Cell[] = [];
+  blocks: Block[];
 
-  constructor(private service: PrisonerService, private route: Router, public snackBar: MatSnackBar) {
+  constructor(private service: PrisonerService, private blockService: BlockService, private route: Router, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -23,6 +28,7 @@ export class PrisonerEditComponent implements OnInit {
     this.id = Number(urlArr[3]);
     this.service.getPrisonerById(this.id).subscribe((res: any) => {
       this.prisoner = JSON.parse(res.prisoner);
+      this.fetchCells();
     });
   }
 
@@ -47,5 +53,18 @@ export class PrisonerEditComponent implements OnInit {
         console.log("ERROR", err);
       }
     );
+  }
+
+  private fetchCells() {
+    this.blockService.getBlocks().subscribe((res: any) => {
+      this.blocks = JSON.parse(res.blocks);
+      const cells: Cell[] = [];
+      this.blocks.forEach(block => cells.push(...block.cells.filter(cell => !cell.prisoner || cell.id === this.prisoner.cell.id)));
+      this.cells = cells;
+    });
+  }
+
+  getBlock(id: number) {
+    return this.blocks.filter(block => block.cells.some(cell => cell.id === id))[0].name;
   }
 }

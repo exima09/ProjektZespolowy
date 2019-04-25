@@ -3,7 +3,7 @@
 <div class="details-cell" *ngIf="cell.prisoner">
   <div>Numer więźnia: <span class="bold">{{cell.prisoner.id}}</span></div>
   <div>Imię i nazwisko:</div>
-  <div class="bold">{{cell.prisoner.FirstName}} {{cell.prisoner.LastName}}</div>
+  <div class="bold">{{cell.prisoner.firstName}} {{cell.prisoner.lastName}}</div>
 </div>
 <div id="plus-wrapper" class="details-cell" *ngIf="!cell.prisoner"  (click)="actionModal($event)">
   <div id="plus" class="plus">+</div>
@@ -14,7 +14,7 @@
    <div class="modal-body">
      <select class="form-control" [(ngModel)]="selectedOption">
        <option *ngFor="let prisoner of prisoners" [value]="prisoner.id">
-         {{prisoner.FirstName}} {{prisoner.LastName}}
+         {{prisoner.firstName}} {{prisoner.lastName}}
        </option>
      </select>
    </div>

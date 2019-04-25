@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\JailJobs;
+use App\Entity\JailJob;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method JailJobs|null find($id, $lockMode = null, $lockVersion = null)
- * @method JailJobs|null findOneBy(array $criteria, array $orderBy = null)
- * @method JailJobs[]    findAll()
- * @method JailJobs[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method JailJob|null find($id, $lockMode = null, $lockVersion = null)
+ * @method JailJob|null findOneBy(array $criteria, array $orderBy = null)
+ * @method JailJob[]    findAll()
+ * @method JailJob[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class JailJobsRepository extends ServiceEntityRepository
+class JailJobRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, JailJobs::class);
+        parent::__construct($registry, JailJob::class);
     }
 
     // /**
-    //  * @return JailJobs[] Returns an array of JailJobs objects
+    //  * @return JailJob[] Returns an array of JailJob objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class JailJobsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?JailJobs
+    public function findOneBySomeField($value): ?JailJob
     {
         return $this->createQueryBuilder('j')
             ->andWhere('j.exampleField = :val')

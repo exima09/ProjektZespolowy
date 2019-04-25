@@ -3,7 +3,6 @@ import {Cell} from "../../../models/cell/cell.model";
 import {Prisoner} from "../../../models/prisoner/prisoner.model";
 import {BlockService} from "../../../services/block/block.service";
 import {PrisonerService} from "../../../services/prisoner/prisoner.service";
-import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material";
 
 
@@ -27,6 +26,7 @@ export class CellComponent implements OnInit {
   @Input() cell: Cell;
   @Input() prisoners: Prisoner[];
   @Input() fetchBlocks: () => void;
+  @Input() fetchPrisoners: () => void;
 
   actionModal(event) {
     const {id} = event.target;
@@ -49,6 +49,7 @@ export class CellComponent implements OnInit {
         this.loading = false;
       });
       this.fetchBlocks();
+      this.fetchPrisoners();
     }
     if (id && (id === "toggle-modal" || id === "modal-cancel" || id === "modal-confirm" || id === "plus") || id === "plus-wrapper") {
       this.visibleModal = !this.visibleModal;

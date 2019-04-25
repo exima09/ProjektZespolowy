@@ -45,22 +45,18 @@ class Execution
     /**
      * @ORM\Column(type="datetime")
      */
-    private $ExecutionDate;
+    private $executionDate;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $WorkerId;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $HasDone;
+    private $hasDone;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
-    private $LastWishOrderId;
+    private $lastWish;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Prisoner", inversedBy="executions")
@@ -68,19 +64,25 @@ class Execution
     private $prisoner;
 
     /**
-     * Execution constructor.
-     * @param $ExecutionDate
-     * @param $WorkerId
-     * @param $HasDone
-     * @param $LastWishOrderId
-     * @param $prisoner
+     * @ORM\ManyToOne(targetEntity="App\Entity\Worker", inversedBy="execution")
      */
-    public function __construct($ExecutionDate, $WorkerId, $HasDone, $LastWishOrderId, $prisoner)
+    private $worker;
+
+
+    /**
+     * Execution constructor.
+     * @param \DateTime $ExecutionDate
+     * @param Worker    $worker
+     * @param bool      $HasDone
+     * @param string    $lastWish
+     * @param Prisoner  $prisoner
+     */
+    public function __construct(\DateTime $ExecutionDate, Worker $worker, bool $HasDone, string $lastWish, Prisoner $prisoner)
     {
-        $this->ExecutionDate = $ExecutionDate;
-        $this->WorkerId = $WorkerId;
-        $this->HasDone = $HasDone;
-        $this->LastWishOrderId = $LastWishOrderId;
+        $this->executionDate = $ExecutionDate;
+        $this->worker = $worker;
+        $this->hasDone = $HasDone;
+        $this->lastWish = $lastWish;
         $this->prisoner = $prisoner;
     }
 
@@ -92,48 +94,36 @@ class Execution
 
     public function getExecutionDate(): ?\DateTimeInterface
     {
-        return $this->ExecutionDate;
+        return $this->executionDate;
     }
 
-    public function setExecutionDate(\DateTimeInterface $ExecutionDate): self
+    public function setExecutionDate(\DateTimeInterface $executionDate): self
     {
-        $this->ExecutionDate = $ExecutionDate;
-
-        return $this;
-    }
-
-    public function getWorkerId(): ?int
-    {
-        return $this->WorkerId;
-    }
-
-    public function setWorkerId(int $WorkerId): self
-    {
-        $this->WorkerId = $WorkerId;
+        $this->executionDate = $executionDate;
 
         return $this;
     }
 
     public function getHasDone(): ?bool
     {
-        return $this->HasDone;
+        return $this->hasDone;
     }
 
-    public function setHasDone(bool $HasDone): self
+    public function setHasDone(bool $hasDone): self
     {
-        $this->HasDone = $HasDone;
+        $this->hasDone = $hasDone;
 
         return $this;
     }
 
-    public function getLastWishOrderId(): ?int
+    public function getLastWish(): ?string
     {
-        return $this->LastWishOrderId;
+        return $this->lastWish;
     }
 
-    public function setLastWishOrderId(int $LastWishOrderId): self
+    public function setLastWish(string $lastWish): self
     {
-        $this->LastWishOrderId = $LastWishOrderId;
+        $this->lastWish = $lastWish;
 
         return $this;
     }
@@ -146,6 +136,18 @@ class Execution
     public function setPrisoner(?Prisoner $prisoner): self
     {
         $this->prisoner = $prisoner;
+
+        return $this;
+    }
+
+    public function getWorker(): ?Worker
+    {
+        return $this->worker;
+    }
+
+    public function setWorker(?Worker $worker): self
+    {
+        $this->worker = $worker;
 
         return $this;
     }

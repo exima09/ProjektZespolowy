@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\LastWishStaff;
+use App\Entity\LacksProducts;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method LastWishStaff|null find($id, $lockMode = null, $lockVersion = null)
- * @method LastWishStaff|null findOneBy(array $criteria, array $orderBy = null)
- * @method LastWishStaff[]    findAll()
- * @method LastWishStaff[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method LacksProducts|null find($id, $lockMode = null, $lockVersion = null)
+ * @method LacksProducts|null findOneBy(array $criteria, array $orderBy = null)
+ * @method LacksProducts[]    findAll()
+ * @method LacksProducts[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LastWishStaffRepository extends ServiceEntityRepository
+class LacksProductsRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, LastWishStaff::class);
+        parent::__construct($registry, LacksProducts::class);
     }
 
     // /**
-    //  * @return LastWishStaff[] Returns an array of LastWishStaff objects
+    //  * @return LacksProducts[] Returns an array of LacksProducts objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class LastWishStaffRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?LastWishStaff
+    public function findOneBySomeField($value): ?LacksProducts
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.exampleField = :val')

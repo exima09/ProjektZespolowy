@@ -42,22 +42,22 @@ class Prisoner
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $FirstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $JoinDate;
+    private $joinDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $DateOfBirth;
+    private $dateOfBirth;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Visits", mappedBy="prisoner")
@@ -81,29 +81,27 @@ class Prisoner
     private $cell;
 
     /**
-     * Prisoner constructor.
-     * @param $FirstName
-     * @param $LastName
-     * @param $JoinDate
-     * @param $DateOfBirth
+     * @ORM\OneToMany(targetEntity="App\Entity\JailJobSchedule", mappedBy="prisoner")
      */
-    public function __construct($FirstName, $LastName, $JoinDate, $DateOfBirth)
-    {
-        $this->FirstName = $FirstName;
-        $this->LastName = $LastName;
-        $this->JoinDate = $JoinDate;
-        $this->DateOfBirth = $DateOfBirth;
-        $this->visits = new ArrayCollection();
-        $this->executions = new ArrayCollection();
-        $this->sickLeaves = new ArrayCollection();
-    }
+    private $jailJobSchedules;
 
     /**
      * Prisoner constructor.
+     * @param string    $firstName
+     * @param string    $lastName
+     * @param \DateTime $joinDate
+     * @param \DateTime $dateOfBirth
      */
-    public function __construct1()
+    public function __construct(string $firstName, string $lastName, \DateTime $joinDate, \DateTime $dateOfBirth)
     {
-
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->joinDate = $joinDate;
+        $this->dateOfBirth = $dateOfBirth;
+        $this->visits = new ArrayCollection();
+        $this->executions = new ArrayCollection();
+        $this->sickLeaves = new ArrayCollection();
+        $this->jailJobSchedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,48 +111,48 @@ class Prisoner
 
     public function getFirstName(): ?string
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
-    public function setFirstName(string $FirstName): self
+    public function setFirstName(string $firstName): self
     {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     public function getLastName(): ?string
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
-    public function setLastName(string $LastName): self
+    public function setLastName(string $lastName): self
     {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     public function getJoinDate(): ?\DateTimeInterface
     {
-        return $this->JoinDate;
+        return $this->joinDate;
     }
 
-    public function setJoinDate(\DateTimeInterface $JoinDate): self
+    public function setJoinDate(\DateTimeInterface $joinDate): self
     {
-        $this->JoinDate = $JoinDate;
+        $this->joinDate = $joinDate;
 
         return $this;
     }
 
     public function getDateOfBirth(): ?\DateTimeInterface
     {
-        return $this->DateOfBirth;
+        return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTimeInterface $DateOfBirth): self
+    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
     {
-        $this->DateOfBirth = $DateOfBirth;
+        $this->dateOfBirth = $dateOfBirth;
 
         return $this;
     }
@@ -265,6 +263,37 @@ class Prisoner
         $newPrisoner = $cell === null ? null : $this;
         if ($newPrisoner !== $cell->getPrisoner()) {
             $cell->setPrisoner($newPrisoner);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|JailJobSchedule[]
+     */
+    public function getJailJobSchedules(): Collection
+    {
+        return $this->jailJobSchedules;
+    }
+
+    public function addJailJobSchedule(JailJobSchedule $jailJobSchedule): self
+    {
+        if (!$this->jailJobSchedules->contains($jailJobSchedule)) {
+            $this->jailJobSchedules[] = $jailJobSchedule;
+            $jailJobSchedule->setPrisoner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJailJobSchedule(JailJobSchedule $jailJobSchedule): self
+    {
+        if ($this->jailJobSchedules->contains($jailJobSchedule)) {
+            $this->jailJobSchedules->removeElement($jailJobSchedule);
+            // set the owning side to null (unless already changed)
+            if ($jailJobSchedule->getPrisoner() === $this) {
+                $jailJobSchedule->setPrisoner(null);
+            }
         }
 
         return $this;

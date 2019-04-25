@@ -61,7 +61,7 @@ import {CellComponent} from './components/content/cell/cell.component';
     MatTableModule,
     MatProgressBarModule,
     MatFormFieldModule,
-    MatSelectModule,
+    MatSelectModule
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard],
   bootstrap: [AppComponent]

@@ -1,20 +1,36 @@
 <header>
-    <app-site-header [childMessage]="headerOfSite"></app-site-header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
 </header>
 <div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col-md-4 offset-md-4 mt-5 form-background">
-            <div class="form-group">
-                <input class="form-control form-control-lg" type="text" #loginInput (keyup)="writtenLogin(loginInput.value)" placeholder="Login" required>
-            </div>
-            <div class="form-group">
-                <input class="form-control form-control-lg" type="password" #passwordInput (keyup)="writtenPassword(passwordInput.value)" placeholder="Hasło" required>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-block btn-lg text-white submit" (click)="submit()">Zarejestruj się</button>
-                <div class="error mt-3" *ngIf="anyErrors">Wystąpił błąd, przepraszamy za utrudnienia.</div>
-                <div class="success mt-3" *ngIf="finished">Rejestracja zakończona powodzeniem.</div>
-            </div>
+  <div class="row mt-5">
+    <div class="col-md-4 offset-md-4 mt-5 form-background">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <input class="form-control form-control-lg" type="text" name="username" #username="ngModel"
+                 [(ngModel)]="authService.formData.username" placeholder="Nazwa użytkownika" required>
+          <div class="validation-error" *ngIf="username.invalid && username.touched">To pole jest wymagane.</div>
         </div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" type="text" name="firstName" #firstName="ngModel"
+                 [(ngModel)]="authService.formData.firstName" placeholder="Imię" required>
+          <div class="validation-error" *ngIf="firstName.invalid && firstName.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" type="text" name="lastName" #lastName="ngModel"
+                 [(ngModel)]="authService.formData.lastName" placeholder="Nazwisko" required>
+          <div class="validation-error" *ngIf="lastName.invalid && lastName.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" type="password" name="password" #password="ngModel"
+                 [(ngModel)]="authService.formData.password" placeholder="Hasło" required>
+          <div class="validation-error" *ngIf="username.invalid && password.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-block btn-lg text-white submit" type="submit" [disabled]="form.invalid">Zarejestruj się</button>
+          <div class="error mt-3" *ngIf="anyErrors">Wystąpił błąd, przepraszamy za utrudnienia.</div>
+          <div class="success mt-3" *ngIf="finished">Rejestracja zakończona powodzeniem. <br />Przekierowanie do logowania</div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
