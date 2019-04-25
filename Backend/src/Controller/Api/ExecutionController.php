@@ -89,7 +89,7 @@ class ExecutionController extends AbstractController
             $execution = $this->executionRepository->find($id);
             if($execution) {
                 return new JsonResponse([
-                    "visit" => $this->serializer->serialize($execution, 'json')
+                    "execution" => $this->serializer->serialize($execution, 'json')
                 ]);
             }
             return new JsonResponse(["message" => "Brak egzekucji o numerze: {$id}"], 400);
@@ -102,7 +102,7 @@ class ExecutionController extends AbstractController
     }
 
     /**
-     * @Route("/get-date", name="execution_get_date_free", methods={"GET"})
+     * @Route("/get/date", name="execution_get_date_free", methods={"GET"})
      * @return JsonResponse
      * @throws \Exception
      */
@@ -120,7 +120,7 @@ class ExecutionController extends AbstractController
                     $dateIsFree = true;
                     return new JsonResponse([
                         "message" => "Znaleziono najbliższą wolną datę za minimum tydzień.",
-                        "ExecutionDate" => $this->serializer->serialize($tempExecution, 'json')
+                        "executionDate" => $this->serializer->serialize($tempExecution, 'json')
                     ]);
                 }
                 /** @var string $tempExecution */
@@ -131,7 +131,7 @@ class ExecutionController extends AbstractController
                     $dateIsFree = true;
                     return new JsonResponse([
                         "message" => "Znaleziono najbliższą wolną datę za minimum tydzień.",
-                        "ExecutionDate" => $this->serializer->serialize($tempExecution, 'json')
+                        "executionDate" => $this->serializer->serialize($tempExecution, 'json')
                     ]);
                 }
                 $datePerWeek = strtotime('+1 day', $datePerWeek);

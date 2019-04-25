@@ -9,7 +9,7 @@ security:
                 class: App\Entity\User
                 property: username
     role_hierarchy:
-        ROLE_ADMIN: IS_AUTHENTICATED_FULLY
+        ROLE_ADMIN: [IS_AUTHENTICATED_FULLY, ROLE_WARDEN]
         ROLE_WARDEN: [ROLE_EXECUTIONER, ROLE_SOCIAL, ROLE_MEDICAL, ROLE_PRISON_GUARD, ROLE_MANAGER, ROLE_USER]
         ROLE_MANAGER: [ROLE_USER]
         ROLE_EXECUTIONER: [ROLE_PRISON_GUARD, ROLE_USER]
