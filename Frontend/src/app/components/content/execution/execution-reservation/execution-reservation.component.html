@@ -1,0 +1,39 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid m-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-4 mt-5 form-background" *ngIf="prisoners.length>0">
+      <div class="executionDate">Data egzekucji: {{firstFreeDate}}</div>
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <label>Wybierz więźnia</label>
+          <select name="prisonerId" #prisonerId="ngModel" [(ngModel)]="selectedPrisonerId" class="form-control"
+            required>
+            <option value="" selected disabled>Wybierz więźnia</option>
+            <option *ngFor="let prisoner of prisoners" [value]="prisoner.id">
+              {{prisoner.firstName}} {{prisoner.lastName}} z celi {{prisoner.cell.id}}
+            </option>
+          </select>
+          <div class="validation-error"
+            *ngIf="(prisonerId.invalid|| prisonerId.value.length <1 ) && prisonerId.touched">To pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ostatnie życzenie więźnia</label>
+          <textarea name="lastWish" #lastWish="ngModel" [(ngModel)]="wish" class="form-control" rows="3"
+            placeholder="Notatka o życzeniu" required></textarea>
+          <div class="validation-error" *ngIf="lastWish.invalid && lastWish.touched">
+            To pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-block btn-lg text-white submit" type="submit"
+            [disabled]="form.invalid || prisonerId.value.length < 1">
+            Zarezerwuj egzekucję
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
