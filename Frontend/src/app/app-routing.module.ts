@@ -10,6 +10,7 @@ import { PrisonerEditComponent } from './components/content/prisoners/prisoner-e
 import { AuthorizationGuard } from "./services/authorization.guard";
 import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
 import {BlockComponent} from "./components/content/block/block.component";
+import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'prisoners/edit/:id', component: PrisonerEditComponent, canActivate: [AuthorizationGuard] },
   { path: 'block', component: BlockComponent, canActivate: [AuthorizationGuard] },
   { path: 'sick-note', component: PrisonerSickNoteComponent, canActivate: [AuthorizationGuard] },
+  { path: 'execution/reservation', component: ExecutionReservationComponent, canActivate: [AuthorizationGuard] },
   { path: '**', redirectTo: '' }
 ];
 
