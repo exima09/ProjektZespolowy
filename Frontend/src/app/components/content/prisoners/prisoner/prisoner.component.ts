@@ -38,7 +38,8 @@ export class PrisonerComponent implements OnInit {
       cell: undefined,
       executions: [],
       visits: [],
-      sickLeaves: []
+      sickLeaves: [],
+      jailJobSchedule: []
     };
   }
 
