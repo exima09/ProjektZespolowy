@@ -1,23 +1,85 @@
 <app-site-header [childMessage]="headerOfSite"></app-site-header>
 <div class="container-fluid">
   <div class="row my-4">
-    <div class="col-md-4 offset-md-4 py-2 bg-content-mid text-center">
+    <div class="col-md-6 offset-md-3 py-2 bg-content-mid text-center">
       <h2>{{prisoner.firstName}} {{prisoner.lastName}}</h2>
     </div>
-    <div class="col-md-4 offset-md-4 bg-content-mid text-center">
+    <div class="col-md-6 offset-md-3 bg-content-mid text-center">
       <img class="size" src="assets/images/nico.jpg" />
     </div>
-    <div class="col-md-4 offset-md-4 bg-content-mid text-center pb-3">
-      <h5>Data urodzenia: {{prisoner.dateOfBirth}}</h5>
-      <h5>Data rejestracji: {{prisoner.joinDate}}</h5>
-      <h6 class="my-3">Więzień osadzony jest w celi {{prisoner.cell.id}}, sprawowanie dobre, srednia ocena...</h6>
+    <div class="col-md-6 offset-md-3 bg-content-mid text-center pb-3">
+      <h5><b>Data urodzenia:</b> {{prisoner.dateOfBirth.substring(0,10)}}</h5>
+      <h5><b>Data rejestracji:</b> {{prisoner.joinDate.substring(0,10)}}</h5>
+      <h5 class="my-3"><b>Numer celi:</b> {{prisoner.cell.id}}</h5>
+      <h5 class="my-3 table-header" data-toggle="collapse" href="#visitsCollapse" role="button" aria-expanded="false"
+        aria-controls="visitsCollapse"> Wizyty <i class='fas fa-angle-down'></i> </h5>
+      <div class="collapse" id="visitsCollapse">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data wizyty</th>
+              <th scope="col">Status</th>
+              <th scope="col">Osoba rezerwująca</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let visit of visits">
+              <th scope="row">{{visit.dateStart.substring(0,10)}}</th>
+              <td>{{visit.statusAccepted}}</td>
+              <td>{{visit.bookingPerson}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h5 class="my-3 table-header" data-toggle="collapse" href="#executionsCollapse" role="button"
+        aria-expanded="false" aria-controls="executionsCollapse">
+        Egzekucje <i class='fas fa-angle-down'></i>
+      </h5>
+      <div class="collapse" id="executionsCollapse">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data egzekucji</th>
+              <th scope="col">Ostatnie życzenie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let execution of executions">
+              <th scope="row">{{execution.executionDate.substring(0,10)}}</th>
+              <td>{{execution.lastWish}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h5 class="my-3 table-header" data-toggle="collapse" href="#leavesCollapse" role="button" aria-expanded="false"
+        aria-controls="leavesCollapse">
+        Zwolnienia <i class='fas fa-angle-down'></i>
+      </h5>
+      <div class="collapse" id="leavesCollapse">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Od</th>
+              <th scope="col">Do</th>
+              <th scope="col">Powód</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let leave of sickLeaves">
+              <th scope="row">{{leave.dateStart.substring(0,10)}}</th>
+              <td>{{leave.dateStop.substring(0,10)}}</td>
+              <td>{{leave.reason}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="row py-1 no-gutters ">
         <div class="col-md-6 pr-1">
-          <button mat-button [routerLink]="['/prisoners/edit/', prisoner.id]" class="btn btn-block text-white submit py-1">Edytuj</button>
+          <button mat-button class="btn btn-block text-white submit py-1">Edytuj</button>
         </div>
         <div class="col-md-6 pl-1">
           <button mat-button [routerLink]="'/prisoners'" class="btn btn-block text-white submit py-1">Wróć</button>
-        </div>       
+        </div>
       </div>
     </div>
   </div>

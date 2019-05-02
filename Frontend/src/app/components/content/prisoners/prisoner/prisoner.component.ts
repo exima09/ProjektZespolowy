@@ -35,7 +35,10 @@ export class PrisonerComponent implements OnInit {
       lastName: '',
       joinDate: '',
       dateOfBirth: '',
-      cell: undefined
+      cell: undefined,
+      executions: [],
+      visits: [],
+      sickLeaves: []
     };
   }
 
