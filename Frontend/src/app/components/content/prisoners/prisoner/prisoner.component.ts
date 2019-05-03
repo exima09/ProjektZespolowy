@@ -17,9 +17,9 @@ export class PrisonerComponent implements OnInit {
   headerOfSite = 'Rejestracja więźnia';
   cells: Cell[] = [];
   selectedCell = "";
-  blocks: Block[]
+  blocks: Block[];
   prisoner = new Prisoner();
-  
+
   constructor(private service: PrisonerService, private blockService: BlockService, private auth: AuthenticationService) {
   }
 

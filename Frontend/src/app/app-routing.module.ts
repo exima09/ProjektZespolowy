@@ -9,21 +9,57 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 import { AuthorizationGuard } from "./services/authorization.guard";
 import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
-import {BlockComponent} from "./components/content/block/block.component";
+import { BlockComponent } from "./components/content/block/block.component";
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
+import { Role } from './models/role/role';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'prisoners', component: PrisonersListComponent, canActivate: [AuthorizationGuard] },
-  { path: 'prisoners/register', component: PrisonerComponent, canActivate: [AuthorizationGuard] },
-  { path: 'prisoners/:id', component: PrisonerDetailsComponent, canActivate: [AuthorizationGuard] },
-  { path: 'prisoners/edit/:id', component: PrisonerEditComponent, canActivate: [AuthorizationGuard] },
-  { path: 'block', component: BlockComponent, canActivate: [AuthorizationGuard] },
-  { path: 'sick-note', component: PrisonerSickNoteComponent, canActivate: [AuthorizationGuard] },
-  { path: 'execution/reservation', component: ExecutionReservationComponent, canActivate: [AuthorizationGuard] },
+  {
+    path: 'prisoners',
+    component: PrisonersListComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
+  },
+  {
+    path: 'prisoners/register',
+    component: PrisonerComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'prisoners/:id',
+    component: PrisonerDetailsComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
+  },
+  {
+    path: 'prisoners/edit/:id',
+    component: PrisonerEditComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'block',
+    component: BlockComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
+  },
+  {
+    path: 'sick-note',
+    component: PrisonerSickNoteComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MEDICAL] }
+  },
+  {
+    path: 'execution/reservation',
+    component: ExecutionReservationComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER] }
+  },
   { path: '**', redirectTo: '' }
 ];
 
