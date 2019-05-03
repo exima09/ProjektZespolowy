@@ -32,6 +32,7 @@ export class PrisonerComponent implements OnInit {
     if (form != null) {
       form.resetForm();
     }
+
   }
 
   onSubmit(form: NgForm) {
