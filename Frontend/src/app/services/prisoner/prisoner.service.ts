@@ -10,8 +10,6 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PrisonerService {
-
-  formData: Prisoner;
   list: Prisoner[];
 
   constructor(private http: HttpClient, public snackBar: MatSnackBar) {

@@ -1,22 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {PrisonerService} from 'src/app/services/prisoner/prisoner.service';
-import {NgForm} from '@angular/forms';
-import {AuthenticationService} from "../../../../services/authorization.service";
-import {Cell} from "../../../../models/cell/cell.model";
-import {BlockService} from "../../../../services/block/block.service";
-import {Block} from "../../../../models/block/block.model";
+import { Component, OnInit } from '@angular/core';
+import { PrisonerService } from 'src/app/services/prisoner/prisoner.service';
+import { NgForm } from '@angular/forms';
+import { AuthenticationService } from "../../../../services/authorization.service";
+import { Cell } from "../../../../models/cell/cell.model";
+import { BlockService } from "../../../../services/block/block.service";
+import { Block } from "../../../../models/block/block.model";
+import { Prisoner } from 'src/app/models/prisoner/prisoner.model';
 
 @Component({
   selector: 'app-prisoner',
   templateUrl: './prisoner.component.html',
   styleUrls: ['./prisoner.component.css']
 })
+
 export class PrisonerComponent implements OnInit {
   headerOfSite = 'Rejestracja więźnia';
   cells: Cell[] = [];
   selectedCell = "";
-  blocks: Block[];
-
+  blocks: Block[]
+  prisoner = new Prisoner();
+  
   constructor(private service: PrisonerService, private blockService: BlockService, private auth: AuthenticationService) {
   }
 
@@ -29,18 +32,6 @@ export class PrisonerComponent implements OnInit {
     if (form != null) {
       form.resetForm();
     }
-    this.service.formData = {
-      id: null,
-      firstName: '',
-      lastName: '',
-      joinDate: '',
-      dateOfBirth: '',
-      cell: undefined,
-      executions: [],
-      visits: [],
-      sickLeaves: [],
-      jailJobSchedule: []
-    };
   }
 
   onSubmit(form: NgForm) {
