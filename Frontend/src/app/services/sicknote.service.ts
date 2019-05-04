@@ -19,6 +19,11 @@ export class SicknoteService {
             .pipe(catchError(err => this.errorHandler(err)));
     }
 
+    getSickNotes() {
+        return this.http.get('/api/sick-leave', getHeaders())
+            .pipe(catchError(err => this.errorHandler(err)));
+    }
+
     errorHandler(error: HttpErrorResponse) {
         if (error.name) {
             this.snackBar.open("Błąd", error.error.message, {

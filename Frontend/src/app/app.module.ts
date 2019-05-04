@@ -24,11 +24,12 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 import {AuthorizationGuard} from "./services/authorization.guard";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
+import { PrisonerSickNoteComponent } from './components/content/sick-leave/prisoner-sick-note/prisoner-sick-note.component';
 import { BlockComponent } from './components/content/block/block.component';
 import {CellComponent} from './components/content/cell/cell.component';
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { ExecutionService } from './services/execution/execution.service';
+import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ExecutionService } from './services/execution/execution.service';
     PrisonerSickNoteComponent,
     BlockComponent,
     CellComponent,
-    ExecutionReservationComponent
+    ExecutionReservationComponent,
+    SickLeavesComponent
   ],
   imports: [
     BrowserModule,
