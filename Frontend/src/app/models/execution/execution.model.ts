@@ -1,6 +1,9 @@
+import { Prisoner } from "../prisoner/prisoner.model";
+
 export class Execution {
     id?: number;
-    workerId: number;
+    worker;
+    prisoner: Prisoner;
     executionDate: string;
-    lastWish: number;
+    lastWish: string;
 }
