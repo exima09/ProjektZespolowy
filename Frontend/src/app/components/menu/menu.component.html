@@ -6,17 +6,30 @@
   <a class="menu-item py-2" [routerLink]="'/login'" *ngIf="!(isLoggedIn$ | async)">Zaloguj</a>
   <a class="menu-item py-2" [routerLink]="'/register'" *ngIf="!(isLoggedIn$ | async)">Zarejestruj</a>
   <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
-  <a class="menu-item py-2" [routerLink]="'/'">Aktualności</a>
-  <a class="menu-item py-2" [routerLink]="'/'">Odwiedziny</a>
-  <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
-  <a class="menu-item py-2" [routerLink]="'/prisoners'">Więźniowie</a>
-  <a class="menu-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
-  <a class="menu-item py-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Wystaw
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" [routerLink]="'/sick-note'">Zwolnienie lekarskie</a>
-    <a class="dropdown-item" href="#">Powiadomienie o zgonie</a>
-  </div>
   <a class="menu-item py-2" [routerLink]="'/block'">Blok więzienny</a>
+  <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
+  <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
+    aria-controls="visitCollapse"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
+  <div class="collapse" id="visitCollapse">
+    <a class="menu-item colapse-item py-2" [routerLink]="'/'">Zarezerwuj odwiedziny</a>
+    <a class="menu-item colapse-item py-2" [routerLink]="'/'">Lista odwiedzin</a>
+  </div>
+  <a class="menu-item py-2" data-toggle="collapse" href="#prisonerCollapse" role="button" aria-expanded="false"
+    aria-controls="prisonerCollapse"> Więźniowie <i class='fas fa-angle-down'></i> </a>
+  <div class="collapse" id="prisonerCollapse">
+    <a class="menu-item colapse-item py-2" [routerLink]="'/prisoners'">Lista więźniów</a>
+    <a class="menu-item colapse-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
+  </div>
+  <a class="menu-item py-2" data-toggle="collapse" href="#sickCollapse" role="button" aria-expanded="false"
+    aria-controls="sickCollapse"> Zwolnienia <i class='fas fa-angle-down'></i> </a>
+  <div class="collapse" id="sickCollapse">
+    <a class="menu-item colapse-item py-2" [routerLink]="'/issue-sick-note'">Wystaw zwolnienie lekarskie</a>
+    <a class="menu-item colapse-item py-2" [routerLink]="'/sick-note'">Lista zwolnień</a>
+  </div>
+  <a class="menu-item py-2" data-toggle="collapse" href="#executionCollapse" role="button" aria-expanded="false"
+    aria-controls="executionCollapse"> Egzekucje <i class='fas fa-angle-down'></i> </a>
+  <div class="collapse" id="executionCollapse">
+    <a class="menu-item colapse-item py-2" [routerLink]="'/execution/reservation'">Zarezerwuj egzekucję</a>
+    <a class="menu-item colapse-item py-2" [routerLink]="'/'">Lista egzekucji</a>
+  </div>
 </div>

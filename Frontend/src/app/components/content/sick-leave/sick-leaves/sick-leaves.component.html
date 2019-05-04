@@ -1,0 +1,39 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-md-8 offset-md-2 bg-content-mid text-center pb-3">
+      <div class="dropdown button-section">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Sortuj według
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="sortByDateUp()">Data wstawienia rosnąco</a>
+          <a class="dropdown-item" (click)="sortByDateDown()">Data wystawienia malejąco</a>
+          <a class="dropdown-item" (click)="sortByPrisonerAZ()">Nazwisko więźnia A-Z</a>
+          <a class="dropdown-item" (click)="sortByPrisonerZA()">Nazwisko więźnia Z-A</a>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Od</th>
+            <th scope="col">Do</th>
+            <th scope="col">Więzień</th>
+            <th scope="col">Powód</th>
+            <th scope="col">Wystawione przez</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sickLeave of sickLeaves">
+            <th scope="row">{{sickLeave.dateStart.substring(0,10)}}</th>
+            <td>{{sickLeave.dateStop.substring(0,10)}}</td>
+            <td>{{sickLeave.prisoner.firstName}} {{sickLeave.prisoner.lastName}}</td>
+            <td>{{sickLeave.reason}}</td>
+            <td>{{sickLeave.worker.user.firstName}} {{sickLeave.worker.user.lastName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

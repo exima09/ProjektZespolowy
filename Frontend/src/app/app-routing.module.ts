@@ -8,10 +8,11 @@ import { PrisonerComponent } from './components/content/prisoners/prisoner/priso
 import { PrisonerDetailsComponent } from './components/content/prisoners/prisoner-details/prisoner-details.component';
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 import { AuthorizationGuard } from "./services/authorization.guard";
-import { PrisonerSickNoteComponent } from './components/content/prisoners/prisoner-sick-note/prisoner-sick-note.component';
-import { BlockComponent } from "./components/content/block/block.component";
+import { PrisonerSickNoteComponent } from './components/content/sick-leave/prisoner-sick-note/prisoner-sick-note.component';
+import {BlockComponent} from "./components/content/block/block.component";
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { Role } from './models/role/role';
+import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 
 
 const routes: Routes = [
@@ -49,8 +50,14 @@ const routes: Routes = [
     data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
   },
   {
-    path: 'sick-note',
+    path: 'issue-sick-note',
     component: PrisonerSickNoteComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MEDICAL] }
+  },
+  {
+    path: 'sick-note',
+    component: SickLeavesComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.MEDICAL] }
   },
@@ -60,6 +67,7 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.EXECUTIONER] }
   },
+
   { path: '**', redirectTo: '' }
 ];
 

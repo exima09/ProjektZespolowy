@@ -11,7 +11,14 @@
     background: linear-gradient(to right, rgba(32,47,62,1) 0%,rgba(0,0,0,0) 100%);
     transition: background 1s ease;
 }
+.colapse-item {
+  background: linear-gradient(to right, rgb(52, 65, 78) 0%,rgb(43, 55, 66) 100%);
+}
 
 .menu-item:hover {
   background: rgba(32,47,62,1);
+}
+
+.colapse-item:hover {
+  background: rgba(65, 79, 94,1);
 }
