@@ -11,7 +11,7 @@ import { throwError } from 'rxjs';
 })
 export class ExecutionService {
 
-  constructor(private http: HttpClient,public snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, public snackBar: MatSnackBar) {
   }
 
   postExecution(formData) {
@@ -21,7 +21,11 @@ export class ExecutionService {
   getFirstFreeDate() {
     return this.http.get('/api/execution/get/date', getHeaders()).pipe(catchError(err => this.errorHandler(err)));;
   }
-  
+  getExecutions() {
+    return this.http.get('/api/execution', getHeaders())
+      .pipe(catchError(err => this.errorHandler(err)));
+  }
+
   errorHandler(error: HttpErrorResponse) {
     if (error.name) {
       this.snackBar.open("Błąd", error.error.message, {

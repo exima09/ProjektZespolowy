@@ -30,6 +30,7 @@ import {CellComponent} from './components/content/cell/cell.component';
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { ExecutionService } from './services/execution/execution.service';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
+import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves
     BlockComponent,
     CellComponent,
     ExecutionReservationComponent,
-    SickLeavesComponent
+    SickLeavesComponent,
+    ExecutionListComponent
   ],
   imports: [
     BrowserModule,

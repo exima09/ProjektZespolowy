@@ -13,6 +13,7 @@ import {BlockComponent} from "./components/content/block/block.component";
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { Role } from './models/role/role';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
+import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 
 
 const routes: Routes = [
@@ -59,13 +60,19 @@ const routes: Routes = [
     path: 'sick-note',
     component: SickLeavesComponent,
     canActivate: [AuthorizationGuard],
-    data: { roles: [Role.ADMIN, Role.MEDICAL] }
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
   },
   {
     path: 'execution/reservation',
     component: ExecutionReservationComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.EXECUTIONER] }
+  },
+  {
+    path: 'executions',
+    component: ExecutionListComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
   },
 
   { path: '**', redirectTo: '' }

@@ -10,7 +10,6 @@ import { SickLeave } from 'src/app/models/sick-leave/sickLeave.model';
 export class SickLeavesComponent implements OnInit {
   headerOfSite = "Lista zwolnień lekarskich";
   sickLeaves: SickLeave[];
-  headElements = ['Od', 'Do', 'Więzień', 'Powód', 'Wystawione przez'];
 
   constructor(private sickService: SicknoteService) {
   }
