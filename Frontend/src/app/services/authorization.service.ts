@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {catchError, map, take} from 'rxjs/operators';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError, map, take } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { Router } from "@angular/router";
 import * as jwt_decode from 'jwt-decode';
-import {getHeaders} from "./headers";
+import { getHeaders } from "./headers";
+import { getToken } from '@angular/router/src/utils/preactivation';
 
 const TOKEN = 'token';
 
@@ -28,6 +29,7 @@ export class AuthenticationService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   formData: RegisterProps;
 
+
   constructor(private http: HttpClient, public snackBar: MatSnackBar, private router: Router) {
     if (this.checkLogin()) {
       this.loggedIn.next(true);
@@ -46,7 +48,7 @@ export class AuthenticationService {
         this.setToken(item[TOKEN]);
         this.loggedIn.next(true);
         this.router.navigate(['/']);
-        this.snackBar.open("Logowanie pomyślne.", "OK", {duration: 5000});
+        this.snackBar.open("Logowanie pomyślne.", "OK", { duration: 5000 });
       }),
       catchError(err => this.errorHandler(err))
     );
@@ -68,6 +70,14 @@ export class AuthenticationService {
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  getRoles(){
+    const jwtToken = this.getToken();
+    const jwtData = jwtToken.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    const decodedJwtData = JSON.parse(decodedJwtJsonData);
+    return decodedJwtData.roles;
   }
 
   getToken() {
