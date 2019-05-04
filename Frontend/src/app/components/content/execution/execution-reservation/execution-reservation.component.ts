@@ -48,6 +48,7 @@ export class ExecutionReservationComponent implements OnInit {
         panelClass: ['service-snackbar']
       });
     }
+    form.resetForm();
   }
 
 }
