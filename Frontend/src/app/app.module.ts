@@ -1,5 +1,5 @@
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatPaginatorModule, MatSelectModule, MatFormField, MatFormFieldModule} from '@angular/material';
+import {MatPaginatorModule, MatSelectModule, MatFormField, MatFormFieldModule, MatCheckboxModule} from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/content/login/login.component';
@@ -31,6 +31,8 @@ import { ExecutionReservationComponent } from './components/content/execution/ex
 import { ExecutionService } from './services/execution/execution.service';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
+import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
+import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ExecutionListComponent } from './components/content/execution/execution
     CellComponent,
     ExecutionReservationComponent,
     SickLeavesComponent,
-    ExecutionListComponent
+    ExecutionListComponent,
+    UserRolesComponent,
+    AssignUserRoleComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,8 @@ import { ExecutionListComponent } from './components/content/execution/execution
     MatTableModule,
     MatProgressBarModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard, ExecutionService],
   bootstrap: [AppComponent]

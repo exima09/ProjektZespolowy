@@ -10,7 +10,6 @@ import { ExecutionService } from 'src/app/services/execution/execution.service';
 export class ExecutionListComponent implements OnInit {
   headerOfSite = "Lista egzekucji";
   executions: Execution[];
-  headElements = ['Kiedy', 'Więzień', 'Ostatnie życzenie', 'Wystawione przez'];
 
   constructor(private executionService: ExecutionService) {
   }

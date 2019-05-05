@@ -4,7 +4,7 @@ import { Execution } from 'src/app/models/execution/execution.model';
 import { getHeaders } from '../headers';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ExecutionService {
   getFirstFreeDate() {
     return this.http.get('/api/execution/get/date', getHeaders()).pipe(catchError(err => this.errorHandler(err)));;
   }
-  getExecutions() {
+  getExecutions(): Observable<any>{
     return this.http.get('/api/execution', getHeaders())
       .pipe(catchError(err => this.errorHandler(err)));
   }
