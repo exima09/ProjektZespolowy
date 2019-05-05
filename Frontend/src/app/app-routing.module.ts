@@ -14,6 +14,8 @@ import { ExecutionReservationComponent } from './components/content/execution/ex
 import { Role } from './models/role/role';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
+import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
+import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
 
 
 const routes: Routes = [
@@ -73,6 +75,18 @@ const routes: Routes = [
     component: ExecutionListComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.EXECUTIONER, Role.SOCIAL, Role.GUARD, Role.MANAGER, Role.MEDICAL, Role.WARDEN] }
+  },
+  {
+    path: 'user',
+    component: UserRolesComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'assign-user',
+    component: AssignUserRoleComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
   },
 
   { path: '**', redirectTo: '' }

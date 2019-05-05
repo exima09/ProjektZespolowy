@@ -29,13 +29,22 @@ export class PrisonerSickNoteComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    form.value.dateStart = this.currentDate;
-    this.sickNoteService.postSickNote(form.value).subscribe(() => {
-      this.snackBar.open('Dodano zwolnienie', 'OK', {
-        duration: 2000,
-        panelClass: ['service-snackbar']
+    if (form.valid) {
+      form.value.dateStart = this.currentDate;
+      this.sickNoteService.postSickNote(form.value).subscribe(() => {
+        this.snackBar.open('Dodano zwolnienie', 'OK', {
+          duration: 2000,
+          panelClass: ['service-snackbar']
+        });
       });
-    });
+    }
+    else {
+      this.sickNoteService.postSickNote(form.value).subscribe(() => {
+        this.snackBar.open('Wypełnij pola', 'FAIL', {
+          duration: 2000,
+          panelClass: ['service-snackbar']
+        });
+      });
+    }
   }
-
 }

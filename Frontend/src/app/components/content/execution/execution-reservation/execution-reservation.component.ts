@@ -9,6 +9,7 @@ import { PrisonerService } from 'src/app/services/prisoner/prisoner.service';
 import { DatePipe } from '@angular/common';
 import { SicknoteService } from 'src/app/services/sicknote.service';
 import { ValueTransformer } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-execution-reservation',
@@ -18,35 +19,42 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 export class ExecutionReservationComponent implements OnInit {
   headerOfSite = "Zarezerwuj egzekucję";
   private prisoners: Prisoner[] = [];
-  selectedPrisonerId = "";
-  firstFreeDate = "";
+  firstFreeDate;
 
   constructor(private prisonerService: PrisonerService, public snackBar: MatSnackBar, private executionService: ExecutionService) { }
 
   ngOnInit() {
-    this.prisonerService.getPrisoners().subscribe((res: any) => {
-      this.prisoners = JSON.parse(res.prisoners);
-    });
+    this.getDate();
+    this.getPrisoners();
+  }
 
+  getDate() {
     this.executionService.getFirstFreeDate().subscribe((res: any) => {
       this.firstFreeDate = res.executionDate.slice(1, -4);
     });
   }
+  getPrisoners() {
+    this.prisonerService.getPrisoners().subscribe((res: any) => {
+      this.prisoners = JSON.parse(res.prisoners);
+    });
+  }
 
-  onSubmit(form) {
-    if (this.firstFreeDate) {
+  onSubmit(form: NgForm) {
+    if (this.firstFreeDate && form.valid) {
       form.value.executionDate = this.firstFreeDate;
       this.executionService.postExecution(form.value).subscribe(() => {
         this.snackBar.open('Dodano egzekucje', 'OK', {
-          duration: 2000,
+          duration: 1000,
           panelClass: ['service-snackbar']
         });
+        console.log("ok");
       });
     } else {
-      this.snackBar.open('Brak daty egzekucji lol', 'FAIL', {
-        duration: 2000,
+      this.snackBar.open('Brak daty egzekucji', 'FAIL', {
+        duration: 1000,
         panelClass: ['service-snackbar']
       });
+      console.log(" nie ok");
     }
     form.resetForm();
   }
