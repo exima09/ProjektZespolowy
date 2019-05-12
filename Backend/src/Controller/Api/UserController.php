@@ -3,7 +3,10 @@
 namespace App\Controller\Api;
 
 use App\Entity\User;
+use App\Entity\Worker;
+use App\Repository\DepartmentRepository;
 use App\Repository\UserRepository;
+use App\Repository\WorkerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,6 +27,14 @@ class UserController extends AbstractController
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var WorkerRepository
+     */
+    private $workerRepository;
+    /**
+     * @var DepartmentRepository
+     */
+    private $departmentRepository;
 
     /**
      * @var EntityManagerInterface
@@ -34,32 +45,238 @@ class UserController extends AbstractController
      * @var UserPasswordEncoderInterface
      */
     private $encoder;
+
+    /**
+     * @SerializerInterface $serializer
+     */
+    private $serializer;
+
     /**
      * UserController constructor.
-     * @param UserRepository $userRepository
-     * @param EntityManagerInterface $entityManager
+     * @param UserRepository               $userRepository
+     * @param EntityManagerInterface       $entityManager
      * @param UserPasswordEncoderInterface $encoder
-     * @return void
+     * @param SerializerInterface          $serializer
+     * @param WorkerRepository             $workerRepository
+     * @param DepartmentRepository         $departmentRepository
      */
     public function __construct(
         UserRepository $userRepository,
         EntityManagerInterface $entityManager,
-        UserPasswordEncoderInterface $encoder
+        UserPasswordEncoderInterface $encoder,
+        SerializerInterface $serializer,
+        WorkerRepository $workerRepository,
+        DepartmentRepository $departmentRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->entityManager = $entityManager;
         $this->encoder = $encoder;
+        $this->serializer = $serializer;
+        $this->workerRepository = $workerRepository;
+        $this->departmentRepository = $departmentRepository;
     }
     /**
-     * @Route("/api", name="user")
+     * @Route("/user", name="user_list", methods={"GET"})
      */
-    public function index()
+    public function list()
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        try {
+            $users = $this->userRepository->findAll();
+            return new JsonResponse([
+                "workers" => $this->serializer->serialize($users, 'json'),
+                "message" => "Poprawnie pobrano liste użytkowników"
+            ]);
+        } catch (Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas pobierania listy użytkowników",
+                "error" => "Błąd podczas pobierania listy użytkowników"
+            ],400);
+        }
     }
+
+    /**
+     * @Route("/worker", name="user_worker", methods={"GET"})
+     */
+    public function getWorkers()
+    {
+        try {
+            $workers = $this->workerRepository->findAll();
+            return new JsonResponse([
+                "users" => $this->serializer->serialize($workers, 'json'),
+                "message" => "Poprawnie pobrano liste pracowników"
+            ]);
+        } catch (\Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas pobierania listy pracowników",
+                "error" => "Błąd podczas pobierania listy pracowników"
+            ],400);
+        }
+    }
+
+    /**
+     * @Route("/worker/user", name="add_user_to_worker", methods={"POST"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function addWorkerToUser(Request $request)
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+            if (
+                array_key_exists("salary", $data) &&
+                array_key_exists("bonus", $data) &&
+                array_key_exists("departmentId", $data) &&
+                array_key_exists("userId", $data) &&
+                array_key_exists("roles", $data)
+            ) {
+                $user = $this->userRepository->find($data["userId"]);
+                if(!$user){
+                    return new JsonResponse([
+                        "message" => "Brak użytkownika nr {$data['userId']}",
+                        "error" => "Brak użytkownika nr {$data['userId']}"
+                    ],400);
+                }
+                if($user->getWorker()){
+                    return new JsonResponse([
+                        "message" => "Użytkownik o nr {$data['userId']} ma już przypisanego pracownika",
+                        "error" => "Użytkownik o nr {$data['userId']} ma już przypisanego pracownika"
+                    ],400);
+                }
+                $department = $this->departmentRepository->find($data["departmentId"]);
+                if(!$department){
+                    return new JsonResponse([
+                        "message" => "Brak departamentu nr {$data['departmentId']}",
+                        "error" => "Brak departamentu nr {$data['departmentId']}"
+                    ],400);
+                }
+                $worker = new Worker($data['salary'], $data['bonus'], $user, $department);
+                $user->setRoles($data['roles']);
+                $this->entityManager->persist($worker);
+                $this->entityManager->flush();
+                return new JsonResponse([
+                    "message" => "Poprawnie pobrano dodano pracownika"
+                ]);
+            } else {
+                return new JsonResponse([
+                    "message" => "Nie wypełniłeś wszystkich pól",
+                    "error" => "Sprwadź pola salary, bonus, departmentId, userId"
+                ],400);
+            }
+        } catch (\Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas dodawanie pracownika",
+                "error" => "Błąd podczas dodawanie pracownika"
+            ],400);
+        }
+    }
+
+    /**
+     * @Route("/user/edit/{id}", name="user_edit", methods={"POST"}, requirements={"id"="\d+"})
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function editUser(Request $request, int $id)
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+            $user = $this->userRepository->find($id);
+            if (!$user) {
+                return new JsonResponse([
+                    'message' => "Brak użytkownika o nr {$id}"
+                ], 400);
+            } else {
+                if (array_key_exists("password", $data)) {
+                    $user->setPassword($this->encoder->encodePassword($user, $data['password']));
+                }
+                if(array_key_exists("firstName", $data)){
+                    $user->setFirstName($data['firstName']);
+                }
+                if(array_key_exists("lastName", $data)){
+                    $user->setLastName($data['lastName']);
+                }
+                if(array_key_exists("roles", $data)){
+                    $user->setRoles($data['roles']);
+                }
+                $this->entityManager->flush();
+
+                return new JsonResponse([
+                    'message' => "Użytkownik został poprawnie zedytowany"
+                ]);
+            }
+        } catch (\Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas edycji użytkownika",
+                "error" => "Błąd podczas edycji użytkownika"
+            ],400);
+        }
+    }
+
+    /**
+     * @Route("/worker/edit/{id}", name="worker_edit", methods={"POST"}, requirements={"id"="\d+"})
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function workerEdit(Request $request, int $id)
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+            $worker = $this->workerRepository->find($id);
+            $user = $worker->getUser();
+            if (!$user) {
+                return new JsonResponse([
+                    'message' => "Brak użytkownika o nr {$id}"
+                ], 400);
+            } else {
+                if (array_key_exists("password", $data)) {
+                    $user->setPassword($this->encoder->encodePassword($user, $data['password']));
+                }
+                if(array_key_exists("firstName", $data)){
+                    $user->setFirstName($data['firstName']);
+                }
+                if(array_key_exists("lastName", $data)){
+                    $user->setLastName($data['lastName']);
+                }
+                if(array_key_exists("roles", $data)){
+                    $user->setRoles($data['roles']);
+                }
+                if(array_key_exists("salary", $data)){
+                    $worker->setSalary($data['salary']);
+                }
+                if(array_key_exists("bonus", $data)){
+                    $worker->setBonus($data['bonus']);
+                }
+                if(array_key_exists("finishedWork", $data) &&  !$worker->getDateTo()){
+                    $worker->setDateTo(new \DateTime('now'));
+                }
+                if(array_key_exists("department", $data)){
+                    $department = $this->departmentRepository->find($data["departmentId"]);
+                    if(!$department){
+                        return new JsonResponse([
+                            "message" => "Brak departamentu nr {$data['departmentId']}",
+                            "error" => "Brak departamentu nr {$data['departmentId']}"
+                        ],400);
+                    }
+                    $worker->setDepartment($department);
+                }
+                $this->entityManager->flush();
+
+                return new JsonResponse([
+                    'message' => "Pracownik został poprawnie zedytowany"
+                ]);
+            }
+        } catch (\Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas edycji pracownika",
+                "error" => "Błąd podczas edycji pracownika"
+            ],400);
+        }
+    }
+
+
     /**
      * @Route("/login", name="api_user_logIn")
      * @param Request $request
@@ -68,7 +285,6 @@ class UserController extends AbstractController
     public function logIn(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-        var_dump($data);
         if ($this->userRepository->findBy(
             ['username' => $data['username']]
         )) {

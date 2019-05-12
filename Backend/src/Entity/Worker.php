@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\WorkerRepository")
  */
 class Worker
@@ -30,7 +32,7 @@ class Worker
     private $bonus;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateFrom;
 
@@ -64,8 +66,16 @@ class Worker
      */
     private $dateTo;
 
-    public function __construct()
+    public function __construct(int $salary, int $bonus, User $user, Department $department)
     {
+        $this->salary = $salary;
+        $this->bonus = $bonus;
+        $this->user = $user;
+        $this->department = $department;
+        try {
+            $this->dateFrom = new \DateTime('now');
+        } catch (\Exception $e) {
+        }
         $this->sickLeaves = new ArrayCollection();
         $this->execution = new ArrayCollection();
         $this->jailJobSchedules = new ArrayCollection();
