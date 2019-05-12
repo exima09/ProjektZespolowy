@@ -10,7 +10,7 @@ import { Role } from 'src/app/models/role/role';
 })
 export class MenuComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  isAdmin: boolean = false;
+  isAdmin = false;
 
   constructor(private authService: AuthenticationService) { }
 
@@ -19,12 +19,8 @@ export class MenuComponent implements OnInit {
     this.isAdmin = this.checkAdminLogged();
   }
 
-  checkAdminLogged() {
-    if (this.authService.getRoles().includes(Role.ADMIN)) {
-      return true;
-    }
-    return false;
-  }
+  checkAdminLogged = () => this.authService.getRoles().includes(Role.ADMIN);
+
   onLogout() {
     this.authService.logout();
   }
