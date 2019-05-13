@@ -18,29 +18,13 @@ class WorkerFixtures extends Fixture implements DependentFixtureInterface
 
         /** @var User $user1 */
         $user1 = $this->getReference("user1");
-        $worker = new Worker();
-        $worker->setBonus(1000);
-        try {
-            $worker->setDateFrom(new \DateTime("now"));
-        } catch (\Exception $e) {
-        }
-        $worker->setDepartment($department);
-        $worker->setSalary(10000);
-        $worker->setUser($user1);
+        $worker = new Worker(10000, 200, $user1, $department);
         $this->addReference("worker1",$worker);
         $manager->persist($worker);
 
         /** @var User $user3 */
         $user3 = $this->getReference("user3");
-        $worker = new Worker();
-        $worker->setBonus(300);
-        try {
-            $worker->setDateFrom(new \DateTime("now"));
-        } catch (\Exception $e) {
-        }
-        $worker->setDepartment($department);
-        $worker->setSalary(5000);
-        $worker->setUser($user3);
+        $worker = new Worker(5000, 300, $user3, $department);
         $manager->persist($worker);
 
 
