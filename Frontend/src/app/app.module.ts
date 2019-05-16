@@ -32,8 +32,10 @@ import { ExecutionService } from './services/execution/execution.service';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
-import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
+import { WorkersListComponent } from './components/content/worker/workers-list/workers-list.component';
 import { DepartmentComponent } from './components/content/worker/department/department.component';
+import { WorkerComponent } from './components/content/worker/worker/worker.component';
+import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { DepartmentComponent } from './components/content/worker/department/depa
     ExecutionListComponent,
     UserRolesComponent,
     WorkersListComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    WorkerComponent,
+    AddWorkerComponent
   ],
   imports: [
     BrowserModule,

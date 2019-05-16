@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import * as jwt_decode from 'jwt-decode';
 import { getHeaders } from "./headers";
 import { getToken } from '@angular/router/src/utils/preactivation';
+import { Role } from '../models/role/role';
 
 const TOKEN = 'token';
 
@@ -27,6 +28,7 @@ interface LoginProps {
 })
 export class AuthenticationService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private admin = new BehaviorSubject<boolean>(false);
   formData: RegisterProps;
 
 
@@ -47,6 +49,7 @@ export class AuthenticationService {
       map(item => {
         this.setToken(item[TOKEN]);
         this.loggedIn.next(true);
+        this.admin.next(this.checkIfAdmin());
         this.router.navigate(['/']);
         this.snackBar.open("Logowanie pomyślne.", "OK", { duration: 5000 });
       }),
@@ -72,7 +75,15 @@ export class AuthenticationService {
     return this.loggedIn.asObservable();
   }
 
-  getRoles(){
+  checkIfAdmin() {
+    return this.getRoles().includes(Role.ADMIN) ? true : false;
+  }
+
+  get isAdmin() {
+    return this.admin.asObservable();
+  }
+
+  getRoles() {
     const jwtToken = this.getToken();
     const jwtData = jwtToken.split('.')[1];
     const decodedJwtJsonData = window.atob(jwtData);
@@ -118,6 +129,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem(TOKEN);
     this.loggedIn.next(false);
+    this.admin.next(false);
     this.router.navigateByUrl("/login");
   }
 

@@ -15,8 +15,11 @@ import { Role } from './models/role/role';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
-import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
+import { WorkersListComponent } from './components/content/worker/workers-list/workers-list.component';
 import { DepartmentComponent } from './components/content/worker/department/department.component';
+import { WorkerComponent } from './components/content/worker/worker/worker.component';
+import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -91,6 +94,18 @@ const routes: Routes = [
   {
     path: 'workers',
     component: WorkersListComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'worker/:id',
+    component: WorkerComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER] }
+  },
+  {
+    path: 'add-worker',
+    component: AddWorkerComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN] }
   },
