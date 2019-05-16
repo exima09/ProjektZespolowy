@@ -84,13 +84,13 @@ class UserController extends AbstractController
         try {
             $users = $this->userRepository->findAll();
             return new JsonResponse([
-                "workers" => $this->serializer->serialize($users, 'json'),
+                "users" => $this->serializer->serialize($users, 'json'),
                 "message" => "Poprawnie pobrano liste użytkowników"
             ]);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             return new JsonResponse([
                 "message" => "Błąd podczas pobierania listy użytkowników",
-                "error" => "Błąd podczas pobierania listy użytkowników"
+                "error" => $exception->getMessage()
             ],400);
         }
     }
@@ -103,13 +103,33 @@ class UserController extends AbstractController
         try {
             $workers = $this->workerRepository->findAll();
             return new JsonResponse([
-                "users" => $this->serializer->serialize($workers, 'json'),
+                "workers" => $this->serializer->serialize($workers, 'json'),
                 "message" => "Poprawnie pobrano liste pracowników"
             ]);
         } catch (\Exception $exception) {
             return new JsonResponse([
                 "message" => "Błąd podczas pobierania listy pracowników",
                 "error" => "Błąd podczas pobierania listy pracowników"
+            ],400);
+        }
+    }
+
+    /**
+     * @Route("/user/noworker", name="user_noworker", methods={"GET"})
+     */
+    public function getUserNoWorker()
+    {
+        try {
+            $users = $this->userRepository->findNoWorker();
+
+            return new JsonResponse([
+                "users" => $this->serializer->serialize($users, 'json'),
+                "message" => "Poprawnie pobrano liste użytkowników"
+            ]);
+        } catch (\Exception $exception) {
+            return new JsonResponse([
+                "message" => "Błąd podczas pobierania listy użytkowników",
+                "error" => $exception->getMessage()
             ],400);
         }
     }
@@ -166,7 +186,7 @@ class UserController extends AbstractController
         } catch (\Exception $exception) {
             return new JsonResponse([
                 "message" => "Błąd podczas dodawanie pracownika",
-                "error" => "Błąd podczas dodawanie pracownika"
+                "error" => $exception->getMessage()
             ],400);
         }
     }
@@ -208,7 +228,7 @@ class UserController extends AbstractController
         } catch (\Exception $exception) {
             return new JsonResponse([
                 "message" => "Błąd podczas edycji użytkownika",
-                "error" => "Błąd podczas edycji użytkownika"
+                "error" => $exception->getMessage()
             ],400);
         }
     }
@@ -268,10 +288,10 @@ class UserController extends AbstractController
                     'message' => "Pracownik został poprawnie zedytowany"
                 ]);
             }
-        } catch (\Exception $exception) {
+        } catch (\Exception $e) {
             return new JsonResponse([
                 "message" => "Błąd podczas edycji pracownika",
-                "error" => "Błąd podczas edycji pracownika"
+                "error" => $e->getMessage()
             ],400);
         }
     }
@@ -330,6 +350,52 @@ class UserController extends AbstractController
             return JsonResponse::create([
                 'message' => "dodano"
             ]);
+        }
+    }
+
+    /**
+     * @Route("/user/{id}", name="user_getById", methods={"GET"})
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getUserById(int $id)
+    {
+        try {
+            $user = $this->userRepository->findOneBy(["id" => $id]);
+            if($user) {
+                return JsonResponse::create([
+                    "user" => $this->serializer->serialize($user, 'json')
+                ]);
+            }
+            return JsonResponse::create(["message" => "Brak użytkownika o numerze: {$id}"], 400);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                "message" => "Brak użytkownika o numerze: {$id}",
+                "error" => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    /**
+     * @Route("/worker/{id}", name="worker_getById", methods={"GET"})
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getWorkerById(int $id)
+    {
+        try {
+            $worker = $this->workerRepository->findOneBy(["id" => $id]);
+            if($worker) {
+                return JsonResponse::create([
+                    "worker" => $this->serializer->serialize($worker, 'json')
+                ]);
+            }
+            return JsonResponse::create(["message" => "Brak pracownika o numerze: {$id}"], 400);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                "message" => "Brak pracownika o numerze: {$id}",
+                "error" => $e->getMessage()
+            ], 400);
         }
     }
 }
