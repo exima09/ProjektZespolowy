@@ -1,0 +1,40 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-md-8 offset-md-2 bg-content-mid text-center pb-3">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Działy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let department of departments">
+            <th scope="row">{{department.departmentName}}</th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="newDepButton" *ngIf="!addMode" (click)="changeMode(true)">
+        <button mat-raised-button color="accent">Dodaj nowy departament</button>
+      </div>
+      <div *ngIf="addMode" class="addDepartment">
+        <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+          <div class="form-group">
+            <label>Nazwa departamentu</label>
+            <input name="departmentName" #departmentName="ngModel" ngModel class="form-control" rows="3"
+              placeholder="Nazwa" required />
+            <div class="validation-error" *ngIf="departmentName.invalid && departmentName.touched">
+              To pole jest wymagane.
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-block btn-lg text-white submit" type="submit" [disabled]="form.invalid">
+              Dodaj
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

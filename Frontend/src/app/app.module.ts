@@ -32,8 +32,8 @@ import { ExecutionService } from './services/execution/execution.service';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
-import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
 import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
+import { DepartmentComponent } from './components/content/worker/department/department.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +56,8 @@ import { WorkersListComponent } from './components/content/workers/workers-list/
     SickLeavesComponent,
     ExecutionListComponent,
     UserRolesComponent,
-    AssignUserRoleComponent,
-    WorkersListComponent
+    WorkersListComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,

@@ -9,15 +9,14 @@ import { PrisonerDetailsComponent } from './components/content/prisoners/prisone
 import { PrisonerEditComponent } from './components/content/prisoners/prisoner-edit/prisoner-edit.component';
 import { AuthorizationGuard } from "./services/authorization.guard";
 import { PrisonerSickNoteComponent } from './components/content/sick-leave/prisoner-sick-note/prisoner-sick-note.component';
-import {BlockComponent} from "./components/content/block/block.component";
+import { BlockComponent } from "./components/content/block/block.component";
 import { ExecutionReservationComponent } from './components/content/execution/execution-reservation/execution-reservation.component';
 import { Role } from './models/role/role';
 import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves/sick-leaves.component';
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
-import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
 import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
-
+import { DepartmentComponent } from './components/content/worker/department/department.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -84,10 +83,10 @@ const routes: Routes = [
     data: { roles: [Role.ADMIN] }
   },
   {
-    path: 'assign-user',
-    component: AssignUserRoleComponent,
+    path: 'department',
+    component: DepartmentComponent,
     canActivate: [AuthorizationGuard],
-    data: { roles: [Role.ADMIN] }
+    data: { roles: [Role.ADMIN, Role.MANAGER] }
   },
   {
     path: 'workers',
@@ -95,7 +94,6 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN] }
   },
-
   { path: '**', redirectTo: '' }
 ];
 
