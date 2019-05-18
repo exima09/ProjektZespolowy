@@ -18,6 +18,7 @@ export class WorkersListComponent implements OnInit {
       this.workers = JSON.parse(res.workers);
     });
     
+    console.log("Pracownicy");
     console.log(this.workers);
     
   }
