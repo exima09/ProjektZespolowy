@@ -2,19 +2,17 @@
 <div *ngFor="let worker of workers">
   <article class="post">
     <header>
-      <h2 class="post_title">{{worker.salary}} {{worker.user.lastName}}</h2>
+      <h2 class="post_title">{{worker.user.firstName}} {{worker.user.lastName}}</h2>
     </header>
     <img class="post_img" src="assets/images/nico.jpg">
     <div class="post_text">
-      <p>Data urodzenia: {{worker.user.dateOfBirth}}</p>
-      <p>Data rejestracji: {{prisoner.joinDate}}{{prisoner.id}}</p>
-      <p>Opis:</p>
-      <p>Więzień osadzony jest w celi {{prisoner.cell.id}}, sprawowanie dobre, srednia ocena...</p>
+      <p>Wynagrodzenie: {{worker.salary}} zł</p>
+      <p>Podwyżka: {{worker.bonus}} zł</p>
+      <p>Data zatrudnienia: {{worker.dateFrom}}</p>
     </div>
     <footer class="post_date">
-      <button mat-button>Oceń</button>
-      <button mat-button [routerLink]="['/prisoners/', prisoner.id]">Szczególy</button>
+      <button mat-button>Szczegóły</button>
+      <!-- <button mat-button [routerLink]="['/prisoners/', worker.id]">Szczegóły</button> -->
     </footer>
   </article>
 </div>
-dsadasda

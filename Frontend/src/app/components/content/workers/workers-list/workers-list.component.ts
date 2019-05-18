@@ -17,10 +17,5 @@ export class WorkersListComponent implements OnInit {
     this.service.getWorkers().subscribe((res: any) => {
       this.workers = JSON.parse(res.workers);
     });
-    
-    console.log("Pracownicy");
-    console.log(this.workers);
-    
   }
-
 }
