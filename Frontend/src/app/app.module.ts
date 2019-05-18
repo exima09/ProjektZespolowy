@@ -33,6 +33,7 @@ import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
 import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
+import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AssignUserRoleComponent } from './components/content/users/assign-user-
     SickLeavesComponent,
     ExecutionListComponent,
     UserRolesComponent,
-    AssignUserRoleComponent
+    AssignUserRoleComponent,
+    WorkersListComponent
   ],
   imports: [
     BrowserModule,
