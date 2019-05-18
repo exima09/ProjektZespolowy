@@ -16,6 +16,7 @@ import { SickLeavesComponent } from './components/content/sick-leave/sick-leaves
 import { ExecutionListComponent } from './components/content/execution/execution-list/execution-list.component';
 import { UserRolesComponent } from './components/content/users/user-roles/user-roles.component';
 import { AssignUserRoleComponent } from './components/content/users/assign-user-role/assign-user-role.component';
+import { WorkersListComponent } from './components/content/workers/workers-list/workers-list.component';
 
 
 const routes: Routes = [
@@ -85,6 +86,12 @@ const routes: Routes = [
   {
     path: 'assign-user',
     component: AssignUserRoleComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'workers',
+    component: WorkersListComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN] }
   },

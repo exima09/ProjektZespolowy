@@ -10,15 +10,20 @@
   <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
   <a class="menu-item py-2" data-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false"
   aria-controls="userCollapse" *ngIf="isAdmin"> Użytkownicy <i class='fas fa-angle-down'></i> </a>
-<div class="collapse" id="userCollapse">
-  <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/assign-user'">Przypisz role użytkownikowi</a>
-  <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/user'">Lista użytkowników</a>
-</div>
+  <div class="collapse" id="userCollapse">
+    <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/assign-user'">Przypisz role użytkownikowi</a>
+    <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/user'">Lista użytkowników</a>
+  </div>
   <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
     aria-controls="visitCollapse"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
   <div class="collapse" id="visitCollapse">
     <a class="menu-item colapse-item py-2" [routerLink]="'/'">Zarezerwuj odwiedziny</a>
     <a class="menu-item colapse-item py-2" [routerLink]="'/'">Lista odwiedzin</a>
+  </div>
+  <a class="menu-item py-2" data-toggle="collapse" href="#workerCollapse" role="button" aria-expanded="false"
+  aria-controls="workerCollapse" *ngIf="isAdmin"> Pracownicy <i class='fas fa-angle-down'></i> </a>
+  <div class="collapse" id="workerCollapse">
+    <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/workers'">Lista pracowników</a>
   </div>
   <a class="menu-item py-2" data-toggle="collapse" href="#prisonerCollapse" role="button" aria-expanded="false"
     aria-controls="prisonerCollapse"> Więźniowie <i class='fas fa-angle-down'></i> </a>

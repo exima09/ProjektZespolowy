@@ -1,0 +1,18 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div *ngFor="let worker of workers">
+  <article class="post">
+    <header>
+      <h2 class="post_title">{{worker.user.firstName}} {{worker.user.lastName}}</h2>
+    </header>
+    <img class="post_img" src="assets/images/nico.jpg">
+    <div class="post_text">
+      <p>Wynagrodzenie: {{worker.salary}} zł</p>
+      <p>Podwyżka: {{worker.bonus}} zł</p>
+      <p>Data zatrudnienia: {{worker.dateFrom}}</p>
+    </div>
+    <footer class="post_date">
+      <button mat-button>Szczegóły</button>
+      <!-- <button mat-button [routerLink]="['/prisoners/', worker.id]">Szczegóły</button> -->
+    </footer>
+  </article>
+</div>
