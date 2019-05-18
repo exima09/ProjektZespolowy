@@ -15,9 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class BlockController
+ * Class DepartmentController
  * @IsGranted(User::GUARD)
- * @Route("/api/block")
+ * @Route("/api/department")
  * @package App\Controller\Api
  */
 class DepartmentController extends AbstractController
