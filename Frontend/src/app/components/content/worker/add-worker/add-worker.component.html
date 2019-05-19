@@ -1,0 +1,52 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-4 offset-md-4 mt-5 form-background">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <label>Wybierz użytkownika</label>
+          <select name="userId" #userId="ngModel" ngModel class="form-control" required>
+            <option value="" selected disabled>Wybierz użytkownika</option>
+            <option *ngFor="let user of users" [value]="user.id">
+              {{user.firstName}} {{user.lastName}}, login: {{user.username}}
+            </option>
+          </select>
+          <div class="validation-error" *ngIf="userId.invalid  && userId.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <label>Dział</label>
+          <select name="departmentId" #departmentId="ngModel" ngModel class="form-control" required>
+            <option value="" selected disabled>Wybierz użytkownika</option>
+            <option *ngFor="let department of departments" [value]="department.id">
+              {{department.departmentName}}
+            </option>
+          </select>
+          <div class="validation-error" *ngIf="departmentId.invalid  && departmentId.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group" *ngIf="allRoles.length>0">
+          <label>Dostępne role</label>
+          <div *ngFor="let role of allRoles">
+            <mat-checkbox (click)=addRole(role.value) value="role.value">{{role.key}}</mat-checkbox>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Zarobki</label>
+          <input type="number" min=1 name="salary" #salary="ngModel" ngModel class="form-control" required>
+          <div class="validation-error" *ngIf="salary.invalid && salary.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <label>Premia</label>
+          <input type="number" min=0 name="bonus" #bonus="ngModel" ngModel class="form-control" required>
+          <div class="validation-error" *ngIf="bonus.invalid && bonus.touched">To pole jest wymagane.</div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-block btn-lg text-white submit" type="submit" [disabled]="form.invalid || roles.length<1">Dodaj pracownika</button>
+          <a  class="errorDesc" *ngIf="anyErrors">Pola nie zostały poprawnie uzupełnione. Zarobki i premia powinny zawierać liczbę dodatnią, conajmniej jedna rola powinna być zaznaczona. </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

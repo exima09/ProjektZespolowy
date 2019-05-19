@@ -20,8 +20,17 @@ export class WorkerService {
             .pipe(catchError(err => this.errorHandler(err)));
     }
 
+    getUsersWithoutWorker = () => this.http.get('/api//user/noworker', getHeaders())
+        .pipe(catchError(err => this.errorHandler(err)))
+
+
     getWorkers() {
         return this.http.get('/api/worker', getHeaders())
+            .pipe(catchError(err => this.errorHandler(err)));
+    }
+
+    postWorker(worker: Worker) {
+        return this.http.post('api/worker/user', worker, getHeaders())
             .pipe(catchError(err => this.errorHandler(err)));
     }
 

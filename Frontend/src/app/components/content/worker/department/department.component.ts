@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department/department.service';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { Department } from 'src/app/models/department/department.model';
 
 @Component({
   selector: 'app-department',
@@ -9,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
-  departments: any[] = [];
+  departments: Department[] = [];
   addMode = false;
 
   constructor(private service: DepartmentService, public snackBar: MatSnackBar) { }

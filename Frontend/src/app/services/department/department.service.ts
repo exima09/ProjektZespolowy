@@ -4,6 +4,7 @@ import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { getHeaders } from "../headers";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
+import { Department } from "src/app/models/department/department.model";
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,7 @@ export class DepartmentService {
         return this.http.get('/api/department', getHeaders())
             .pipe(catchError(err => this.errorHandler(err)));
     }
-    postDepartment(department) {
+    postDepartment(department: Department) {
         return this.http.post('/api/department', department, getHeaders())
             .pipe(catchError(err => this.errorHandler(err)));
     }
