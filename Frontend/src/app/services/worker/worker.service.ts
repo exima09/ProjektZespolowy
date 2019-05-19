@@ -29,6 +29,9 @@ export class WorkerService {
             .pipe(catchError(err => this.errorHandler(err)));
     }
 
+    getWorkerById = (id: number) => this.http.get(`/api/worker/${id}`, getHeaders())
+    .pipe(catchError(err => this.errorHandler(err)));
+
     postWorker(worker: Worker) {
         return this.http.post('api/worker/user', worker, getHeaders())
             .pipe(catchError(err => this.errorHandler(err)));

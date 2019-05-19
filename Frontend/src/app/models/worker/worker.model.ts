@@ -12,7 +12,7 @@ export class Worker {
   dateFrom: string;
   dateTo?: string;
   sickLeaves: SickLeave[];
-  departament: Department;
+  department: Department;
   execution: Execution[];
   jailJobSchedules: JailJobSchedule[];
 }

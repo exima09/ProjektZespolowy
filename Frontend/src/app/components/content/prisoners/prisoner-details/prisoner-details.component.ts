@@ -31,6 +31,4 @@ export class PrisonerDetailsComponent implements OnInit {
       this.visits = this.prisoner.visits;
     });
   }
-
-
 }
