@@ -20,10 +20,9 @@ export class WorkerService {
             .pipe(catchError(err => this.errorHandler(err)));
     }
 
-    getUsersWithoutWorker() {
-        return this.http.get('/api//user/noworker', getHeaders())
-            .pipe(catchError(err => this.errorHandler(err)));
-    }
+    getUsersWithoutWorker = () => this.http.get('/api//user/noworker', getHeaders())
+        .pipe(catchError(err => this.errorHandler(err)))
+
 
     getWorkers() {
         return this.http.get('/api/worker', getHeaders())

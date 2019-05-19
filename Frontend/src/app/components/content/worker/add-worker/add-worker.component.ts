@@ -44,13 +44,7 @@ export class AddWorkerComponent implements OnInit {
 
   addRole(value) {
     if (this.roles.includes(value)) {
-      this.roles = this.roles.filter(elem => {
-        if (elem === value) {
-          return null;
-        } else {
-          return elem;
-        }
-      });
+      this.roles = this.roles.filter( role => role !== value );
     } else {
       this.roles.push(value);
     }

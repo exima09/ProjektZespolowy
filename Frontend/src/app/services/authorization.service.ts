@@ -76,7 +76,7 @@ export class AuthenticationService {
   }
 
   checkIfAdmin() {
-    return this.getRoles().includes(Role.ADMIN) ? true : false;
+    return this.getRoles().includes(Role.ADMIN);
   }
 
   get isAdmin() {

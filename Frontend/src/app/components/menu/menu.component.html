@@ -18,7 +18,7 @@ aria-controls="workerCollapse" > Pracownicy <i class='fas fa-angle-down'></i> </
 <div class="collapse" id="workerCollapse">
 <a class="menu-item colapse-item py-2"  [routerLink]="'/department'">Lista działów</a>
 <a class="menu-item colapse-item py-2"  [routerLink]="'/workers'">Lista pracowników</a>
-<a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/add-worker'">Dodaj pracownika, {{isAdmin$.value}}</a>
+<a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/add-worker'">Dodaj pracownik</a>
 </div>
   <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
     aria-controls="visitCollapse"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
