@@ -1,0 +1,73 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid" *ngIf="worker">
+  <div class="row mt-5">
+    <div class="col-md-7 offset-md-4 mt-5 form-background">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="fullName">
+          <div class="col-md-5 name">
+            <label>Imię</label>
+            <input name="firstName" #firstName="ngModel" [(ngModel)]="worker.user.firstName" class="form-control">
+            <div class="validation-error" *ngIf="firstName.invalid && firstName.touched">Błędne dane.</div>
+          </div>
+          <div class="col-md-5 name">
+            <label>Nazwisko</label>
+            <input name="lastName" #lastName="ngModel" [(ngModel)]="worker.user.lastName" class="form-control">
+            <div class="validation-error" *ngIf="lastName.invalid && lastName.touched">Błędne dane.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Dział</label>
+          <select name="departmentId" #departmentId="ngModel" [(ngModel)]="worker.department.id" class="form-control">
+            <option value="" selected disabled>{{worker.department.departmentName}}</option>
+            <option *ngFor="let department of departments" [value]="department.id">
+              {{department.departmentName}}
+            </option>
+          </select>
+          <div class="validation-error" *ngIf="departmentId.invalid">Błędne dane</div>
+        </div>
+        <div class="rolesDiv" *ngIf="worker.user.roles.length>0">
+          <label>Obecne role</label>
+          <div *ngFor="let role of worker.user.roles">
+            <span>{{role}}</span>
+          </div>
+        </div>
+        <h5 class="my-3 table-header newRoles" data-toggle="collapse" href="#roleCollapse" role="button"
+          aria-expanded="false" aria-controls="roleCollapse"> Nadaj nowe role <i class='fas fa-angle-down'></i> </h5>
+        <div class="collapse" id="roleCollapse" class="form-group">
+          <label>Dostępne role</label>
+          <div *ngFor="let role of allRoles">
+            <mat-checkbox (click)=addRole(role.value) value="role.value">{{role.key}}</mat-checkbox>
+          </div>
+        </div>
+        <div class="fullName">
+          <div class="col-md-5 name">
+            <label>Wynagrodzenie</label>
+            <input type="number" min=1 name="salary" #salary="ngModel" [(ngModel)]="worker.salary" class="form-control"
+              required>
+            <div class="validation-error" *ngIf="salary.invalid && salary.touched">Błędne dane</div>
+          </div>
+          <div class="col-md-5 name">
+            <label>Premia</label>
+            <input type="number" min=0 name="bonus" #bonus="ngModel" [(ngModel)]="worker.bonus" class="form-control">
+            <div class="validation-error" *ngIf="bonus.invalid && bonus.touched">Błędne dane</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nowe hasło</label>
+          <input type="password" (keyup)="newPassword($event)" class="form-control">
+        </div>
+        <div class="form-group">
+          <div class="col-md-5 name" *ngIf="!worker.dateTo">
+            <mat-checkbox (click)=finishHim()> Pracownik zakończył pracę</mat-checkbox>
+          </div>
+          <button class="btn btn-block btn-lg text-white submit" type="submit" [disabled]="form.invalid">Edytuj
+            pracownika</button>
+          <a class="errorDesc" *ngIf="anyErrors">Pola nie zostały poprawnie uzupełnione. Zarobki i premia powinny
+            zawierać liczbę dodatnią, conajmniej jedna rola powinna być zaznaczona. </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

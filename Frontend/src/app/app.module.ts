@@ -36,6 +36,7 @@ import { WorkersListComponent } from './components/content/worker/workers-list/w
 import { DepartmentComponent } from './components/content/worker/department/department.component';
 import { WorkerComponent } from './components/content/worker/worker/worker.component';
 import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
+import { WorkerEditComponent } from './components/content/worker/worker-edit/worker-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AddWorkerComponent } from './components/content/worker/add-worker/add-w
     WorkersListComponent,
     DepartmentComponent,
     WorkerComponent,
-    AddWorkerComponent
+    AddWorkerComponent,
+    WorkerEditComponent
   ],
   imports: [
     BrowserModule,

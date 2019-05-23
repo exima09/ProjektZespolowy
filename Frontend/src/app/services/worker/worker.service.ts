@@ -40,7 +40,7 @@ export class WorkerService {
     updateUser = (user: User, id: number) => this.http.patch(`/api/user/edit/${id}`, user, getHeaders())
         .pipe(catchError(err => this.errorHandler(err)))
 
-    updateWorker = (worker: Worker, id: number) => this.http.patch(`/api/worker/edit/${id}`, worker, getHeaders())
+    updateWorker = (worker: Worker, id: number) => this.http.post(`/api/worker/edit/${id}`, worker, getHeaders())
         .pipe(catchError(err => this.errorHandler(err)))
 
     errorHandler(error: HttpErrorResponse) {

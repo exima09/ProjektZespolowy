@@ -1,0 +1,19 @@
+.newRoles{
+    margin:30px 0% !important;
+    cursor: pointer;
+    color: rgb(160, 208, 240);
+}
+.rolesDiv{
+    border:solid;
+    padding: 10px;
+}
+.fullName{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:2%;
+}
+.name{
+    margin:0px !important;
+    padding:0px !important;
+}
