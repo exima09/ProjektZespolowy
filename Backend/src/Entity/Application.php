@@ -2,9 +2,33 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ * attributes={"access_control"="is_granted('ROLE_USER')"},
+ * routePrefix="/application",
+ * collectionOperations={
+ *     "get"={
+ *          "method"="GET",
+ *          "path"=""
+ *      },
+ *     "getStatus"={
+ *          "method"="GET",
+ *          "path"="/status"
+ *     }
+ * },
+ * itemOperations={
+ *      "get"={
+ *          "method"="GET",
+ *          "path"="/{id}"
+ *      },
+ *     "patch"={
+ *          "method"="PATCH",
+ *          "path"="/{id}"
+ *     },
+ *  })
  * @ORM\Entity(repositoryClass="App\Repository\ApplicationRepository")
  */
 class Application

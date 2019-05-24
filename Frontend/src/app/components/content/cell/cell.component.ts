@@ -4,6 +4,7 @@ import {Prisoner} from "../../../models/prisoner/prisoner.model";
 import {BlockService} from "../../../services/block/block.service";
 import {PrisonerService} from "../../../services/prisoner/prisoner.service";
 import {MatSnackBar} from "@angular/material";
+import * as moment from "moment";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class CellComponent implements OnInit {
 
   visibleModal = false;
   loading = true;
+  visibleDetails = false;
 
   selectedOption: number = undefined;
 
@@ -56,8 +58,38 @@ export class CellComponent implements OnInit {
     }
   }
 
+  setVisible(event) {
+    this.visibleDetails = !this.visibleDetails;
+  }
+
   ngOnInit(): void {
   }
 
 
+  getLastVisit() {
+    const lastVisit = this.cell.prisoner.visits[this.cell.prisoner.visits.length - 1];
+    if (lastVisit) {
+      return `${lastVisit.bookingPerson}, Kontakt: ${lastVisit.contact}, Data: ${moment(lastVisit.dateStart).format("DD-MM-YYYY")}, Zaakceptowana: ${lastVisit.statusAccepted ? "tak" : "nie"}`;
+    } else {
+      return "Brak wizyt";
+    }
+  }
+
+  getLastSick() {
+    const lastSick = this.cell.prisoner.sickLeaves[this.cell.prisoner.sickLeaves.length - 1];
+    if (lastSick) {
+      return ` Od ${moment(lastSick.dateStart).format("DD-MM-YYYY")} do ${lastSick.dateStop ? moment(lastSick.dateStart).format("DD-MM-YYYY") : '-'}, Wydane przez: ${lastSick.worker.user.firstName} ${lastSick.worker.user.lastName}, Powód: ${lastSick.reason ? lastSick.reason : "brak"} `;
+    }
+    return "Brak zwolnień";
+  }
+
+  getExecution() {
+    const lastExecution = this.cell.prisoner.executions[this.cell.prisoner.executions.length - 1];
+    const worker = lastExecution.worker.user;
+    if (lastExecution) {
+      return `Egzekucja: ${moment(lastExecution.executionDate).format("DD-MM-YYYY")}, Dodana przez: ${worker.firstName} ${worker.lastName} Ostatnie życzenie: ${lastExecution.lastWish ? lastExecution.lastWish : "-"}`;
+    } else {
+      return "Brak";
+    }
+  }
 }

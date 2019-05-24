@@ -75,7 +75,7 @@
       </div>
       <div class="row py-1 no-gutters ">
         <div class="col-md-6 pr-1">
-          <button mat-button class="btn btn-block text-white submit py-1">Edytuj</button>
+          <button [routerLink]="['/prisoners/edit/'+prisoner.id]" mat-button class="btn btn-block text-white submit py-1">Edytuj</button>
         </div>
         <div class="col-md-6 pl-1">
           <button mat-button [routerLink]="'/prisoners'" class="btn btn-block text-white submit py-1">Wróć</button>
