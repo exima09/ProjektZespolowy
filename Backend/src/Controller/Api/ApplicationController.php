@@ -82,6 +82,33 @@ class ApplicationController extends AbstractController
     }
 
     /**
+     * @Route("/{id}",name="application_get" , methods={"GET"}, requirements={"id"="\d+"})
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getById(int $id)
+    {
+        try {
+            $application = $this->applicationRepository->find($id);
+            if(!$application){
+                return new JsonResponse([
+                    "message" => "Błąd podczas pobierania zgłoszenia",
+                    "error" => "Brak zgłoszenia o numerze {$id}"
+                ], 400);
+            }
+            return new JsonResponse([
+                "message" => "Pobrano poprawnie zgłoszenie",
+                "application" => $this->serializer->serialize($this->applicationRepository->find($id), 'json')
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                "message" => "Błąd podczas pobierania zgłoszenia",
+                "error" => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    /**
      * @Route("/status", name="application_status_list" , methods={"GET"})
      * @return JsonResponse
      */

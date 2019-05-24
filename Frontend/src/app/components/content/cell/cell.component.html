@@ -1,9 +1,23 @@
 <div class="cell-number">{{cell.id}}</div>
 <div>cela</div>
-<div class="details-cell" *ngIf="cell.prisoner">
+<div class="details-cell" *ngIf="cell.prisoner" (click)="setVisible($event)">
   <div>Numer więźnia: <span class="bold">{{cell.prisoner.id}}</span></div>
   <div>Imię i nazwisko:</div>
   <div class="bold">{{cell.prisoner.firstName}} {{cell.prisoner.lastName}}</div>
+</div>
+<div class="mask"  *ngIf="visibleDetails">
+  <div class="card cardPrisoner">
+    <div class="cardPrisonerClose" (click)="setVisible($event)">X</div>
+  <div class="card-body">
+    <h5 class="card-title">{{cell.prisoner.firstName}} {{cell.prisoner.lastName}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">CELA NR: {{cell.id}}</h6>
+    <p class="card-text">Ostatnia wizyta: {{getLastVisit()}}</p>
+    <p class="card-text">Ostatnie zwolnienie: {{getLastSick()}}</p>
+    <p class="card-text" *ngIf="cell.prisoner.executions.length>0">{{getExecution()}}</p>
+    <a href="/prisoner/{{cell.prisoner.id}}" class="card-link">Szczegóły</a>
+    <a href="/prisoners/edit/{{cell.prisoner.id}}" class="card-link">Edycja danych</a>
+  </div>
+</div>
 </div>
 <div id="plus-wrapper" class="details-cell" *ngIf="!cell.prisoner"  (click)="actionModal($event)">
   <div id="plus" class="plus">+</div>
