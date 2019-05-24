@@ -1,0 +1,15 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div *ngFor="let cv of cvs">
+  <article class="post">
+    <header>
+      <h2 class="post_title">CV nr {{cv.id}}</h2>
+    </header>
+    <div class="post_text">
+      <p>Imię: {{cv.firstName}}</p>
+      <p>Nazwisko: {{cv.lastName}}</p>
+    </div>
+    <footer class="post_date">
+      <button mat-button [routerLink]="['/worker/', worker.id]">Wyświetl CV</button>
+    </footer>
+  </article>
+</div>
