@@ -37,6 +37,7 @@ import { DepartmentComponent } from './components/content/worker/department/depa
 import { WorkerComponent } from './components/content/worker/worker/worker.component';
 import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
 import { WorkerEditComponent } from './components/content/worker/worker-edit/worker-edit.component';
+import { SalaryManagementComponent } from './components/content/worker/salary-management/salary-management.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { WorkerEditComponent } from './components/content/worker/worker-edit/wor
     DepartmentComponent,
     WorkerComponent,
     AddWorkerComponent,
-    WorkerEditComponent
+    WorkerEditComponent,
+    SalaryManagementComponent
   ],
   imports: [
     BrowserModule,
