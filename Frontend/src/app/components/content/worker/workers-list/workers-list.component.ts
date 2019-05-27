@@ -14,8 +14,19 @@ export class WorkersListComponent implements OnInit {
   constructor(private service: WorkerService) { }
 
   ngOnInit() {
+    this.loadWorkers();
+  }
+
+  loadWorkers(){
     this.service.getWorkers().subscribe((res: any) => {
       this.workers = JSON.parse(res.workers);
     });
+  }
+
+  finishWork(id: number) {
+    this.service.finishWork(id).subscribe(() => {
+      this.loadWorkers();
+    })
+    console.log("finish work id: " +id);
   }
 }
