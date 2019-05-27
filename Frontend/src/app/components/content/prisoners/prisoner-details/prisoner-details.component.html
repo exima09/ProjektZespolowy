@@ -10,7 +10,7 @@
     <div class="col-md-6 offset-md-3 bg-content-mid text-center pb-3">
       <h5><b>Data urodzenia:</b> {{prisoner.dateOfBirth.substring(0,10)}}</h5>
       <h5><b>Data rejestracji:</b> {{prisoner.joinDate.substring(0,10)}}</h5>
-      <h5 class="my-3"><b>Numer celi:</b> {{prisoner.cell.id}}</h5>
+      <h5 class="my-3"><b>Numer celi:</b> {{prisoner.cell.id ? prisoner.cell.id : "Brak przypisanej celi"}}</h5>
       <h5 class="my-3 table-header" data-toggle="collapse" href="#visitsCollapse" role="button" aria-expanded="false"
         aria-controls="visitsCollapse"> Wizyty <i class='fas fa-angle-down'></i> </h5>
       <div class="collapse" id="visitsCollapse">

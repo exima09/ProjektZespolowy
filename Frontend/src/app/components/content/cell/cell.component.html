@@ -14,7 +14,7 @@
     <p class="card-text">Ostatnia wizyta: {{getLastVisit()}}</p>
     <p class="card-text">Ostatnie zwolnienie: {{getLastSick()}}</p>
     <p class="card-text" *ngIf="cell.prisoner.executions.length>0">{{getExecution()}}</p>
-    <a href="/prisoner/{{cell.prisoner.id}}" class="card-link">Szczegóły</a>
+    <a href="/prisoners/{{cell.prisoner.id}}" class="card-link">Szczegóły</a>
     <a href="/prisoners/edit/{{cell.prisoner.id}}" class="card-link">Edycja danych</a>
   </div>
 </div>
