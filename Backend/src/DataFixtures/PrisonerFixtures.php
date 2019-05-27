@@ -24,30 +24,53 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        /** @var Cell $cell1 */
-        $cell1 = $this->getReference('cell6');
-        /** @var Cell $cell2 */
-        $cell2 = $this->getReference('cell2');
+        $startBirth = strtotime("1 January 1950");
+        $endBirth = strtotime("1 January 2000");
+        $startJoin = strtotime("1 January 2000");
+        $endJoin = strtotime("1 July 2019");
 
-        $prisoner = new Prisoner(
-            "Jan",
-            "Piotrowski",
-            new \DateTime("01-01-2019"),
-            new \DateTime("01-01-2001")
-        );
-        $cell1->setPrisoner($prisoner);
-        $manager->persist($prisoner);
-        $this->addReference('prisoner1', $prisoner);
+        $data = [
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+            ["Jan", "Piotrowski", date("d-m-Y", mt_rand($startBirth, $endBirth)),  date("d-m-Y", mt_rand($startJoin, $endJoin))],
+        ];
 
-        $prisoner2 = new Prisoner(
-            "Tester",
-            "Testowy",
-            new \DateTime('now'),
-            new \DateTime("02-01-1990")
-        );
-        $cell2->setPrisoner($prisoner2);
-        $manager->persist($prisoner2);
-        $this->addReference('prisoner2', $prisoner2);
+        foreach ($data as $key => $p) {
+            /** @var Cell $cell */
+            $cell = $this->getReference('cell'.($key+1));
+            $prisoner = new Prisoner(
+                $p[0].($key+1),
+                $p[1].($key+1),
+                new \DateTime($p[2]),
+                new \DateTime($p[3])
+            );
+            $prisoner->setCell($cell);
+            $manager->persist($prisoner);
+            $this->addReference('prisoner'.$key, $prisoner);
+        }
 
         $manager->flush();
     }

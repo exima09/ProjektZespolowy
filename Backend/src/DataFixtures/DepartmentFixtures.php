@@ -10,11 +10,22 @@ class DepartmentFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        /** @var Department $department */
-        $department = new Department();
-        $department->setDepartmentName("Departament 1");
-        $this->addReference("department1", $department);
-        $manager->persist($department);
+        $data = [
+            "Oddział administracyjny",
+            "Oddział straży więziennej",
+            "Oddział socjalny",
+            "Oddział medyczny",
+            "Oddział egzekucyjny",
+            "Oddział kadr",
+            "Oddział kierownictwa",
+        ];
+
+        foreach ($data as $key => $d) {
+            $department = new Department();
+            $department->setDepartmentName($d);
+            $this->addReference("department".($key+1), $department);
+            $manager->persist($department);
+        }
 
         $manager->flush();
     }
