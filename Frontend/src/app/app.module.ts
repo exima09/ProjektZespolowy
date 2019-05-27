@@ -6,6 +6,7 @@ import {LoginComponent} from './components/content/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {NzPopconfirmModule} from 'ng-zorro-antd';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -83,7 +84,8 @@ import { SalaryManagementComponent } from './components/content/worker/salary-ma
     MatProgressBarModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NzPopconfirmModule
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard, ExecutionService],
   bootstrap: [AppComponent]

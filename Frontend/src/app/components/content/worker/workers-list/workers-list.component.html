@@ -11,7 +11,16 @@
       <p>Data zatrudnienia: {{worker.dateFrom.substring(0,10)}}</p>
     </div>
     <footer class="post_date">
-      <button mat-button *ngIf="!worker.dateTo" (click)="finishWork(worker.id)">Zwolnij pracownika</button>
+      <!-- <button mat-button *ngIf="!worker.dateTo" (click)="finishWork(worker.id)">Zwolnij pracownika</button> -->
+      <button mat-button *ngIf="!worker.dateTo" nz-popconfirm
+        nzTitle="Czy na pewno chcesz zwolnić pracownika?"
+        nzOkText="Zatwierdź"
+        nzCancelText="Anuluj"
+        nzOkType="danger"
+        (nzOnConfirm)="finishWork(worker.id)"
+        nzPlacement="top">
+        Zwolnij pracownika
+      </button>
       <button mat-button [routerLink]="['/worker/salary-management/', worker.id]">Zarządzaj wynagrodzeniem</button>
       <button mat-button [routerLink]="['/worker/', worker.id]">Szczegóły</button>
     </footer>
