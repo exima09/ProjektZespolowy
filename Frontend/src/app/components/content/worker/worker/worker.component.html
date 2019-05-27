@@ -11,8 +11,8 @@
       <h5><b>Username:</b> {{worker.user.username}}</h5>
       <h5><b>Wynagrodzenie:</b> {{worker.salary}} zł</h5>
       <h5><b>Premia:</b> {{worker.bonus}} zł</h5>
-      <h5><b>Data zatrudnienia:</b> {{worker.dateFrom.substring(0,10)}}</h5>
-      <h5 *ngIf="worker.dateTo"><b>Data zakończenia pracy:</b> {{worker.dateTo.substring(0,10)}}</h5>
+      <h5><b>Data zatrudnienia:</b> {{worker.dateFrom | getDate}}</h5>
+      <h5 *ngIf="worker.dateTo"><b>Data zakończenia pracy:</b> {{worker.dateTo | getDate}}</h5>
       <h5><b>Departament:</b> {{worker.department.departmentName}}</h5>
 
       <h5 class="my-3 table-header" data-toggle="collapse" href="#rolesCollapse" role="button" aria-expanded="false"
@@ -35,8 +35,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let sickLeave of worker.sickLeaves">
-              <th scope="row">{{sickLeave.dateStart.substring(0,10)}}</th>
-              <td>{{sickLeave.dateStop.substring(0,10)}}</td>
+              <th scope="row">{{sickLeave.dateStart | getDate}}</th>
+              <td>{{sickLeave.dateStop | getDate}}</td>
               <td>{{sickLeave.prisoner.firstName}} {{sickLeave.prisoner.lastName}}</td>
               <td>{{sickLeave.reason}}</td>
             </tr>
@@ -59,7 +59,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let execution of worker.execution">
-              <th scope="row">{{execution.executionDate.substring(0,10)}}</th>
+              <th scope="row">{{execution.executionDate | getDate}}</th>
               <td>{{execution.prisoner.firstName}} {{execution.prisoner.lastName}}</td>
               <td>{{execution.lastWish}}</td>
             </tr>

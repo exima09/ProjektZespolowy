@@ -16,7 +16,7 @@
         </div>
         <div class="form-group mb-2">
           <label>DATA URODZENIA</label>
-          <input name="dateOfBirth" #dateOfBirth="ngModel" ngModel="{{prisoner.dateOfBirth.substring(0,10)}}" class="form-control"
+          <input name="dateOfBirth" #dateOfBirth="ngModel" ngModel="{{prisoner.dateOfBirth | getDate}}" class="form-control"
                  type="date" required>
           <div class="validation-error" *ngIf="dateOfBirth.invalid && dateOfBirth.touched">To pole jest wymagane.</div>
         </div>

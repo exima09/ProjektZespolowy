@@ -8,8 +8,8 @@
       <img class="size" src="assets/images/nico.jpg" />
     </div>
     <div class="col-md-6 offset-md-3 bg-content-mid text-center pb-3">
-      <h5><b>Data urodzenia:</b> {{prisoner.dateOfBirth.substring(0,10)}}</h5>
-      <h5><b>Data rejestracji:</b> {{prisoner.joinDate.substring(0,10)}}</h5>
+      <h5><b>Data urodzenia:</b> {{prisoner.dateOfBirth | getDate}}</h5>
+      <h5><b>Data rejestracji:</b> {{prisoner.joinDate | getDate}}</h5>
       <h5 class="my-3"><b>Numer celi:</b> {{prisoner.cell.id ? prisoner.cell.id : "Brak przypisanej celi"}}</h5>
       <h5 class="my-3 table-header" data-toggle="collapse" href="#visitsCollapse" role="button" aria-expanded="false"
         aria-controls="visitsCollapse"> Wizyty <i class='fas fa-angle-down'></i> </h5>
@@ -24,7 +24,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let visit of visits">
-              <th scope="row">{{visit.dateStart.substring(0,10)}}</th>
+              <th scope="row">{{visit.dateStart | getDate}}</th>
               <td>{{visit.statusAccepted}}</td>
               <td>{{visit.bookingPerson}}</td>
             </tr>
@@ -45,7 +45,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let execution of executions">
-              <th scope="row">{{execution.executionDate.substring(0,10)}}</th>
+              <th scope="row">{{execution.executionDate | getDate}}</th>
               <td>{{execution.lastWish}}</td>
             </tr>
           </tbody>
@@ -66,8 +66,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let leave of sickLeaves">
-              <th scope="row">{{leave.dateStart.substring(0,10)}}</th>
-              <td>{{leave.dateStop.substring(0,10)}}</td>
+              <th scope="row">{{leave.dateStart | getDate}}</th>
+              <td>{{leave.dateStop | getDate}}</td>
               <td>{{leave.reason}}</td>
             </tr>
           </tbody>

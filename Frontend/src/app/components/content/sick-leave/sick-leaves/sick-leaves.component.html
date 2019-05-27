@@ -26,8 +26,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let sickLeave of sickLeaves">
-            <th scope="row">{{sickLeave.dateStart.substring(0,10)}}</th>
-            <td>{{sickLeave.dateStop.substring(0,10)}}</td>
+            <th scope="row">{{sickLeave.dateStart | getDate}}</th>
+            <td>{{sickLeave.dateStop | getDate}}</td>
             <td>{{sickLeave.prisoner.firstName}} {{sickLeave.prisoner.lastName}}</td>
             <td>{{sickLeave.reason}}</td>
             <td>{{sickLeave.worker.user.firstName}} {{sickLeave.worker.user.lastName}}</td>

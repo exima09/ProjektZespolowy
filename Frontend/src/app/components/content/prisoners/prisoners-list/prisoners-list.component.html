@@ -6,8 +6,8 @@
     </header>
     <img class="post_img" src="assets/images/nico.jpg">
     <div class="post_text">
-      <p>Data urodzenia: {{prisoner.dateOfBirth}}</p>
-      <p>Data rejestracji: {{prisoner.joinDate}}{{prisoner.id}}</p>
+      <p>Data urodzenia: {{prisoner.dateOfBirth | getDate}}</p>
+      <p>Data rejestracji: {{prisoner.joinDate | getDate}}</p>
       <p>Opis:</p>
       <p *ngIf="prisoner.cell">Więzień osadzony jest w celi {{prisoner.cell.id}}, sprawowanie dobre, srednia ocena...</p>
       <p *ngIf="!prisoner.cell">Więzień nie został osadzony w celi</p>
