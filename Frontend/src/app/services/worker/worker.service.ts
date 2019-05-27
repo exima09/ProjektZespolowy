@@ -43,6 +43,9 @@ export class WorkerService {
     updateWorker = (worker: Worker, id: number) => this.http.post(`/api/worker/edit/${id}`, worker, getHeaders())
         .pipe(catchError(err => this.errorHandler(err)))
 
+    updateSalary = (worker: Worker, id: number) => this.http.post(`/api/worker/edit/${id}`, {salary: worker.salary, bonus: worker.bonus}, getHeaders())
+        .pipe(catchError(err => this.errorHandler(err)))
+
     errorHandler(error: HttpErrorResponse) {
         if (error.name) {
             this.snackBar.open("Błąd", error.error.message, {

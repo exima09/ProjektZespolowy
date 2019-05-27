@@ -8,9 +8,10 @@
     <div class="post_text">
       <p>Wynagrodzenie: {{worker.salary}} zł</p>
       <p>Premia: {{worker.bonus}} zł</p>
-      <p>Data zatrudnienia: {{worker.dateFrom}}</p>
+      <p>Data zatrudnienia: {{worker.dateFrom.substring(0,10)}}</p>
     </div>
     <footer class="post_date">
+      <button mat-button [routerLink]="['/worker/salary-management/', worker.id]">Zarządzaj wynagrodzeniem</button>
       <button mat-button [routerLink]="['/worker/', worker.id]">Szczegóły</button>
     </footer>
   </article>

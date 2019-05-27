@@ -20,7 +20,7 @@ import { DepartmentComponent } from './components/content/worker/department/depa
 import { WorkerComponent } from './components/content/worker/worker/worker.component';
 import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
 import { WorkerEditComponent } from './components/content/worker/worker-edit/worker-edit.component';
-
+import { SalaryManagementComponent } from './components/content/worker/salary-management/salary-management.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -115,6 +115,12 @@ const routes: Routes = [
     component: AddWorkerComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN] }
+  },
+  {
+    path: 'worker/salary-management/:id',
+    component: SalaryManagementComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER] }
   },
   { path: '**', redirectTo: '' }
 ];
