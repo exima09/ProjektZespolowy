@@ -6,6 +6,6 @@ export class SickLeave {
     worker: Worker;
     prisoner: Prisoner;
     reason: string;
-    dateStop: Date;
-    dateStart: Date;
+    dateStop: string;
+    dateStart: string;
 }

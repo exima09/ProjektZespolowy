@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let execution of executions">
-            <th scope="row">{{execution.executionDate.substring(0,16).replace("T", " ")}}</th>
+            <th scope="row">{{execution.executionDate | getDate:'fullDate'}}</th>
             <td>{{execution.prisoner.firstName}} {{execution.prisoner.lastName}}</td>
             <td>{{execution.lastWish}}</td>
             <td>{{execution.worker.user.firstName}} {{execution.worker.user.lastName}}</td>

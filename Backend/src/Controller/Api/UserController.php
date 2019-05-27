@@ -245,6 +245,11 @@ class UserController extends AbstractController
         try {
             $data = json_decode($request->getContent(), true);
             $worker = $this->workerRepository->find($id);
+            if (!$worker) {
+                return new JsonResponse([
+                    'message' => "Brak pracownika o nr {$id}"
+                ], 400);
+            }
             $user = $worker->getUser();
             if (!$user) {
                 return new JsonResponse([
@@ -271,6 +276,7 @@ class UserController extends AbstractController
                 }
                 if(array_key_exists("finishedWork", $data) &&  !$worker->getDateTo()){
                     $worker->setDateTo(new \DateTime('now'));
+                    $user->setRoles(["ROLE_USER"]);
                 }
                 if(array_key_exists("department", $data)){
                     $department = $this->departmentRepository->find($data["departmentId"]);
