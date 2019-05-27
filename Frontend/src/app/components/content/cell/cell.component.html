@@ -1,4 +1,5 @@
-<div class="cell-number">{{cell.id}}</div>
+<div class="cell-number-red" *ngIf="cell.prisoner">{{cell.id}}</div>
+<div class="cell-number-green" *ngIf="!cell.prisoner">{{cell.id}}</div>
 <div>cela</div>
 <div class="details-cell" *ngIf="cell.prisoner" (click)="setVisible($event)">
   <div>Numer więźnia: <span class="bold">{{cell.prisoner.id}}</span></div>

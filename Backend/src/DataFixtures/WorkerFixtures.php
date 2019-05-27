@@ -13,20 +13,44 @@ class WorkerFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        /** @var Department $department */
-        $department = $this->getReference("department1");
+        $data = [
+            [rand(1000,10000), rand(100,700), "department1"],
+            [rand(1000,10000), rand(100,700), "department1"],
+            [rand(1000,10000), rand(100,700), "department1"],
+            [rand(1000,10000), rand(100,700), "department1"],
+            [rand(1000,10000), rand(100,700), "department2"],
+            [rand(1000,10000), rand(100,700), "department2"],
+            [rand(1000,10000), rand(100,700), "department2"],
+            [rand(1000,10000), rand(100,700), "department2"],
+            [rand(1000,10000), rand(100,700), "department3"],
+            [rand(1000,10000), rand(100,700), "department3"],
+            [rand(1000,10000), rand(100,700), "department3"],
+            [rand(1000,10000), rand(100,700), "department3"],
+            [rand(1000,10000), rand(100,700), "department4"],
+            [rand(1000,10000), rand(100,700), "department4"],
+            [rand(1000,10000), rand(100,700), "department4"],
+            [rand(1000,10000), rand(100,700), "department4"],
+            [rand(1000,10000), rand(100,700), "department5"],
+            [rand(1000,10000), rand(100,700), "department5"],
+            [rand(1000,10000), rand(100,700), "department5"],
+            [rand(1000,10000), rand(100,700), "department5"],
+            [rand(1000,10000), rand(100,700), "department6"],
+            [rand(1000,10000), rand(100,700), "department6"],
+            [rand(1000,10000), rand(100,700), "department6"],
+            [rand(1000,10000), rand(100,700), "department6"],
+            [rand(1000,10000), rand(100,700), "department7"],
+            [rand(1000,10000), rand(100,700), "department7"],
+        ];
 
-        /** @var User $user1 */
-        $user1 = $this->getReference("user1");
-        $worker = new Worker(10000, 200, $user1, $department);
-        $this->addReference("worker1",$worker);
-        $manager->persist($worker);
-
-        /** @var User $user3 */
-        $user3 = $this->getReference("user3");
-        $worker = new Worker(5000, 300, $user3, $department);
-        $manager->persist($worker);
-
+        foreach ($data as $key => $w) {
+            /** @var Department $department */
+            $department = $this->getReference($w[2]);
+            /** @var User $user */
+            $user = $this->getReference("user".$key);
+            $worker = new Worker($w[0], $w[1], $user, $department);
+            $this->addReference("worker".$key,$worker);
+            $manager->persist($worker);
+        }
 
         $manager->flush();
     }

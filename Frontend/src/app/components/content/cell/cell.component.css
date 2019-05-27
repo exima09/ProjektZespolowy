@@ -1,7 +1,15 @@
-.cell-number {
+.cell-number-green {
   font-size: 50px;
   line-height: 34px;
   margin-top: 6px;
+  color: green;
+}
+
+.cell-number-red {
+  font-size: 50px;
+  line-height: 34px;
+  margin-top: 6px;
+  color: indianred;
 }
 
 .details-cell {
