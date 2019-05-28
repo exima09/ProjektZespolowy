@@ -1,3 +1,20 @@
 input[type="number"] {
     -moz-appearance: number-input
 }
+
+.percent {
+  font-weight: bold;
+  float:right;
+}
+
+.percent::after {
+  content: ' %';
+}
+
+.red {
+  color: indianred;
+}
+
+.green {
+  color: green;
+}

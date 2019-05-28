@@ -4,7 +4,8 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatPaginatorModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTabsModule
 } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -96,7 +97,8 @@ import {GetDateFormatedPipe} from "./helpers/getDate";
     MatFormFieldModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard, ExecutionService],
   bootstrap: [AppComponent]

@@ -14,7 +14,8 @@ export class SalaryManagementComponent implements OnInit {
   headerOfSite = 'Zarządzanie wynagrodzeniem pracownika';
   worker: Worker;
   id: number;
-
+  salarys = 0;
+  bonuss = 0;
   constructor(private service: WorkerService, private route: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -23,6 +24,8 @@ export class SalaryManagementComponent implements OnInit {
 
     this.service.getWorkerById(this.id).subscribe((res: any) => {
       this.worker = JSON.parse(res.worker);
+      this.salarys = this.worker.salary;
+      this.bonuss = this.worker.bonus;
     });
   }
 

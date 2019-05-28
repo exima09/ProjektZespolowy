@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { WorkerService } from 'src/app/services/worker/worker.service';
 import { Worker } from 'src/app/models/worker/worker.model';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef, MatTabsModule} from '@angular/material';
 
 
 @Component({
@@ -12,6 +12,8 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 export class WorkersListComponent implements OnInit {
   headerOfSite = 'Pracownicy';
   workers: Worker[] = [];
+  workersCurrent: Worker[] = [];
+  workersFinishedWork: Worker[] = [];
 
   constructor(private service: WorkerService, public dialog: MatDialog) { }
 
@@ -22,6 +24,8 @@ export class WorkersListComponent implements OnInit {
   loadWorkers() {
     this.service.getWorkers().subscribe((res: any) => {
       this.workers = JSON.parse(res.workers);
+      this.workersCurrent = JSON.parse(res.workers).filter((worker: Worker) => !worker.dateTo);
+      this.workersFinishedWork = JSON.parse(res.workers).filter((worker: Worker) => worker.dateTo);
     });
   }
 

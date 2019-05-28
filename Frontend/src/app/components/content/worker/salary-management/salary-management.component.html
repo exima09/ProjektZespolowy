@@ -6,12 +6,16 @@
       <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         <div class="form-group mb-2 mt-3">
           <label>Wynagrodzenie</label>
+          <label class="percent green" *ngIf="(salarys<worker.salary)">{{(worker.salary*100/salarys-100).toFixed(2)}}</label>
+          <label class="percent red" *ngIf="!(salarys<worker.salary)">{{(worker.salary*100/salarys-100).toFixed(2)}}</label>
           <input type="number" min="0" step="100" name="salary" #salary="ngModel" [(ngModel)]="worker.salary" class="form-control" required>
           <div class="validation-error" *ngIf="salary.invalid && salary.touched">To pole jest wymagane.</div>
         </div>
         <div class="form-group mb-4">
           <label>Premia</label>
-          <input type="number" min="0" step="100" name="bonus" #bonus="ngModel" [(ngModel)]="worker.bonus" class="form-control" required>
+          <label class="percent green" *ngIf="(bonuss<worker.bonus)">{{(worker.bonus*100/bonuss-100).toFixed(2)}}</label>
+          <label class="percent red" *ngIf="!(bonuss<worker.bonus)">{{(worker.bonus*100/bonuss-100).toFixed(2)}}</label>
+          <input type="number" min="0" step="20" name="bonus" #bonus="ngModel" [(ngModel)]="worker.bonus" class="form-control" required>
           <div class="validation-error" *ngIf="bonus.invalid && bonus.touched">To pole jest wymagane.</div>
         </div>
         <div class="row py-1 no-gutters">
