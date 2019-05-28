@@ -64,8 +64,8 @@ class PrisonerFixtures extends Fixture implements DependentFixtureInterface
             $prisoner = new Prisoner(
                 $p[0].($key+1),
                 $p[1].($key+1),
-                new \DateTime($p[2]),
-                new \DateTime($p[3])
+                new \DateTime($p[3]),
+                new \DateTime($p[2])
             );
             $prisoner->setCell($cell);
             $manager->persist($prisoner);
