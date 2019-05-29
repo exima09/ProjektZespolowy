@@ -5,7 +5,8 @@ import {
   MatFormFieldModule,
   MatPaginatorModule,
   MatSelectModule,
-  MatTabsModule
+  MatTabsModule,
+  MatInputModule
 } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -48,6 +49,8 @@ import {SalaryManagementComponent} from './components/content/worker/salary-mana
 import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
 import { CvComponent } from './components/content/cv/cv/cv.component';
 import {GetDateFormatedPipe} from "./helpers/getDate";
+import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
+
 
 @NgModule({
   declarations: [
@@ -77,9 +80,10 @@ import {GetDateFormatedPipe} from "./helpers/getDate";
     WorkerEditComponent,
     SalaryManagementComponent,
     CvManageComponent,
-    CvComponent
+    CvComponent,
     DialogPopconfirmComponent,
-    GetDateFormatedPipe
+    GetDateFormatedPipe,
+    ApplyJobComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent
@@ -102,7 +106,8 @@ import {GetDateFormatedPipe} from "./helpers/getDate";
     MatSelectModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatInputModule
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard, ExecutionService],
   bootstrap: [AppComponent]
