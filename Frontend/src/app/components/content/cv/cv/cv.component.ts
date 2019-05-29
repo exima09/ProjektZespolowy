@@ -18,7 +18,6 @@ export class CvComponent implements OnInit {
   ngOnInit() {
       const urlArr = this.route.url.split("/");
       this.id = Number(urlArr[2]);
-
       this.service.getCvById(this.id).subscribe((res: any) => {
         this.cv = JSON.parse(res.cv);
     });

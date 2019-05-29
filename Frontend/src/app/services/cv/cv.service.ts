@@ -4,8 +4,6 @@ import { MatSnackBar } from "@angular/material";
 import { getHeaders } from "../headers";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
-import { User } from "src/app/models/user/user.model";
-import { Worker } from "src/app/models/worker/worker.model";
 
 @Injectable({
     providedIn: 'root'
@@ -13,12 +11,7 @@ import { Worker } from "src/app/models/worker/worker.model";
 export class CvService {
 
     constructor(private http: HttpClient, public snackBar: MatSnackBar) {
-    }
-
-    getUsers() {
-        return this.http.get('/api/user', getHeaders())
-            .pipe(catchError(err => this.errorHandler(err)));
-    }
+    }   
 
     getCvs() {
         return this.http.get('/api/application', getHeaders())
@@ -28,16 +21,9 @@ export class CvService {
     getCvById = (id: number) => this.http.get(`/api/application/${id}`, getHeaders())
     .pipe(catchError(err => this.errorHandler(err)));
 
-    postWorker(worker: Worker) {
-        return this.http.post('api/worker/user', worker, getHeaders())
-            .pipe(catchError(err => this.errorHandler(err)));
-    }
-
-    updateUser = (user: User, id: number) => this.http.patch(`/api/user/edit/${id}`, user, getHeaders())
-        .pipe(catchError(err => this.errorHandler(err)))
-
-    updateWorker = (worker: Worker, id: number) => this.http.patch(`/api/worker/edit/${id}`, worker, getHeaders())
-        .pipe(catchError(err => this.errorHandler(err)))
+    changeCvStatus = (cvId: number, statusId: number) => 
+        this.http.patch(`/api/application/${cvId}`, {"statusId":statusId}, getHeaders())
+            .pipe(catchError(err => this.errorHandler(err)))
 
     errorHandler(error: HttpErrorResponse) {
         if (error.name) {
