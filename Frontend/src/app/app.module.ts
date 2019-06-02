@@ -45,6 +45,8 @@ import {WorkerComponent} from './components/content/worker/worker/worker.compone
 import {AddWorkerComponent} from './components/content/worker/add-worker/add-worker.component';
 import {WorkerEditComponent} from './components/content/worker/worker-edit/worker-edit.component';
 import {SalaryManagementComponent} from './components/content/worker/salary-management/salary-management.component';
+import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
+import { CvComponent } from './components/content/cv/cv/cv.component';
 import {GetDateFormatedPipe} from "./helpers/getDate";
 
 @NgModule({
@@ -74,6 +76,8 @@ import {GetDateFormatedPipe} from "./helpers/getDate";
     AddWorkerComponent,
     WorkerEditComponent,
     SalaryManagementComponent,
+    CvManageComponent,
+    CvComponent
     DialogPopconfirmComponent,
     GetDateFormatedPipe
   ],

@@ -1,0 +1,45 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-md-8 offset-md-2 bg-content-mid text-center pb-3">
+      <div class="dropdown button-section">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Sortuj według
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="sortByIdNew()">Najnowsze</a>
+          <a class="dropdown-item" (click)="sortByIdOld()">Najstarsze</a>
+          <a class="dropdown-item" (click)="sortByNameAZ()">Nazwisko A-Z</a>
+          <a class="dropdown-item" (click)="sortByNameZA()">Nazwisko Z-A</a>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nr podania</th>
+            <th scope="col">Imię i nazwisko</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+            <th scope="col">Działanie</th>
+          </tr>
+        </thead>
+        <tbody class="largerText">
+          <tr *ngFor="let cv of cvs">
+            <th scope="row">{{cv.id}}</th>
+            <td>{{cv.firstName}} {{cv.lastName}}</td>
+            <td>{{cv.phoneNumber}}</td>
+            <td>{{cv.email}}</td>
+            <td [ngClass]="{greenClass: cv.status.id == 2, redClass: cv.status.id == 3}"><b>{{cv.status.name}}</b></td>
+            <td>
+              <button (click)="changeApplicationStatus(cv.id, 2)">Akceptuj</button>
+              <button (click)="changeApplicationStatus(cv.id, 3)">Odrzuć</button>
+              <button>Wyświetl CV</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

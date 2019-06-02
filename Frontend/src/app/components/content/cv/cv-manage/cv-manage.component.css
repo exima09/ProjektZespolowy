@@ -1,0 +1,36 @@
+h1,h2{
+    margin: 0;
+    padding:1.5%;
+}
+
+.largerText{
+    font-size: 120%;
+}
+
+.buttons{
+    align-items: flex-end
+}
+
+button{
+    background-color: rgb(40, 56, 71);
+    text-align: center;
+    display: inline;
+    color: white;
+    padding: 10px 16px;
+    margin: 1%;
+    text-decoration: none;
+    border: none   
+}
+
+button:hover:not(.active) {
+    background-color:rgb(5, 5, 5);
+}
+
+.button-section{
+    display: flex;
+    justify-content:flex-end;
+    margin: 3%;
+}
+
+.greenClass { color: green }
+.redClass { color: red }

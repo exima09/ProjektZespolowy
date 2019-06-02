@@ -21,6 +21,8 @@ import { WorkerComponent } from './components/content/worker/worker/worker.compo
 import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
 import { WorkerEditComponent } from './components/content/worker/worker-edit/worker-edit.component';
 import { SalaryManagementComponent } from './components/content/worker/salary-management/salary-management.component';
+import { CvComponent } from './components/content/cv/cv/cv.component';
+import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,6 +103,12 @@ const routes: Routes = [
   {
     path: 'worker/:id',
     component: WorkerComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER] }
+  },
+  {
+    path: 'aplications',
+    component: CvManageComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.MANAGER] }
   },
