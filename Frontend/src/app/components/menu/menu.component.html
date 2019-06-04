@@ -5,6 +5,7 @@
   <a class="menu-item py-2" (click)="onLogout()" *ngIf="isLoggedIn$ | async">Wyloguj</a>
   <a class="menu-item py-2" [routerLink]="'/login'" *ngIf="!(isLoggedIn$ | async)">Zaloguj</a>
   <a class="menu-item py-2" [routerLink]="'/register'" *ngIf="!(isLoggedIn$ | async)">Zarejestruj</a>
+  <a class="menu-item py-2" [routerLink]="'/apply-for-job'">Złóż podanie o pracę</a>
   <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
   <a class="menu-item py-2" [routerLink]="'/block'">Blok więzienny</a>
   <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>

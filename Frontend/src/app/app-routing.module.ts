@@ -23,6 +23,7 @@ import { WorkerEditComponent } from './components/content/worker/worker-edit/wor
 import { SalaryManagementComponent } from './components/content/worker/salary-management/salary-management.component';
 import { CvComponent } from './components/content/cv/cv/cv.component';
 import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
+import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -129,6 +130,10 @@ const routes: Routes = [
     component: SalaryManagementComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.MANAGER] }
+  },
+   {
+    path: 'apply-for-job',
+    component: ApplyJobComponent,
   },
   { path: '**', redirectTo: '' }
 ];
