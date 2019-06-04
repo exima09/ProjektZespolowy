@@ -22,7 +22,7 @@ export class ApplyJobComponent implements OnInit {
   fileError = "";
   form: NgForm = null;
   loading = false;
-  result = "Załłożono pomyslnie";
+  result = "";
 
   constructor(private _formBuilder: FormBuilder, private service: JobApplicationService,
     private authService: AuthenticationService, private router: Router, private snackService: MatSnackBar) { }
