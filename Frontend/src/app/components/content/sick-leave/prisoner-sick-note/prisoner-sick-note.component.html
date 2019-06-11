@@ -23,7 +23,7 @@
         <div class="form-group">
           <label>Zwolnienie ważne do:</label>
           <input name="dateStop" #dateStop="ngModel" [(ngModel)]="expirationDate" class="form-control"
-            type="date" min={{currentDate}} required>
+            type="date" min={{currentDate}} max={{maxDate}} onkeypress="return false" required>
           <div class="validation-error" *ngIf="dateStop.invalid && dateStop.touched">To pole jest wymagane.
           </div>
         </div>

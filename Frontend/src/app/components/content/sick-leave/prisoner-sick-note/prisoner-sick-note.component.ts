@@ -16,13 +16,17 @@ export class PrisonerSickNoteComponent implements OnInit {
   private headerOfSite = 'Zwolnienie lekarskie';
   private prisoners: Prisoner[] = [];
   private currentDate;
+  private maxDate;
   selectedPrisonerId = "";
 
   constructor(private prisonerService: PrisonerService, private datePipe: DatePipe,
     private sickNoteService: SicknoteService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    const date = new Date();
+    this.currentDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    this.maxDate = this.datePipe.transform(new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()), 'yyyy-MM-dd');
+
     this.prisonerService.getPrisoners().subscribe((res: any) => {
       this.prisoners = JSON.parse(res.prisoners);
     });
