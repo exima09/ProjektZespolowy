@@ -1,48 +1,49 @@
 <header class="bg-menu-dark text-center py-2">
   <h2 class="mb-1">Menu</h2>
 </header>
-<div class="d-flex flex-column align-items-stretch bg-menu-light">
-  <a class="menu-item py-2" (click)="onLogout()" *ngIf="isLoggedIn$ | async">Wyloguj</a>
-  <a class="menu-item py-2" [routerLink]="'/login'" *ngIf="!(isLoggedIn$ | async)">Zaloguj</a>
-  <a class="menu-item py-2" [routerLink]="'/register'" *ngIf="!(isLoggedIn$ | async)">Zarejestruj</a>
-  <a class="menu-item py-2" [routerLink]="'/apply-for-job'">Złóż podanie o pracę</a>
-  <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
-  <a class="menu-item py-2" [routerLink]="'/block'">Blok więzienny</a>
-  <a class="menu-item py-2" [routerLink]="'/'">Lista zadań</a>
-  <a class="menu-item py-2" data-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false"
-  aria-controls="userCollapse" *ngIf="isAdmin"> Użytkownicy <i class='fas fa-angle-down'></i> </a>
-<div class="collapse" id="userCollapse">
-  <a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/user'">Lista użytkowników</a>
-</div>
-<a class="menu-item py-2" data-toggle="collapse" href="#workerCollapse" role="button" aria-expanded="false"
-aria-controls="workerCollapse" > Pracownicy <i class='fas fa-angle-down'></i> </a>
-<div class="collapse" id="workerCollapse">
-<a class="menu-item colapse-item py-2"  [routerLink]="'/department'">Lista działów</a>
-<a class="menu-item colapse-item py-2"  [routerLink]="'/workers'">Lista pracowników</a>
-<a class="menu-item colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/add-worker'">Dodaj pracownika</a>
-</div>
-  <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
+<div class="accordion" id="navmenu">
+  <div class="d-flex flex-column align-items-stretch bg-menu-light">
+    <a class="menu-item py-2" [routerLink]="'/'">Strona główna</a>
+    <a class="menu-item py-2" [routerLink]="'/login'" *ngIf="!(isLoggedIn$ | async)">Zaloguj</a>
+    <a class="menu-item py-2" [routerLink]="'/register'" *ngIf="!(isLoggedIn$ | async)">Zarejestruj</a>
+    <a class="menu-item py-2" [routerLink]="'/apply-for-job'">Złóż podanie o pracę</a>
+    <a class="menu-item py-2" [routerLink]="'/block'">Blok więzienny</a>
+    <a class="menu-item py-2" data-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false"
+    aria-controls="userCollapse" *ngIf="isAdmin"> Użytkownicy <i class='fas fa-angle-down'></i> </a>
+    <div class="collapse" id="userCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/user'">Lista użytkowników</a>
+    </div>
+    <a class="menu-item py-2" data-toggle="collapse" href="#workerCollapse" role="button" aria-expanded="false"
+    aria-controls="workerCollapse"> Pracownicy <i class='fas fa-angle-down'></i> </a>
+    <div class="collapse" id="workerCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/department'">Lista działów</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/workers'">Lista pracowników</a>
+      <a class="menu-item menu-child colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/add-worker'">Dodaj pracownika</a>
+    </div>
+    <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
     aria-controls="visitCollapse"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
-  <div class="collapse" id="visitCollapse">
-    <a class="menu-item colapse-item py-2" [routerLink]="'/'">Zarezerwuj odwiedziny</a>
-    <a class="menu-item colapse-item py-2" [routerLink]="'/'">Lista odwiedzin</a>
-  </div>
-  <a class="menu-item py-2" data-toggle="collapse" href="#prisonerCollapse" role="button" aria-expanded="false"
+    <div class="collapse" id="visitCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/'">Zarezerwuj odwiedziny</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/'">Lista odwiedzin</a>
+    </div>
+    <a class="menu-item py-2" data-toggle="collapse" href="#prisonerCollapse" role="button" aria-expanded="false"
     aria-controls="prisonerCollapse"> Więźniowie <i class='fas fa-angle-down'></i> </a>
-  <div class="collapse" id="prisonerCollapse">
-    <a class="menu-item colapse-item py-2" [routerLink]="'/prisoners'">Lista więźniów</a>
-    <a class="menu-item colapse-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
-  </div>
-  <a class="menu-item py-2" data-toggle="collapse" href="#sickCollapse" role="button" aria-expanded="false"
+    <div class="collapse" id="prisonerCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/prisoners'">Lista więźniów</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
+    </div>
+    <a class="menu-item py-2" data-toggle="collapse" href="#sickCollapse" role="button" aria-expanded="false"
     aria-controls="sickCollapse"> Zwolnienia <i class='fas fa-angle-down'></i> </a>
-  <div class="collapse" id="sickCollapse">
-    <a class="menu-item colapse-item py-2" [routerLink]="'/issue-sick-note'">Wystaw zwolnienie lekarskie</a>
-    <a class="menu-item colapse-item py-2" [routerLink]="'/sick-note'">Lista zwolnień</a>
-  </div>
-  <a class="menu-item py-2" data-toggle="collapse" href="#executionCollapse" role="button" aria-expanded="false"
+    <div class="collapse" id="sickCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/issue-sick-note'">Wystaw zwolnienie lekarskie</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/sick-note'">Lista zwolnień</a>
+    </div>
+    <a class="menu-item py-2" data-toggle="collapse" href="#executionCollapse" role="button" aria-expanded="false"
     aria-controls="executionCollapse"> Egzekucje <i class='fas fa-angle-down'></i> </a>
-  <div class="collapse" id="executionCollapse">
-    <a class="menu-item colapse-item py-2" [routerLink]="'/execution/reservation'">Zarezerwuj egzekucję</a>
-    <a class="menu-item colapse-item py-2" [routerLink]="'/executions'">Lista egzekucji</a>
+    <div class="collapse" id="executionCollapse" data-parent="#navmenu">
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/execution/reservation'">Zarezerwuj egzekucję</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/executions'">Lista egzekucji</a>
+    </div>
+    <a class="menu-item py-2" (click)="onLogout()" *ngIf="isLoggedIn$ | async">Wyloguj</a>
   </div>
 </div>

@@ -22,3 +22,7 @@
 .colapse-item:hover {
   background: rgba(65, 79, 94,1);
 }
+
+.menu-child {
+  font-size: 15px;
+}
