@@ -50,6 +50,8 @@ import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.c
 import { CvComponent } from './components/content/cv/cv/cv.component';
 import {GetDateFormatedPipe} from "./helpers/getDate";
 import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
+import { JailJobComponent } from './components/content/jail-job/jail-job.component';
+import { JailJobScheduleComponent } from './components/content/jail-job-schedule/jail-job-schedule.component';
 
 
 @NgModule({
@@ -83,7 +85,9 @@ import { ApplyJobComponent } from './components/content/application/apply-job/ap
     CvComponent,
     DialogPopconfirmComponent,
     GetDateFormatedPipe,
-    ApplyJobComponent
+    ApplyJobComponent,
+    JailJobComponent,
+    JailJobScheduleComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent

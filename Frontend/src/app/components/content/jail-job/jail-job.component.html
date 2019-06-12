@@ -1,0 +1,35 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container">
+<div class="row justify-content-md-center mt-4">
+  <div class="col-xl-8 col-lg-10 col-sm-12">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+      <div class="form-group row">
+        <label for="jobName" class="col-sm-2 col-form-label">Nazwa pracy</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="jobName" placeholder="Nazwa pracy więziennej" name="jobName" #jobName="ngModel" ngModel required>
+          <div class="validation-error" *ngIf="jobName.invalid && jobName.touched">To pole jest wymagane.</div>
+        </div>
+        <button mat-button style="height: 40px" class="col-sm-4 btn text-white submit" [disabled]="form.invalid" type="submit">Dodaj prace</button>
+      </div>
+    </form>
+  </div>
+  </div>
+<div class="row justify-content-md-center mt-4">
+<div class="col-xl-8 col-lg-10 col-sm-12">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nazwa</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let jailJob of jailJobs">
+      <td scope="row">{{jailJob.jobName}}</td>
+      <td scope="row"><span class="deleteAction" (click)="deleteJob(jailJob.id)">Usuń</span> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

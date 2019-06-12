@@ -6,6 +6,7 @@ use App\Entity\Application;
 use App\Repository\ApplicationRepository;
 use App\Repository\ApplicationStatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -71,7 +72,7 @@ class ApplicationController extends AbstractController
         try {
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "applications" => $this->serializer->serialize($this->applicationRepository->findAll(), 'json')
+                "applications" => $this->serializer->serialize($this->applicationRepository->findAll(), 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (\Exception $e) {
             return new JsonResponse([

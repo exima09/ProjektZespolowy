@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JailJobScheduleRepository")
@@ -22,7 +23,7 @@ class JailJobSchedule
     private $prisoner;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $rate;
 
@@ -45,6 +46,30 @@ class JailJobSchedule
      * @ORM\ManyToOne(targetEntity="App\Entity\JailJob", inversedBy="jailJobSchedule")
      */
     private $jailJob;
+
+    /**
+     * JailJobSchedule constructor.
+     * @param $prisoner
+     * @param $rate
+     * @param $dateFrom
+     * @param $dateTo
+     * @param $worker
+     * @param $jailJob
+     */
+    public function __construct(
+        Prisoner $prisoner,
+        \DateTime $dateFrom,
+        \DateTime $dateTo,
+        Worker $worker,
+        JailJob $jailJob
+    ){
+        $this->prisoner = $prisoner;
+        $this->dateFrom = $dateFrom;
+        $this->dateTo = $dateTo;
+        $this->worker = $worker;
+        $this->jailJob = $jailJob;
+    }
+
 
     public function getId(): ?int
     {

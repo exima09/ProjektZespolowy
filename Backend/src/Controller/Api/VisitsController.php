@@ -6,6 +6,7 @@ use App\Entity\Visits;
 use App\Repository\PrisonerRepository;
 use App\Repository\VisitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -65,7 +66,7 @@ class VisitsController extends AbstractController
             $visits = $this->visitsRepository->findAll();
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "visits" => $this->serializer->serialize($visits, 'json')
+                "visits" => $this->serializer->serialize($visits, 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (Exception $e) {
             return new JsonResponse([

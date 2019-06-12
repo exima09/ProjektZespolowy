@@ -8,6 +8,7 @@ use App\Repository\PrisonerRepository;
 use App\Repository\SickLeaveRepository;
 use App\Repository\WorkerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,7 +83,7 @@ class SickLeaveController extends AbstractController
             $sickLeaves = $this->sickLeaveRepository->findAll();
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "sickLeaves" => $this->serializer->serialize($sickLeaves, 'json')
+                "sickLeaves" => $this->serializer->serialize($sickLeaves, 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (\Exception $e) {
             return new JsonResponse([
