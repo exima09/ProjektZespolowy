@@ -6,6 +6,7 @@ use App\Entity\Department;
 use App\Entity\User;
 use App\Repository\DepartmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -64,7 +65,7 @@ class DepartmentController extends AbstractController
         try {
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "departments" => $this->serializer->serialize($this->departmentRepository->findAll(), 'json')
+                "departments" => $this->serializer->serialize($this->departmentRepository->findAll(), 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (\Exception $e) {
             return new JsonResponse([

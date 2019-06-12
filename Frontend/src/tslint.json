@@ -7,6 +7,10 @@
             "app",
             "camelCase"
         ],
+      "whitespace": false,
+      "semicolon": false,
+      "no-trailing-whitespace": false,
+      "no-console": [true, "log", "warning"],
         "component-selector": [
             true,
             "element",

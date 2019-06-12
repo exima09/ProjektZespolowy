@@ -8,6 +8,7 @@ use App\Repository\DepartmentRepository;
 use App\Repository\UserRepository;
 use App\Repository\WorkerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,7 +85,7 @@ class UserController extends AbstractController
         try {
             $users = $this->userRepository->findAll();
             return new JsonResponse([
-                "users" => $this->serializer->serialize($users, 'json'),
+                "users" => $this->serializer->serialize($users, 'json', SerializationContext::create()->enableMaxDepthChecks()),
                 "message" => "Poprawnie pobrano liste użytkowników"
             ]);
         } catch (\Exception $exception) {
@@ -103,7 +104,7 @@ class UserController extends AbstractController
         try {
             $workers = $this->workerRepository->findAll();
             return new JsonResponse([
-                "workers" => $this->serializer->serialize($workers, 'json'),
+                "workers" => $this->serializer->serialize($workers, 'json', SerializationContext::create()->enableMaxDepthChecks()),
                 "message" => "Poprawnie pobrano liste pracowników"
             ]);
         } catch (\Exception $exception) {
@@ -123,7 +124,7 @@ class UserController extends AbstractController
             $users = $this->userRepository->findNoWorker();
 
             return new JsonResponse([
-                "users" => $this->serializer->serialize($users, 'json'),
+                "users" => $this->serializer->serialize($users, 'json', SerializationContext::create()->enableMaxDepthChecks()),
                 "message" => "Poprawnie pobrano liste użytkowników"
             ]);
         } catch (\Exception $exception) {
@@ -370,7 +371,7 @@ class UserController extends AbstractController
             $user = $this->userRepository->findOneBy(["id" => $id]);
             if($user) {
                 return JsonResponse::create([
-                    "user" => $this->serializer->serialize($user, 'json')
+                    "user" => $this->serializer->serialize($user, 'json', SerializationContext::create()->enableMaxDepthChecks())
                 ]);
             }
             return JsonResponse::create(["message" => "Brak użytkownika o numerze: {$id}"], 400);
@@ -393,7 +394,7 @@ class UserController extends AbstractController
             $worker = $this->workerRepository->findOneBy(["id" => $id]);
             if($worker) {
                 return JsonResponse::create([
-                    "worker" => $this->serializer->serialize($worker, 'json')
+                    "worker" => $this->serializer->serialize($worker, 'json', SerializationContext::create()->enableMaxDepthChecks())
                 ]);
             }
             return JsonResponse::create(["message" => "Brak pracownika o numerze: {$id}"], 400);

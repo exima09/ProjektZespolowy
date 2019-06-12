@@ -28,9 +28,10 @@ class JailJob
      */
     private $jailJobSchedule;
 
-    public function __construct()
+    public function __construct(string $jobName)
     {
         $this->jailJobSchedule = new ArrayCollection();
+        $this->jobName = $jobName;
     }
 
     public function getId(): ?int

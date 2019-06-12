@@ -1,0 +1,77 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container">
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-sm-12">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group row">
+          <div class="col-4">
+            <select name="jailJob" #jailJob="ngModel" [(ngModel)]="jailJobId" class="form-control"
+                    required>
+              <option *ngIf="!loadingJobJail" value="" selected disabled>Wybierz</option>
+              <option *ngIf="loadingJobJail" value="" selected disabled>Ładowanie...</option>
+              <option *ngFor="let job of jailJobs" [value]="job.id">
+                {{job.jobName}}
+              </option>
+            </select>
+            <div class="validation-error" *ngIf="jailJob.touched && jailJob.invalid">Błędne dane</div>
+          </div>
+          <div class="col-4">
+            <select name="prisoner" #prisoner="ngModel" [(ngModel)]="prisonerId" class="form-control"
+                    required>
+              <option *ngIf="!loadingPrisoner" value="" selected disabled>Wybierz</option>
+              <option *ngIf="loadingPrisoner" value="" selected disabled>Ładowanie...</option>
+              <option *ngFor="let p of prisoners" [value]="p.id">
+                {{p.firstName}} {{p.lastName}} - cela {{p.cell.id}}
+              </option>
+            </select>
+            <div class="validation-error" *ngIf="prisoner.touched && prisoner.invalid">Błędne dane</div>
+          </div>
+          <button mat-button style="height: 40px" class="col-sm-4 btn text-white submit" [disabled]="form.invalid || checkDate(dateFrom,dateTo)|| checkDate(dateStart,dateStop)"
+                  type="submit">Przydziel prace
+          </button>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <input name="dateFrom"  #dateFrom="ngModel" [(ngModel)]="dateStart" class="form-control"
+                   type="date" min="{{currentDate}}" max="{{maxDate}}" onkeypress="return false" required>
+            <div class="validation-error" *ngIf="dateFrom.invalid && dateFrom.touched">To pole jest wymagane.
+            </div>
+          </div>
+          <div class="col-4">
+            <input name="dateTo" #dateTo="ngModel" [(ngModel)]="dateStop" class="form-control"
+                   type="date" min="{{dateStart ? dateStart : currentDate}}" max="{{maxDate}}" onkeypress="return false" required>
+            <div class="validation-error" *ngIf="dateTo.invalid && dateTo.touched">To pole jest wymagane.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Nazwa</th>
+          <th scope="col">Miejsce wykonywania</th>
+          <th scope="col">Zlecone przez</th>
+          <th scope="col">Od</th>
+          <th scope="col">Do</th>
+          <th scope="col">Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let jailJobSchedule of jailJobSchedule">
+          <td scope="row">{{jailJobSchedule.prisoner.firstName}} {{jailJobSchedule.prisoner.lastName}}</td>
+          <td scope="row">{{jailJobSchedule.jailJob.jobName}}</td>
+          <td scope="row">{{jailJobSchedule.worker.user.firstName}} {{jailJobSchedule.worker.user.lastName}}</td>
+          <td scope="row">{{jailJobSchedule.dateFrom  | getDate}}</td>
+          <td scope="row">{{jailJobSchedule.dateTo  | getDate}}</td>
+          <td scope="row"><span *ngIf="isOld(jailJobSchedule.dateFrom)" class="deleteAction"
+                                (click)="deleteJobSchedule(jailJobSchedule.id)">Anuluj</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

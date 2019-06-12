@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Repository\CellRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -72,7 +73,7 @@ class PrisonerController extends AbstractController
             $prisoners = $prisonerRepository->findAll();
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "prisoners" => $this->serializer->serialize($prisoners, 'json')
+                "prisoners" => $this->serializer->serialize($prisoners, 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (\Exception $e) {
             return new JsonResponse([

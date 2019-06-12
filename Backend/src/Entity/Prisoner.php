@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\MaxDepth;
 
 /**
  * @ApiResource(
@@ -46,7 +47,7 @@ class Prisoner
 
     /**
      * @ORM\Column(type="string", length=50)
-     */
+    */
     private $lastName;
 
     /**
@@ -61,27 +62,32 @@ class Prisoner
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Visits", mappedBy="prisoner")
+     * @MaxDepth(2)
      */
     private $visits;
 
     /**
      * @ApiSubresource
      * @ORM\OneToMany(targetEntity="App\Entity\Execution", mappedBy="prisoner")
+     * @MaxDepth(2)
      */
     private $executions;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\SickLeave", mappedBy="prisoner")
+     * @MaxDepth(2)
      */
     private $sickLeaves;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Cell", mappedBy="prisoner", cascade={"persist", "remove"})
+     * @MaxDepth(2)
      */
     private $cell;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\JailJobSchedule", mappedBy="prisoner")
+     * @MaxDepth(2)
      */
     private $jailJobSchedules;
 

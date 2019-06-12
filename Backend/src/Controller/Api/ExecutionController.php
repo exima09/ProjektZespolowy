@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Repository\ExecutionRepository;
 use App\Repository\PrisonerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -68,7 +69,7 @@ class ExecutionController extends AbstractController
         try {
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
-                "execution" => $this->serializer->serialize($this->executionRepository->findAll(), 'json')
+                "execution" => $this->serializer->serialize($this->executionRepository->findAll(), 'json', SerializationContext::create()->enableMaxDepthChecks())
             ]);
         } catch (Exception $e) {
             return new JsonResponse([
@@ -89,7 +90,7 @@ class ExecutionController extends AbstractController
             $execution = $this->executionRepository->find($id);
             if($execution) {
                 return new JsonResponse([
-                    "execution" => $this->serializer->serialize($execution, 'json')
+                    "execution" => $this->serializer->serialize($execution, 'json', SerializationContext::create()->enableMaxDepthChecks())
                 ]);
             }
             return new JsonResponse(["message" => "Brak egzekucji o numerze: {$id}"], 400);

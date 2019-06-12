@@ -6,7 +6,7 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Jail System';
   constructor(private elementRef: ElementRef) {
   }
 
