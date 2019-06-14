@@ -38,6 +38,10 @@ security:
             pattern:  ^/api/application
             stateless: true
             anonymous: true
+        alarm:
+            pattern:  ^/api/alarm
+            stateless: true
+            anonymous: true
         doc:
             pattern:  ^/api/doc
             stateless: true
@@ -76,6 +80,7 @@ security:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/application, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/alarm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/api/prisoner,       roles: ROLE_PRISON_GUARD }
         - { path: ^/api,       roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }

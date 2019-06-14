@@ -76,6 +76,7 @@ export class AuthenticationService {
   }
 
   checkIfAdmin() {
+    console.log( this.getRoles().includes(Role.ADMIN));
     return this.getRoles().includes(Role.ADMIN);
   }
 
