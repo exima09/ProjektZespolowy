@@ -1,0 +1,27 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<div class="container">
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Oddział zagrożony niebezpieczeństwem</th>
+          <th scope="col">Godzina rozpoczęcia</th>
+          <th scope="col">Uruchomiony przez</th>
+          <th scope="col">Godzina zakończenia</th>
+          <th scope="col">Zakończony przez</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let alarm of alarms">
+          <td scope="row">{{alarm.workerStart.department.departmentName}}</td>
+          <td scope="row">{{alarm.dateStart | getDate:'fullDate'}}</td>
+          <td scope="row">{{getFullName(alarm.workerStart)}}</td>
+          <td scope="row"><span *ngIf="alarm.dateStop">{{alarm.dateStop  | getDate:'fullDate'}}</span></td>
+          <td scope="row">{{getFullName(alarm.workerStop)}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

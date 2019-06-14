@@ -9,3 +9,12 @@
 .headerImg:hover {
   background: radial-gradient(ellipse at center, rgba(255,255,255,.2) 0%,rgba(229,229,229,0) 70%);
 }
+
+.alarm {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 150px;
+  z-index: 1005;
+  cursor: pointer;
+}

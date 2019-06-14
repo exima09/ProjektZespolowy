@@ -9,16 +9,12 @@
     <a class="menu-item py-2" [routerLink]="'/apply-for-job'">Złóż podanie o pracę</a>
     <a class="menu-item py-2" [routerLink]="'/block'">Blok więzienny</a>
     <a class="menu-item py-2" data-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false"
-    aria-controls="userCollapse" *ngIf="isAdmin"> Użytkownicy <i class='fas fa-angle-down'></i> </a>
+    aria-controls="userCollapse" *ngIf="isAdmin"> Administracja <i class='fas fa-angle-down'></i> </a>
     <div class="collapse" id="userCollapse" data-parent="#navmenu">
       <a class="menu-item menu-child colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/user'">Lista użytkowników</a>
-    </div>
-    <a class="menu-item py-2" data-toggle="collapse" href="#workerCollapse" role="button" aria-expanded="false"
-    aria-controls="workerCollapse"> Pracownicy <i class='fas fa-angle-down'></i> </a>
-    <div class="collapse" id="workerCollapse" data-parent="#navmenu">
-      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/department'">Lista działów</a>
       <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/workers'">Lista pracowników</a>
-      <a class="menu-item menu-child colapse-item py-2" *ngIf="isAdmin" [routerLink]="'/add-worker'">Dodaj pracownika</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/department'">Lista działów</a>
+      <a class="menu-item menu-child colapse-item py-2" *ngIf="isLoggedIn$" [routerLink]="'/alarm'">Alarm więzienny</a>
     </div>
     <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
     aria-controls="visitCollapse"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
@@ -31,12 +27,8 @@
     <div class="collapse" id="prisonerCollapse" data-parent="#navmenu">
       <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/prisoners'">Lista więźniów</a>
       <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/prisoners/register'">Zarejestruj więźnia</a>
-    </div>
-    <a class="menu-item py-2" data-toggle="collapse" href="#jailJobCollapse" role="button" aria-expanded="false"
-       aria-controls="prisonerCollapse"> Praca więźniów <i class='fas fa-angle-down'></i> </a>
-    <div class="collapse" id="jailJobCollapse" data-parent="#navmenu">
-      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/jail-job'">Rodzaje prac</a>
       <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/jail-job/schedule'">Przydzielone prace więźniów</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/jail-job'">Rodzaje prac więźniów</a>
     </div>
     <a class="menu-item py-2" data-toggle="collapse" href="#sickCollapse" role="button" aria-expanded="false"
     aria-controls="sickCollapse"> Zwolnienia <i class='fas fa-angle-down'></i> </a>

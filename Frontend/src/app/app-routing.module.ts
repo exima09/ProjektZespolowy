@@ -26,6 +26,7 @@ import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.c
 import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
 import {JailJobComponent} from "./components/content/jail-job/jail-job.component";
 import {JailJobScheduleComponent} from "./components/content/jail-job-schedule/jail-job-schedule.component";
+import {AlarmComponent} from "./components/content/alarm/alarm.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -144,6 +145,12 @@ const routes: Routes = [
     component: JailJobScheduleComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN] }
+  },
+   {
+    path: 'alarm',
+    component: AlarmComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN, Role.EXECUTIONER, Role.MEDICAL] }
   },
    {
     path: 'apply-for-job',
