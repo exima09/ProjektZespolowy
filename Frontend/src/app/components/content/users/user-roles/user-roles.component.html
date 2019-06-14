@@ -1,3 +1,79 @@
-<p>
-  user-roles works!
-</p>
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<mat-tab-group>
+  <mat-tab label="Konta użytkowników">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Nazwa użytkownika</th>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Rola</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <td scope="row">{{user.username}}</td>
+              <td scope="row">{{user.firstName}}</td>
+              <td scope="row">{{user.lastName}}</td>
+              <td scope="row">{{checkWorker(user.worker)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Konta pracowników">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Rola</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of usersWorker">
+              <td scope="row">{{user.username}}</td>
+              <td scope="row">{{user.firstName}}</td>
+              <td scope="row">{{user.lastName}}</td>
+              <td scope="row">{{checkWorker(user.worker)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Wszystkie">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Rola</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of usersAll">
+              <td scope="row">{{user.username}}</td>
+              <td scope="row">{{user.firstName}}</td>
+              <td scope="row">{{user.lastName}}</td>
+              <td scope="row">{{checkWorker(user.worker)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

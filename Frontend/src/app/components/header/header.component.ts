@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
   constructor(private alarmService: AlarmService, private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.getStatusAlarm();
     this.authService.isLoggedIn.subscribe(res=>this.isLoggedUser = res);
+    this.getStatusAlarm();
   }
 
   activateAlarm = () => {
@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   };
 
   getStatusAlarm = () => {
+    if(this.isLoggedUser)
     this.alarmService.getIsAlarmActive().subscribe((res: any) => {
       this.isAlarm = JSON.parse(res.isAlarmActive);
     });
