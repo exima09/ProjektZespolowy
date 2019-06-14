@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AlarmService} from "../../services/alarm/alarm.service";
-import {Observable} from "rxjs";
 import {AuthenticationService} from "../../services/authorization.service";
 
 @Component({
@@ -10,12 +9,12 @@ import {AuthenticationService} from "../../services/authorization.service";
 })
 export class HeaderComponent implements OnInit {
   isAlarm?: boolean = undefined;
-  isLoggedUser: Observable<boolean>;
+  isLoggedUser: boolean;
   constructor(private alarmService: AlarmService, private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.getStatusAlarm();
-    this.isLoggedUser = this.authService.isLoggedIn;
+    this.authService.isLoggedIn.subscribe(res=>this.isLoggedUser = res);
   }
 
   activateAlarm = () => {
