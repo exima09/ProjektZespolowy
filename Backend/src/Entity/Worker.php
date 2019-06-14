@@ -66,6 +66,16 @@ class Worker
      */
     private $dateTo;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Alarm", mappedBy="workerStart")
+     */
+    private $alarms;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Alarm", mappedBy="workerStop")
+     */
+    private $alarmsStop;
+
     public function __construct(int $salary, int $bonus, User $user, Department $department)
     {
         $this->salary = $salary;
@@ -79,6 +89,8 @@ class Worker
         $this->sickLeaves = new ArrayCollection();
         $this->execution = new ArrayCollection();
         $this->jailJobSchedules = new ArrayCollection();
+        $this->alarms = new ArrayCollection();
+        $this->alarmsStop = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,6 +259,68 @@ class Worker
     public function setDateTo(?\DateTimeInterface $dateTo): self
     {
         $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Alarm[]
+     */
+    public function getAlarms(): Collection
+    {
+        return $this->alarms;
+    }
+
+    public function addAlarm(Alarm $alarm): self
+    {
+        if (!$this->alarms->contains($alarm)) {
+            $this->alarms[] = $alarm;
+            $alarm->setWorkerStart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlarm(Alarm $alarm): self
+    {
+        if ($this->alarms->contains($alarm)) {
+            $this->alarms->removeElement($alarm);
+            // set the owning side to null (unless already changed)
+            if ($alarm->getWorkerStart() === $this) {
+                $alarm->setWorkerStart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Alarm[]
+     */
+    public function getAlarmsStop(): Collection
+    {
+        return $this->alarmsStop;
+    }
+
+    public function addAlarmsStop(Alarm $alarmsStop): self
+    {
+        if (!$this->alarmsStop->contains($alarmsStop)) {
+            $this->alarmsStop[] = $alarmsStop;
+            $alarmsStop->setWorkerStop($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlarmsStop(Alarm $alarmsStop): self
+    {
+        if ($this->alarmsStop->contains($alarmsStop)) {
+            $this->alarmsStop->removeElement($alarmsStop);
+            // set the owning side to null (unless already changed)
+            if ($alarmsStop->getWorkerStop() === $this) {
+                $alarmsStop->setWorkerStop(null);
+            }
+        }
 
         return $this;
     }

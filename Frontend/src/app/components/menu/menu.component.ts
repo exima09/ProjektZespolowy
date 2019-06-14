@@ -10,12 +10,13 @@ import { Role } from 'src/app/models/role/role';
 })
 export class MenuComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  isAdmin = this.authService.isAdmin.subscribe(res => this.isAdmin = res);
+  isAdmin: Observable<boolean>;
 
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isAdmin = this.authService.isAdmin;
   }
 
 

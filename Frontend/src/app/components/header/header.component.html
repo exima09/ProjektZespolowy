@@ -1,3 +1,5 @@
 <header class="bg-logo text-center">
   <img class="headerImg img-fluid" src="assets/images/jailLogo.png">
+  <img *ngIf="isAlarm!== undefined && isAlarm === true" (click)="deactivatedAlarm()"  title="Kliknij aby zatrzymać" class="alarm alarm-active" src="http://www.przedszkole17zory.pl/alarm.gif" />
+  <img *ngIf="isAlarm!== undefined && isAlarm === false" (click)="activateAlarm()" title="Kliknij aby uruchomić" class="alarm" src="./../../../assets/images/alarm.png" />
 </header>

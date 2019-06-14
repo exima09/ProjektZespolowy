@@ -52,6 +52,7 @@ import {GetDateFormatedPipe} from "./helpers/getDate";
 import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
 import { JailJobComponent } from './components/content/jail-job/jail-job.component';
 import { JailJobScheduleComponent } from './components/content/jail-job-schedule/jail-job-schedule.component';
+import { AlarmComponent } from './components/content/alarm/alarm.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { JailJobScheduleComponent } from './components/content/jail-job-schedule
     GetDateFormatedPipe,
     ApplyJobComponent,
     JailJobComponent,
-    JailJobScheduleComponent
+    JailJobScheduleComponent,
+    AlarmComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent

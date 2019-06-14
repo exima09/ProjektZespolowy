@@ -133,6 +133,7 @@
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/Backend/vendor/willdurand/jsonp-callback-validator" />
       <path value="$PROJECT_DIR$/Backend/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/security" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/Backend/vendor/symfony/http-client" />
     </include_path>
