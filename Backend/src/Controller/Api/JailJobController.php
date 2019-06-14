@@ -253,4 +253,50 @@ class JailJobController extends AbstractController
             ], 400);
         }
     }
+
+    /**
+     * @Route("/rate", name="jail_job_rate_add", methods={"POST"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function add_rate_to_job(Request $request)
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+            if (
+                array_key_exists("jailJobScheduleId", $data) &&
+                array_key_exists("rate", $data)
+            ) {
+                /** @var JailJobSchedule $jailJobSchedule */
+                $jailJobSchedule = $this->jailJobScheduleRepository->find($data['jailJobScheduleId']);
+                if(!$jailJobSchedule){
+                    return $this->json([
+                        'message' => "Brak pracy o nr {$data['jailJobScheduleId']}",
+                        'error' => "Brak pracy o nr {$data['jailJobScheduleId']}"
+                    ], 400);
+                }
+                $rate = (int)$data['rate'];
+                if(!is_int($rate)){
+                    return $this->json([
+                        'message' => "Błąd w formacie oceny",
+                        'error' => "Błąd w formacie oceny"
+                    ], 400);
+                }
+                $jailJobSchedule->setRate($rate);
+                $this->entityManager->flush();
+                return $this->json([
+                    'message' => "Poprawnie dodano ocene"
+                ]);
+            }
+            return $this->json([
+                'message' => "Sprawdź pola jailJobScheduleId i rate",
+                'error' => "Sprawdź pola jailJobScheduleId i rate"
+            ], 400);
+        } catch (\Exception $exception) {
+            return $this->json([
+                'message' => "Nie udało się dodać oceny pracy",
+                'error' => $exception->getMessage()
+            ], 400);
+        }
+    }
 }

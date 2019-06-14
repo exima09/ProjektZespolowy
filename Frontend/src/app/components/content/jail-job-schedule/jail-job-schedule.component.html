@@ -57,7 +57,7 @@
           <th scope="col">Zlecone przez</th>
           <th scope="col">Od</th>
           <th scope="col">Do</th>
-          <th scope="col">Akcje</th>
+          <th scope="col">Ocena</th>
         </tr>
         </thead>
         <tbody>
@@ -67,8 +67,32 @@
           <td scope="row">{{jailJobSchedule.worker.user.firstName}} {{jailJobSchedule.worker.user.lastName}}</td>
           <td scope="row">{{jailJobSchedule.dateFrom  | getDate}}</td>
           <td scope="row">{{jailJobSchedule.dateTo  | getDate}}</td>
-          <td scope="row"><span *ngIf="isOld(jailJobSchedule.dateFrom)" class="deleteAction"
-                                (click)="deleteJobSchedule(jailJobSchedule.id)">Anuluj</span></td>
+          <td scope="row">
+            <div class="rate" *ngIf="!jailJobSchedule.rate">
+              <input type="radio" id="{{jailJobSchedule.id}}star5" name="rate" value="5" />
+              <label for="{{jailJobSchedule.id}}star5" (click)="sendRate($event, 5, jailJobSchedule.id)">5 stars</label>
+              <input type="radio" id="{{jailJobSchedule.id}}star4" name="rate" value="4" />
+              <label for="{{jailJobSchedule.id}}star4" (click)="sendRate($event, 4, jailJobSchedule.id)">4 stars</label>
+              <input type="radio" id="{{jailJobSchedule.id}}star3" name="rate" value="3" />
+              <label for="{{jailJobSchedule.id}}star3" (click)="sendRate($event, 3, jailJobSchedule.id)">3 stars</label>
+              <input type="radio" id="{{jailJobSchedule.id}}star2" name="rate" value="2" />
+              <label for="{{jailJobSchedule.id}}star2" (click)="sendRate($event, 2, jailJobSchedule.id)">2 stars</label>
+              <input type="radio" id="{{jailJobSchedule.id}}star1" name="rate" value="1" />
+              <label for="{{jailJobSchedule.id}}star1" (click)="sendRate($event, 1, jailJobSchedule.id)">1 star</label>
+            </div>
+            <div class="rated" *ngIf="jailJobSchedule.rate">
+
+              <label *ngIf="jailJobSchedule.rate<1.5" for="{{jailJobSchedule.id}}star5">5 stars</label>
+              <label *ngIf="jailJobSchedule.rate<2.5" for="{{jailJobSchedule.id}}star5">5 stars</label>
+              <label *ngIf="jailJobSchedule.rate<3.5" for="{{jailJobSchedule.id}}star5">5 stars</label>
+              <label *ngIf="jailJobSchedule.rate<4.5" for="{{jailJobSchedule.id}}star5">5 stars</label>
+              <label style="color: yellow" *ngIf="jailJobSchedule.rate>4.5">5 stars</label>
+              <label style="color: yellow" *ngIf="jailJobSchedule.rate>3.5">5 stars</label>
+              <label style="color: yellow" *ngIf="jailJobSchedule.rate>2.5">5 stars</label>
+              <label style="color: yellow" *ngIf="jailJobSchedule.rate>1.5">5 stars</label>
+              <label style="color: yellow">5 stars</label>
+            </div>
+          </td>
         </tr>
         </tbody>
       </table>

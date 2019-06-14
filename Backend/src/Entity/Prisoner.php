@@ -87,7 +87,7 @@ class Prisoner
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\JailJobSchedule", mappedBy="prisoner")
-     * @MaxDepth(2)
+     *
      */
     private $jailJobSchedules;
 

@@ -9,4 +9,5 @@ export class JailJobSchedule {
   jailJob: JailJob;
   dateFrom: string;
   dateTo: string;
+  rate?: number;
 }
