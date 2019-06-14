@@ -9,11 +9,12 @@
       <p>Data urodzenia: {{prisoner.dateOfBirth | getDate}}</p>
       <p>Data rejestracji: {{prisoner.joinDate | getDate}}</p>
       <p>Opis:</p>
-      <p *ngIf="prisoner.cell">Więzień osadzony jest w celi {{prisoner.cell.id}}, sprawowanie dobre, srednia ocena...</p>
+      <p *ngIf="prisoner.cell">Więzień osadzony jest w celi {{prisoner.cell.id}}</p>
+      <p *ngIf="prisoner.jailJobSchedules && prisoner.jailJobSchedules.length > 0">Ocena z wykonanych prac {{getRating(prisoner)}}</p>
       <p *ngIf="!prisoner.cell">Więzień nie został osadzony w celi</p>
     </div>
     <footer class="post_date">
-      <button mat-button>Oceń</button>
+      <button mat-button [routerLink]="'/jail-job/schedule'">Oceń</button>
       <button mat-button [routerLink]="['/prisoners/', prisoner.id]">Szczegóły</button>
     </footer>
   </article>

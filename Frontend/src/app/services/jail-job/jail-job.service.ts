@@ -20,6 +20,9 @@ export class JailJobService {
   addJailJobSchedule = (formData) => this.http.post('/api/jail-job/schedule', formData, getHeaders())
       .pipe(catchError(err => this.errorHandler(err)));
 
+  addRateToJobSchedule = (formData) => this.http.post('/api/jail-job/rate', formData, getHeaders())
+      .pipe(catchError(err => this.errorHandler(err)));
+
   getJailJob = () => this.http.get('/api/jail-job', getHeaders())
       .pipe(catchError(err => this.errorHandler(err)));
 

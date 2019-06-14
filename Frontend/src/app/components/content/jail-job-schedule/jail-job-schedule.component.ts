@@ -132,4 +132,27 @@ export class JailJobScheduleComponent implements OnInit {
   checkDate(dateFrom, dateTo) {
     return moment(dateFrom).unix()>moment(dateTo).unix()
   }
+
+  getArrayStar(rate: number): Array<boolean> {
+    const stars: boolean[] = [];
+    for(let i = 0; i<5; i++) {
+      if(rate-1<i) {
+        stars.push(true);
+      } else {
+        stars.push(false);
+      }
+    }
+    return stars;
+  }
+
+  sendRate(event, rate: number, jailJobScheduleId: number) {
+    event.preventDefault();
+    console.log(event, rate, jailJobScheduleId)
+    this.service.addRateToJobSchedule({rate, jailJobScheduleId}).subscribe(
+      (res)=> {
+        this.loadJobJailSchedule()
+        console.log(res)
+      }
+    )
+  }
 }

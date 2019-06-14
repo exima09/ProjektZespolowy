@@ -17,4 +17,14 @@ export class PrisonersListComponent implements OnInit {
       this.prisoners = JSON.parse(res.prisoners);
     });
   }
+
+  getRating(prisoner: Prisoner) {
+    let sum = 0;
+    let amount = 0;
+    prisoner.jailJobSchedules.map(job=> {
+      sum+=job.rate;
+      amount++;
+    })
+    return sum/amount;
+  }
 }

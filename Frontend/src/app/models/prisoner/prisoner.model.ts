@@ -14,5 +14,5 @@ export class Prisoner {
     executions: Execution[];
     visits: Visit[];
     sickLeaves: SickLeave[];
-    jailJobSchedule: JailJobSchedule[];
+    jailJobSchedules: JailJobSchedule[];
 }
