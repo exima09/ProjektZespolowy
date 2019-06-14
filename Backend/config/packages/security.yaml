@@ -38,10 +38,6 @@ security:
             pattern:  ^/api/application
             stateless: true
             anonymous: true
-        alarm:
-            pattern:  ^/api/alarm
-            stateless: true
-            anonymous: true
         doc:
             pattern:  ^/api/doc
             stateless: true

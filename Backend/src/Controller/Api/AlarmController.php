@@ -3,15 +3,18 @@
 namespace App\Controller\Api;
 
 use App\Entity\Alarm;
+use App\Entity\User;
 use App\Repository\AlarmRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class AlarmController
  * @Route("/api/alarm")
+ * @IsGranted(User::USER)
  * @package App\Controller
  */
 class AlarmController extends AbstractController
