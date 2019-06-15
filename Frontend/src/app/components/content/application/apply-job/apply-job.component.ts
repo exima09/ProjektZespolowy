@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { JobApplicationService } from 'src/app/services/job-application/job-application.service';
-import { loadInternal } from '@angular/core/src/render3/util';
 import { AuthenticationService } from 'src/app/services/authorization.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
