@@ -1,0 +1,26 @@
+input.ng-touched.ng-invalid {
+  border-width: 3px;
+}
+
+.lastField{
+  text-align: center;
+  margin: 5%;
+}
+
+
+.fileUpload{
+  display: flex;
+  justify-content: center;
+  margin: 3%;
+}
+
+.fileMessage{
+  color: gold;
+}
+
+.cvLabel{
+}
+
+.form-group {
+  width: 100% !important;
+}

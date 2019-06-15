@@ -3,6 +3,7 @@ import {Execution} from "../execution/execution.model";
 import {User} from "../user/user.model";
 import {Department} from "../department/department.model";
 import {JailJobSchedule} from "../jail-job-schedule/jail-job-schedule";
+import {News} from "../news/news.model";
 
 export class Worker {
   id?: number;
@@ -15,5 +16,6 @@ export class Worker {
   department: Department;
   execution: Execution[];
   jailJobSchedules: JailJobSchedule[];
+  news: News[];
 }
 

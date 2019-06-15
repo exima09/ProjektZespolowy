@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NewsService} from "../../../services/news/news.service";
+import {News} from '../../../models/news/news.model'
 
 
 @Component({
@@ -8,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   headerOfSite = "Aktualności";
-  infos=[1,2,3,4,5,6,7,8];
-  constructor() { }
+  private news: News[] = [];
+  constructor(private service: NewsService) { }
 
   ngOnInit() {
+    this.newsLoad();
   }
+
+  newsLoad = () => this.service.getNews().subscribe(
+    (res:any)=>this.news = JSON.parse(res.news))
 
 }

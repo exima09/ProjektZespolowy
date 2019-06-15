@@ -6,6 +6,7 @@
 parameters:
     locale: 'en'
     upload: '%kernel.project_dir%/public/upload'
+    news: '%kernel.project_dir%/public/news'
 
 services:
     # default configuration for services in *this* file

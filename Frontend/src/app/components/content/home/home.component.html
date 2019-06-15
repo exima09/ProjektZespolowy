@@ -1,20 +1,16 @@
 <app-site-header [childMessage]="headerOfSite"></app-site-header>
 
-<div *ngFor="let info of infos">
+<div *ngFor="let info of news">
     <article class="post">
         <header>
-            <h2 class="post_title">Tytul</h2>
+            <h2 class="post_title">{{info.title}}</h2>
         </header>
-        <img class="post_img" src="assets/images/nico.jpg">
+        <img class="post_img" src="http://localhost:8000/news/{{info.image}}">
         <p class="post_text">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-            in culpa qui officia deserunt mollit anim id est laborum."
+            {{info.text}}
         </p>
         <footer class="post_date">
-            <i>Data</i>
+            <i>Dodany przez {{info.worker.user.username}}, {{info.dateAdded | getDate:'fullDate'}}</i>
         </footer>
     </article>
 </div>

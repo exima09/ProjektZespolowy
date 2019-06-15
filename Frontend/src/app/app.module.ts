@@ -53,6 +53,7 @@ import { ApplyJobComponent } from './components/content/application/apply-job/ap
 import { JailJobComponent } from './components/content/jail-job/jail-job.component';
 import { JailJobScheduleComponent } from './components/content/jail-job-schedule/jail-job-schedule.component';
 import { AlarmComponent } from './components/content/alarm/alarm.component';
+import { NewsAddComponent } from './components/content/news-add/news-add.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { AlarmComponent } from './components/content/alarm/alarm.component';
     ApplyJobComponent,
     JailJobComponent,
     JailJobScheduleComponent,
-    AlarmComponent
+    AlarmComponent,
+    NewsAddComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent
