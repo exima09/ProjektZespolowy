@@ -74,7 +74,8 @@ export class NewsAddComponent implements OnInit {
         this.snackService.open("Dodano aktualność");
         this.form.reset();
         this.fileError = "";
-        document.getElementById("exampleFormControlFile1").value = "";
+        const input: any = document.getElementById("exampleFormControlFile1");
+        input.value = "";
       },
       err => this.snackService.open(`Nie udało się dodać aktualności`)
 

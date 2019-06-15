@@ -63,7 +63,7 @@ class VisitsController extends AbstractController
     public function list()
     {
         try {
-            $visits = $this->visitsRepository->findAll();
+            $visits = $this->visitsRepository->findBy([],['dateStart'=>'DESC']);
             return new JsonResponse([
                 "message" => "Lista została poprawnie pobrana",
                 "visits" => $this->serializer->serialize($visits, 'json', SerializationContext::create()->enableMaxDepthChecks())

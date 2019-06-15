@@ -20,8 +20,8 @@
     <a class="menu-item py-2" data-toggle="collapse" href="#visitCollapse" role="button" aria-expanded="false"
     aria-controls="visitCollapse" *ngIf="isLoggedIn"> Odwiedziny <i class='fas fa-angle-down'></i> </a>
     <div class="collapse" id="visitCollapse" data-parent="#navmenu">
-      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/'">Zarezerwuj odwiedziny</a>
-      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/'">Lista odwiedzin</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/visit/add'">Zarezerwuj odwiedziny</a>
+      <a class="menu-item menu-child colapse-item py-2" [routerLink]="'/visit'">Lista odwiedzin</a>
     </div>
     <a class="menu-item py-2" data-toggle="collapse" href="#prisonerCollapse" role="button" aria-expanded="false"
     aria-controls="prisonerCollapse" *ngIf="isLoggedIn"> Więźniowie <i class='fas fa-angle-down'></i> </a>

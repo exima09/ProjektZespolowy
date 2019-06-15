@@ -54,6 +54,8 @@ import { JailJobComponent } from './components/content/jail-job/jail-job.compone
 import { JailJobScheduleComponent } from './components/content/jail-job-schedule/jail-job-schedule.component';
 import { AlarmComponent } from './components/content/alarm/alarm.component';
 import { NewsAddComponent } from './components/content/news-add/news-add.component';
+import { VisitListComponent } from './components/content/visits/visit-list/visit-list.component';
+import { VisitAddComponent } from './components/content/visits/visit-add/visit-add.component';
 
 
 @NgModule({
@@ -91,7 +93,9 @@ import { NewsAddComponent } from './components/content/news-add/news-add.compone
     JailJobComponent,
     JailJobScheduleComponent,
     AlarmComponent,
-    NewsAddComponent
+    NewsAddComponent,
+    VisitListComponent,
+    VisitAddComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent

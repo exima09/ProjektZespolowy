@@ -1,0 +1,100 @@
+<app-site-header [childMessage]="headerOfSite"></app-site-header>
+<mat-tab-group>
+  <mat-tab label="Dzisiaj">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Dane osobowe</th>
+              <th scope="col">Kontakt</th>
+              <th scope="col">Więzień</th>
+              <th scope="col">Cela</th>
+              <th scope="col">Data rozpoczęcia</th>
+              <th scope="col">Data zakończenia</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let visit of visitToday">
+              <td scope="row">{{visit.bookingPerson}}</td>
+              <td scope="row">{{getContact(visit)}}</td>
+              <td scope="row">{{visit.prisoner.firstName}} {{visit.prisoner.lastName}}</td>
+              <td scope="row">{{visit.prisoner.cell.id}}</td>
+              <td scope="row">{{visit.dateStart | getDate:'fullDate'}}</td>
+              <td scope="row">{{visit.dateStop | getDate:'fullDate'}}</td>
+              <td scope="row">{{getStatus(visit.statusAccepted)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="W tym miesiącu">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Dane osobowe</th>
+              <th scope="col">Kontakt</th>
+              <th scope="col">Więzień</th>
+              <th scope="col">Cela</th>
+              <th scope="col">Data rozpoczęcia</th>
+              <th scope="col">Data zakończenia</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let visit of visitMonth">
+              <td scope="row">{{visit.bookingPerson}}</td>
+              <td scope="row">{{getContact(visit)}}</td>
+              <td scope="row">{{visit.prisoner.firstName}} {{visit.prisoner.lastName}}</td>
+              <td scope="row">{{visit.prisoner.cell.id}}</td>
+              <td scope="row">{{visit.dateStart | getDate:'fullDate'}}</td>
+              <td scope="row">{{visit.dateStop | getDate:'fullDate'}}</td>
+              <td scope="row" *ngIf="visit.statusAccepted">Potwierdzona</td>
+              <td scope="row" *ngIf="!visit.statusAccepted"><span (click)="acceptVisit(visit.id)">Potwierdź</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Wszystkie">
+    <div class="container">
+      <div class="row justify-content-md-center mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Dane osobowe</th>
+              <th scope="col">Kontakt</th>
+              <th scope="col">Więzień</th>
+              <th scope="col">Cela</th>
+              <th scope="col">Data rozpoczęcia</th>
+              <th scope="col">Data zakończenia</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let visit of visitAll">
+              <td scope="row">{{visit.bookingPerson}}</td>
+              <td scope="row">{{getContact(visit)}}</td>
+              <td scope="row">{{visit.prisoner.firstName}} {{visit.prisoner.lastName}}</td>
+              <td scope="row">{{visit.prisoner.cell.id}}</td>
+              <td scope="row">{{visit.dateStart | getDate:'fullDate'}}</td>
+              <td scope="row">{{visit.dateStop | getDate:'fullDate'}}</td>
+              <td scope="row">{{getStatus(visit.statusAccepted)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
