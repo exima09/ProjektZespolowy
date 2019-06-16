@@ -1,0 +1,68 @@
+<header>
+  <app-site-header [childMessage]="headerOfSite"></app-site-header>
+</header>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-8 offset-md-4 mt-5 form-background" *ngIf="prisoners.length>0">
+      <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="form-group">
+          <label>Wybierz więźnia</label>
+          <select name="prisoner" #prisoner="ngModel" ngModel class="form-control" required>
+            <option value="" selected disabled>Wybierz więźnia</option>
+            <option *ngFor="let person of prisoners" [value]="person.id">
+              {{person.firstName}} {{person.lastName}} z celi {{person.cell.id}}
+            </option>
+          </select>
+          <div class="validation-error" *ngIf="(prisoner.invalid|| prisoner.value.length <1 ) && prisoner.touched">To
+            pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Spotkanie od:</label>
+          <input class="form-control" name="dateStart" #dateStart="ngModel" ngModel [owlDateTime]="dt1"
+            [owlDateTimeTrigger]="dt1" placeholder="Date Time" [min]="minDate" [max]="maxDate" required>
+          <owl-date-time #dt1></owl-date-time>
+          <div class="validation-error" *ngIf="dateStart.invalid && dateStart.touched">To pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Spotkanie trwa 2 godziny</label>
+        </div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" type="text" name="bookingPerson" #bookingPerson="ngModel" ngModel
+            placeholder="Imię i nazwisko" required>
+          <div class="validation-error" *ngIf="bookingPerson.invalid && bookingPerson.touched">To pole jest wymagane.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Kontakt (wybierz preferowany):</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Telefon</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="setContactType('P')">Telefon</a>
+                <a class="dropdown-item" (click)="setContactType('E')">Email</a>
+              </div>
+            </div>
+            <div *ngIf="contactType==='P'">
+              <input name="contact" #contact="ngModel" ngModel type="number" class="form-control"
+                aria-label="Text input with dropdown button" required>
+            </div>
+            <div *ngIf="contactType==='E'">
+              <input type="email" class="form-control" name="contact" #contact="ngModel" ngModel
+                aria-label="Text input with dropdown button" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <h1>{{error}}</h1>
+          <button class="btn btn-block btn-lg text-white submit" type="submit"
+            [disabled]="form.invalid">
+            Zarezerwuj termin
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
