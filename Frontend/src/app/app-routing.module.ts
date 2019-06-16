@@ -28,6 +28,8 @@ import {JailJobComponent} from "./components/content/jail-job/jail-job.component
 import {JailJobScheduleComponent} from "./components/content/jail-job-schedule/jail-job-schedule.component";
 import {AlarmComponent} from "./components/content/alarm/alarm.component";
 import {NewsAddComponent} from "./components/content/news-add/news-add.component";
+import {VisitAddComponent} from "./components/content/visits/visit-add/visit-add.component";
+import {VisitListComponent} from "./components/content/visits/visit-list/visit-list.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -157,6 +159,16 @@ const routes: Routes = [
     component: NewsAddComponent,
     canActivate: [AuthorizationGuard],
     data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN, Role.EXECUTIONER, Role.MEDICAL] }
+  },{
+    path: 'visit',
+    component: VisitListComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN] }
+  },{
+    path: 'visit/add',
+    component: VisitAddComponent,
+    canActivate: [AuthorizationGuard],
+    data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN] }
   },
    {
     path: 'apply-for-job',

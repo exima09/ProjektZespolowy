@@ -7,6 +7,6 @@ export class Visit {
     dateStop: string;
     statusAccepted: boolean;
     bookingPerson: string;
-    conctactType: string;
+    contactType: string;
     contact: string;
 }
