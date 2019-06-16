@@ -21,15 +21,14 @@ import { WorkerComponent } from './components/content/worker/worker/worker.compo
 import { AddWorkerComponent } from './components/content/worker/add-worker/add-worker.component';
 import { WorkerEditComponent } from './components/content/worker/worker-edit/worker-edit.component';
 import { SalaryManagementComponent } from './components/content/worker/salary-management/salary-management.component';
-import { CvComponent } from './components/content/cv/cv/cv.component';
 import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
 import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
 import {JailJobComponent} from "./components/content/jail-job/jail-job.component";
 import {JailJobScheduleComponent} from "./components/content/jail-job-schedule/jail-job-schedule.component";
 import {AlarmComponent} from "./components/content/alarm/alarm.component";
 import {NewsAddComponent} from "./components/content/news-add/news-add.component";
-import {VisitAddComponent} from "./components/content/visits/visit-add/visit-add.component";
-import {VisitListComponent} from "./components/content/visits/visit-list/visit-list.component";
+import { VisitListComponent } from './components/content/visits/visit-list/visit-list.component';
+import { VisitReservationComponent } from './components/content/visits/visit-reservation/visit-reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -166,9 +165,7 @@ const routes: Routes = [
     data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN] }
   },{
     path: 'visit/add',
-    component: VisitAddComponent,
-    canActivate: [AuthorizationGuard],
-    data: { roles: [Role.ADMIN, Role.MANAGER, Role.GUARD, Role.WARDEN] }
+    component: VisitReservationComponent,
   },
    {
     path: 'apply-for-job',

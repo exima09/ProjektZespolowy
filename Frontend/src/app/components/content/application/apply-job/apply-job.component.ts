@@ -101,7 +101,7 @@ export class ApplyJobComponent implements OnInit {
       this.accountForm.value.lastName = this.form.value.lastName;
       this.authService.register(this.accountForm.value).subscribe(
         res => null,
-        err => this.snackService.open("Nie udało się założyć konta"),
+        _err => this.snackService.open("Nie udało się założyć konta"),
         () => { this.snackService.open("Konto zostało założone"), this.router.navigate(['/login']); }
       );
     }

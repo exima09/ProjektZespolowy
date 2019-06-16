@@ -48,14 +48,15 @@ import {WorkerEditComponent} from './components/content/worker/worker-edit/worke
 import {SalaryManagementComponent} from './components/content/worker/salary-management/salary-management.component';
 import { CvManageComponent } from './components/content/cv/cv-manage/cv-manage.component';
 import { CvComponent } from './components/content/cv/cv/cv.component';
-import {GetDateFormatedPipe} from "./helpers/getDate";
+import { GetDateFormatedPipe } from './helpers/getDate';
 import { ApplyJobComponent } from './components/content/application/apply-job/apply-job.component';
 import { JailJobComponent } from './components/content/jail-job/jail-job.component';
 import { JailJobScheduleComponent } from './components/content/jail-job-schedule/jail-job-schedule.component';
 import { AlarmComponent } from './components/content/alarm/alarm.component';
 import { NewsAddComponent } from './components/content/news-add/news-add.component';
 import { VisitListComponent } from './components/content/visits/visit-list/visit-list.component';
-import { VisitAddComponent } from './components/content/visits/visit-add/visit-add.component';
+import { VisitReservationComponent } from './components/content/visits/visit-reservation/visit-reservation.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 @NgModule({
@@ -95,7 +96,7 @@ import { VisitAddComponent } from './components/content/visits/visit-add/visit-a
     AlarmComponent,
     NewsAddComponent,
     VisitListComponent,
-    VisitAddComponent
+    VisitReservationComponent
   ],
   entryComponents: [
     DialogPopconfirmComponent
@@ -119,7 +120,9 @@ import { VisitAddComponent } from './components/content/visits/visit-add/visit-a
     MatCheckboxModule,
     MatDialogModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
   ],
   providers: [PrisonerService, MenuComponent, AuthenticationService, AuthorizationGuard, ExecutionService],
   bootstrap: [AppComponent]
